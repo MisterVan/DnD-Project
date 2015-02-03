@@ -12,15 +12,15 @@ As parent class, it implements generic behavior for taking taking damage, having
 
 public class Entity {
     
-    private int hp;
-    private int power;
-    private int speed;
+    protected int hp;
+    protected int power;
+    protected int speed;
     
-    private double accuracy;
-    private double dodge;
+    protected double accuracy;
+    protected double dodge;
     
-    DamageReduction dr;
-    ElementalResistance er;
+    protected DamageReduction dr;
+    protected ElementalResistance er;
     
     //Trinket item;
    // Consumable potion;
@@ -45,6 +45,9 @@ for(Damage dmg : atk.getDamage()) {
    }
 }//end method
 
+public boolean isDead() {
+	return this.hp <= 0;
+}
 
 public int getPower() {
    return this.power;

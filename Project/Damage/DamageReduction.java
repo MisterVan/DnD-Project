@@ -24,4 +24,12 @@ public int processDamage(Damage dmg) {
       return modifiedDamage;
 }
 
+public void setReduction(int i) {
+	this.reduction = i;
+}
+
+public int getReduction() {
+	return this.reduction;
+}
+
 }//end class
