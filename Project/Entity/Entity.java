@@ -3,6 +3,8 @@ import Project.Damage.ElementalResistance;
 import Project.Damage.DamageReduction;
 import Project.Damage.Attack;
 import Project.Damage.Damage;
+import Project.Status.StatusEffect;
+import java.util.ArrayList;
 
 /*
 This class is the superparent for all characters in the game, player or monster.
@@ -21,6 +23,10 @@ public class Entity {
     
     protected DamageReduction dr;
     protected ElementalResistance er;
+    
+    protected boolean isCritImmune;
+    
+    ArrayList<StatusEffect> statusEffects;
     
     //Trinket item;
    // Consumable potion;
@@ -49,6 +55,10 @@ public boolean isDead() {
 	return this.hp <= 0;
 }
 
+
+/*
+GETS AND SETS ==============================================================
+*/
 public int getPower() {
    return this.power;
 }
@@ -69,10 +79,17 @@ public void setAccuracy(double a) {
    this.accuracy = a;
 }
 
+public double getDodge() {
+   return this.dodge;
+}
+
 public void setDodge(double d) {
    this.dodge = d;
 }
 
+public DamageReduction getDamageReduction() {
+   return this.dr;
+}
 public void setDamageReduction(DamageReduction dr) {
    this.dr = dr;
 }
@@ -82,11 +99,24 @@ public void setElementalResistance(ElementalResistance er) {
 }
 
 //Gives the player a status effect, whether a buff or a detrimental effect.
-/*
-public void giveStatus(Status stat) {
-    
+
+public void giveStatus(StatusEffect stat) {
+   
+   for(StatusEffect e: statusEffects) {
+      if(e.getName().equals(stat.getName())) { //If we already have the status
+         e.resetDuration();
+         return;
+         }
+   }//end loop
+   //If we get here, we don't have the status effect already, so we apply it.
+    this.statusEffects.add(stat);
 }
 
-*/
+public void removeStatus(StatusEffect stat) {
+   stat.removeEffectFromTarget();
+   this.statusEffects.remove(stat);
+}
+
+
 
 }//end class
