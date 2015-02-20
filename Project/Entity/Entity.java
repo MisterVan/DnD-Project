@@ -3,6 +3,8 @@ import Project.Damage.ElementalResistance;
 import Project.Damage.DamageReduction;
 import Project.Damage.Attack;
 import Project.Damage.Damage;
+import Project.Status.StatusEffect;
+import java.util.ArrayList;
 
 /*
 This class is the superparent for all characters in the game, player or monster.
@@ -23,10 +25,14 @@ public class Entity {
     DamageReduction dr;
     ElementalResistance er;
     
+    protected boolean isCritImmune;
+    
+    ArrayList<StatusEffect> statusEffects = new ArrayList<StatusEffect>();
+    
     //Trinket item;
-   // Consumable potion;
+    //Consumable potion;
     //Weapon firstWeapon;
-    //Weapon secondWeapon;
+
     
 //This object takes damage after applying all relevant resistances, immunities, and damage reduction
 public void takeDamage(Attack atk) {
@@ -46,7 +52,9 @@ for(Damage dmg : atk.getDamage()) {
    }
 }//end method
 
-
+/*
+GETS, SETS =======================
+*/
 public void setName(String newName)
 {
    this.name = newName;
@@ -82,24 +90,66 @@ public void setAccuracy(double a) {
    this.accuracy = a;
 }
 
+public double getAccuracy() {
+	return this.accuracy;
+}
+
 public void setDodge(double d) {
    this.dodge = d;
+}
+
+public double getDodge() {
+   return this.dodge;
 }
 
 public void setDamageReduction(DamageReduction dr) {
    this.dr = dr;
 }
 
+public DamageReduction getDamageReduction() {
+   return this.dr;
+}
+
 public void setElementalResistance(ElementalResistance er) { 
    this.er = er;
 }
 
-//Gives the player a status effect, whether a buff or a detrimental effect.
+public boolean isDead() {
+	return this.hp <= 0;
+}   
+
 /*
-public void giveStatus(Status stat) {
-    
+STATUS EFFECTS
+*/
+public void giveStatus(StatusEffect stat) {
+
+   for(StatusEffect e: statusEffects) {
+      if(e.getName().equals(stat.getName())) { //If we already have the status
+         e.resetDuration();
+         return;
+         }
+   }//end loop
+
+	
+   //If we get here, we don't have the status effect already, so we apply it.
+    this.statusEffects.add(stat);
+	stat.applyEffectToTarget(this);
 }
 
-*/
+public void removeStatus(StatusEffect stat) {
+   stat.removeEffectFromTarget();
+   this.statusEffects.remove(stat);
+}
 
+public void roundOver() { //gets called after the end of every round.
+StatusEffect e;
+
+for(int i = 0; i < statusEffects.size(); i++) {
+	e = statusEffects.get(i);
+	e.reapplyEffectToTarget();
+	if(e.getCounter() <= 0)
+		removeStatus(e);
+}//end loop
+
+}
 }//end class
