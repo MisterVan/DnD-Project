@@ -28,7 +28,7 @@ public class Gargoyle extends Entity
 	public Attack performAttack()
 	{
       Attack atk = new Attack();
-      atk.addDamage(new Damage(25, true, "slash"));
+      atk.addDamage(new Damage(25, true, "slash"));//0.5*power + rand.nextInt(11);
       atk.addDamage(new Damage(20, true, "bludgeon"));
       atk.addDamage(new Damage(7, false, "cold"));
       return atk;
