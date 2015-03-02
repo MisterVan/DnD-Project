@@ -18,4 +18,12 @@ public ArrayList<Damage> getDamage() {
    return this.list;
 }
 
+public void applyPower(int p) {
+   if(list.size() > 0)
+      {
+      Damage dmg = list.get(0);
+      dmg.addDamage(p);
+      }
+}
+
 }//end class

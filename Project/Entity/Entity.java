@@ -14,16 +14,17 @@ As parent class, it implements generic behavior for taking taking damage, having
 
 public class Entity {
     
-    private String name = "Unknown";
-    private int hp;
-    private int power;
-    private int speed;
+    protected String name = "Unknown";
+    protected int baseHP;
+    protected int hp;
+    protected int power;
+    protected int speed;
     
-    private double accuracy;
-    private double dodge;
+    protected double accuracy;
+    protected double dodge;
     
-    DamageReduction dr;
-    ElementalResistance er;
+    protected DamageReduction dr;
+    protected ElementalResistance er;
     
     protected boolean isCritImmune;
     
@@ -80,6 +81,7 @@ public void setPower(int p) {
 
 public void setHP(int hp) {
    this.hp = hp;
+   this.baseHP = hp;
 }
  
 public void setSpeed(int s) {
@@ -134,6 +136,12 @@ public void giveStatus(StatusEffect stat) {
    //If we get here, we don't have the status effect already, so we apply it.
     this.statusEffects.add(stat);
 	stat.applyEffectToTarget(this);
+}
+
+public void recoverHP(int amount) {
+   this.hp += amount;
+   if(this.hp > this.baseHP)
+      this.hp = this.baseHP;
 }
 
 public void removeStatus(StatusEffect stat) {

@@ -36,6 +36,10 @@ public boolean isPhysical() {
    return this.isPhysical;
 }
 
+public void addDamage(int d) {
+   this.dmg += d;
+}
+
 //When an attack is a critical, it gets multiplied by calling this method.
 public void multiply(int factor) {
    this.dmg = this.dmg * factor;
