@@ -2,11 +2,12 @@ package Project.Entity.Hero;
 
 import java.util.Scanner;
 import Project.Entity.Entity;
-import Project.Damage.ElementalResistance;
-import Project.Damage.DamageReduction;
-import Project.Damage.Attack;
-import Project.Damage.Damage;
-import Project.Weapon.Weapon;
+
+import Project.Behavior.Defense.ElementalResistance;
+import Project.Behavior.Defense.DamageReduction;
+import Project.Behavior.Offense.Damage;
+import Project.Behavior.Offense.Attack;
+import Project.Item.Weapon.Weapon;
 
 public class Barbarian extends Hero
 {

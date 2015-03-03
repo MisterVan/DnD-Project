@@ -1,8 +1,8 @@
-package Project.ProjectTester;
+package Project.Entity.ProjectTester;
 
 import Project.Entity.Entity;
-import Project.Status.*;
-import Project.Damage.ElementalResistance;
+import Project.Behavior.Status.*;
+import Project.Behavior.Defense.ElementalResistance;
 
 
 public class StatusTester {

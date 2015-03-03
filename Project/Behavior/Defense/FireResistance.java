@@ -1,4 +1,4 @@
-package Project.Damage;
+package Project.Behavior.Defense;
 
 public class FireResistance {
 

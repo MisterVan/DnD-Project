@@ -1,7 +1,7 @@
 package Project.Item.Consumable;
 
 import Project.Entity.Entity;
-import Project.Status.Might;
+import Project.Behavior.Status.Might;
 
 
 public class PotionOfMight extends Consumable {

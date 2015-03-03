@@ -1,14 +1,15 @@
-package Project.Lich;
+package Project.Entity.Monster;
 import java.util.Random;
 
 import Project.Entity.Entity;
-import Project.Damage.ElementalResistance;
-import Project.Damage.DamageReduction;
-import Project.Damage.Attack;
-import Project.Damage.Damage;
-import Project.Zombie.Zombie;
-import Project.Wraith.Wraith;
-import Project.Skeleton.Skeleton;
+import Project.Behavior.Defense.ElementalResistance;
+import Project.Behavior.Defense.DamageReduction;
+import Project.Behavior.Offense.Damage;
+import Project.Behavior.Offense.Attack;
+
+import Project.Entity.Monster.Zombie;
+import Project.Entity.Monster.Wraith;
+import Project.Entity.Monster.Skeleton;
 
 public class Lich extends Entity
 {

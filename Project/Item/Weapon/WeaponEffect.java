@@ -1,4 +1,4 @@
-package Project.Weapon;
+package Project.Item.Weapon;
 
 public abstract class WeaponEffect extends Weapon {
 

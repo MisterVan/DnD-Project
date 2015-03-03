@@ -1,17 +1,19 @@
-package Project.ProjectTester;
+package Project.Entity.ProjectTester;
 
-import Project.Chimera.Chimera;
-import Project.Basilisk.Basilisk;
-import Project.Worg.Worg;
-import Project.Gorgon.Gorgon;
-import Project.Gryphon.Gryphon;
-import Project.Hydra.Hydra;
-import Project.Gargoyle.Gargoyle;
+import Project.Entity.Monster.Chimera;
+import Project.Entity.Monster.Basilisk;
+import Project.Entity.Monster.Worg;
+import Project.Entity.Monster.Gorgon;
+import Project.Entity.Monster.Gryphon;
+import Project.Entity.Monster.Hydra;
+import Project.Entity.Monster.Gargoyle;
+
+
 import Project.Entity.Entity;
-import Project.Damage.DamageReduction;
-import Project.Damage.ElementalResistance;
-import Project.Damage.Attack;
-import Project.Damage.Damage;
+import Project.Behavior.Defense.ElementalResistance;
+import Project.Behavior.Defense.DamageReduction;
+import Project.Behavior.Offense.Damage;
+import Project.Behavior.Offense.Attack;
 
 public class ProjectTester
 {

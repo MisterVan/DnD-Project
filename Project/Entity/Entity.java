@@ -1,9 +1,10 @@
 package Project.Entity;
-import Project.Damage.ElementalResistance;
-import Project.Damage.DamageReduction;
-import Project.Damage.Attack;
-import Project.Damage.Damage;
-import Project.Status.StatusEffect;
+
+import Project.Behavior.Defense.ElementalResistance;
+import Project.Behavior.Defense.DamageReduction;
+import Project.Behavior.Offense.Damage;
+import Project.Behavior.Offense.Attack;
+import Project.Behavior.Status.StatusEffect;
 import java.util.ArrayList;
 
 /*

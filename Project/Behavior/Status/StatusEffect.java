@@ -1,4 +1,4 @@
-package Project.Status;
+package Project.Behavior.Status;
 //Note: Although it does not involve java's interfaces, the relationship between a status effect
 //and an entity is that of the Observer pattern. Whenever an entity's turn comes up, all status 
 //effects are notified so that they can deal damage or reapply certain effects.

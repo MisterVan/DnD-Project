@@ -1,8 +1,10 @@
 package Project.Entity.Hero;
 
 import java.util.ArrayList;
-import Project.Damage.Attack;
-import Project.Weapon.Weapon;
+
+import Project.Behavior.Offense.Damage;
+import Project.Behavior.Offense.Attack;
+import Project.Item.Weapon.Weapon;
 import Project.Entity.Entity;
 
 public class Hero extends Entity

@@ -1,4 +1,4 @@
-package Project.Status;
+package Project.Behavior.Status;
 import Project.Entity.Entity;
 
 //Blur as an effect that makes the entity's true location hard to see, making it a harder target to hit.

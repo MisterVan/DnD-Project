@@ -1,4 +1,4 @@
-package Project.Weapon;
+package Project.Item.Weapon;
 
 
 public class WeaponFactoryTester {

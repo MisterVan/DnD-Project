@@ -1,7 +1,8 @@
-package Project.Status;
+package Project.Behavior.Status;
+
 import Project.Entity.Entity;
-import Project.Damage.Attack;
-import Project.Damage.Damage;
+import Project.Behavior.Offense.Attack;
+import Project.Behavior.Offense.Damage;
 import java.util.Random;
 //This status effect is a damage over time effect for fire.
 public class BurningFlames implements StatusEffect {

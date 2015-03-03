@@ -1,10 +1,10 @@
 package Project.Entity.Construct;
 
 import Project.Entity.Entity;
-import Project.Damage.Damage;
-import Project.Damage.ElementalResistance;
-import Project.Damage.DamageReduction;
-import Project.Damage.Attack;
+import Project.Behavior.Offense.Attack;
+import Project.Behavior.Offense.Damage;
+import Project.Behavior.Defense.ElementalResistance;
+import Project.Behavior.Defense.DamageReduction;
 
 public class ClayGolem extends Construct {
 

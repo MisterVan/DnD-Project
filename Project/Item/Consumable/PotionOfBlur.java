@@ -1,7 +1,7 @@
 package Project.Item.Consumable;
 
 import Project.Entity.Entity;
-import Project.Status.Blur;
+import Project.Behavior.Status.Blur;
 
 
 public class PotionOfBlur extends Consumable {

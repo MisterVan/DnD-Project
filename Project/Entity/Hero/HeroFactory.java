@@ -1,9 +1,10 @@
 package Project.Entity.Hero;
 
 import java.util.Scanner;
-import Project.Damage.ElementalResistance;
-import Project.Damage.DamageReduction;
-import Project.Weapon.Weapon;
+
+import Project.Behavior.Defense.ElementalResistance;
+import Project.Behavior.Defense.DamageReduction;
+import Project.Item.Weapon.Weapon;
 //Regular factory/
 public class HeroFactory
 {

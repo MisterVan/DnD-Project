@@ -1,4 +1,6 @@
-package Project.Damage;
+package Project.Behavior.Defense;
+
+import Project.Behavior.Offense.Damage;
 
 public class DamageReduction {
 

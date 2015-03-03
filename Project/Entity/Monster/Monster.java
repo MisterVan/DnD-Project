@@ -1,8 +1,8 @@
 package Project.Entity.Monster;
 
 import java.util.ArrayList;
-import Project.Damage.Attack;
-import Project.Weapon.Weapon;
+import Project.Behavior.Offense.Attack;
+import Project.Item.Weapon.Weapon;
 import Project.Entity.Entity;
 
 public class Monster extends Entity

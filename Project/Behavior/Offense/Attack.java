@@ -1,4 +1,5 @@
-package Project.Damage;
+package Project.Behavior.Offense;
+
 
 import java.util.ArrayList;
 //This class represents a 'package' of damage values from a single attack to be sent to the target.

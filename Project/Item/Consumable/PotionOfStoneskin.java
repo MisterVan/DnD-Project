@@ -1,7 +1,7 @@
 package Project.Item.Consumable;
 
 import Project.Entity.Entity;
-import Project.Status.Stoneskin;
+import Project.Behavior.Status.Stoneskin;
 
 
 public class PotionOfStoneskin extends Consumable {

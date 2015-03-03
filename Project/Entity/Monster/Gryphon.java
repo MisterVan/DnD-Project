@@ -1,10 +1,10 @@
-package Project.Gryphon;
+package Project.Entity.Monster;
 
 import Project.Entity.Entity;
-import Project.Damage.ElementalResistance;
-import Project.Damage.DamageReduction;
-import Project.Damage.Attack;
-import Project.Damage.Damage;
+import Project.Behavior.Defense.ElementalResistance;
+import Project.Behavior.Defense.DamageReduction;
+import Project.Behavior.Offense.Damage;
+import Project.Behavior.Offense.Attack;
 
 public class Gryphon extends Entity
 {

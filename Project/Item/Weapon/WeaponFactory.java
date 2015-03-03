@@ -1,4 +1,4 @@
-package Project.Weapon;
+package Project.Item.Weapon;
 
 import java.io.File;
 import java.io.FileReader;

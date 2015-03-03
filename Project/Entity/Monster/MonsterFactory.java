@@ -3,9 +3,11 @@ import java.util.Random;
 import java.util.Scanner;
 import java.io.*;
 
-import Project.Damage.ElementalResistance;
-import Project.Damage.DamageReduction;
-import Project.Weapon.Weapon;
+import Project.Item.Weapon.Weapon;
+import Project.Behavior.Defense.ElementalResistance;
+import Project.Behavior.Defense.DamageReduction;
+
+
 //Regular factory/
 public class MonsterFactory
 {

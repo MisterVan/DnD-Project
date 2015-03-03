@@ -1,4 +1,4 @@
-package Project.Status;
+package Project.Behavior.Status;
 import Project.Entity.Entity;
 
 //This status effect is blindness, which severely hinders an entity's ability to hit things or dodge incoming attacks.

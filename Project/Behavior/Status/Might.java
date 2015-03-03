@@ -1,4 +1,4 @@
-package Project.Status;
+package Project.Behavior.Status;
 import Project.Entity.Entity;
 
 public class Might implements StatusEffect {

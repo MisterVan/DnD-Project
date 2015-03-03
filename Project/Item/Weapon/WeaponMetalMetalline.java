@@ -1,7 +1,7 @@
-package Project.Weapon;
+package Project.Item.Weapon;
 
-import Project.Damage.Damage;
-import Project.Damage.Attack;
+import Project.Behavior.Offense.Damage;
+import Project.Behavior.Offense.Attack;
 import java.util.Random;
 
 //adds metalline weapon property to a weapon as an inherent effect
