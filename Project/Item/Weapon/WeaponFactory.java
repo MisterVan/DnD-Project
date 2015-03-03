@@ -13,7 +13,7 @@ public class WeaponFactory {
 
 public Weapon createWeapon(String name, String metal, String prefix, String suffix) {
    Weapon w;
-   File f = new File(System.getProperty("user.dir") + "\\Project\\Weapon\\weapons.txt");
+   File f = new File(System.getProperty("user.dir") + "\\Project\\Item\\Weapon\\weapons.txt");
    Scanner fin = null;
    try {
    fin = new Scanner(f);
@@ -177,7 +177,7 @@ private Weapon getWeapon(int index) throws IOException, FileNotFoundException{
 
    Weapon w = null;
    String splitLine[] = null;
-   FileReader f = new FileReader(System.getProperty("user.dir") + "\\Project\\Weapon\\weapons.txt"); //UPDATE THIS WHEN DIRECTORY CHANGES
+   FileReader f = new FileReader(System.getProperty("user.dir") + "\\Project\\Item\\Weapon\\weapons.txt"); //UPDATE THIS WHEN DIRECTORY CHANGES
    BufferedReader fin = null;
    fin = new BufferedReader(f);
    int counter = 0;
@@ -198,7 +198,7 @@ private Weapon getWeapon(int index) throws IOException, FileNotFoundException{
 
 //Counts number of lines in waepons.txt in case stuff gets added later
 private int countLines() throws IOException, FileNotFoundException {
-   FileReader f = new FileReader(System.getProperty("user.dir") + "\\Project\\Weapon\\weapons.txt"); //UPDATE THIS WHEN DIRECTORY CHANGES
+   FileReader f = new FileReader(System.getProperty("user.dir") + "\\Project\\Item\\Weapon\\weapons.txt"); //UPDATE THIS WHEN DIRECTORY CHANGES
    BufferedReader fin = null;
 
    fin = new BufferedReader(f);

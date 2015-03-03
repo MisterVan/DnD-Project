@@ -1,10 +1,11 @@
-   package Project.Entity.Construct;
+   package Project.Entity.Monster;
 
+   
    import Project.Entity.Entity;
-   import Project.Damage.Damage;
-   import Project.Damage.ElementalResistance;
-   import Project.Damage.DamageReduction;
-   import Project.Damage.Attack;
+   import Project.Behavior.Defense.ElementalResistance;
+   import Project.Behavior.Defense.DamageReduction;
+   import Project.Behavior.Offense.Damage;
+   import Project.Behavior.Offense.Attack;
 
    public class IronGolem extends Construct {
    

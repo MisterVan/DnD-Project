@@ -1,7 +1,7 @@
-package Project.Entity.Construct;
+package Project.Entity.Monster;
 
 import Project.Entity.Entity;
-import Project.Damage.Damage;
+import Project.Behavior.Offense.Damage;
 
 public abstract class Construct extends Entity{
 
