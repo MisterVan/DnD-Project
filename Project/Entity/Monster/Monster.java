@@ -1,15 +1,15 @@
-package Project.Entity.Hero;
+package Project.Entity.Monster;
 
 import java.util.ArrayList;
 import Project.Damage.Attack;
 import Project.Weapon.Weapon;
 import Project.Entity.Entity;
 
-public class Hero extends Entity
+public class Monster extends Entity
 {
    private Weapon primaryWpn;
    private Weapon secondaryWpn;
-   private String playerName = "Unknown";
+   private String monsterName = "Unknown";
    //private ArrayList<Item> items;
    
    //primary attack
@@ -24,14 +24,14 @@ public class Hero extends Entity
       return secondaryWpn.attack();
    }
    
-   public void setPlayerName(String newName)
+   public void setMonsterName(String newName)
    {
-      this.playerName = newName;
+      this.monsterName = newName;
    }
    
-   public String getPlayerName()
+   public String getMonsterName()
    {
-      return this.playerName;
+      return this.monsterName;
    }
    
    public void setPrimaryWpn(Weapon newWpn)
