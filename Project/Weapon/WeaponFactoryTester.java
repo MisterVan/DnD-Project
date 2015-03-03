@@ -14,5 +14,20 @@ w1 = fac.createWeapon("Banana", "-", "Destructive", "Wrath");
 System.out.println(w1.description());
 w1 = fac.createWeapon("Spoon", "Adamantine", "Corrosive", "Blizzard");
 System.out.println(w1.description());
+
+
+//TESTING RANDO'S
+System.out.println(fac.createRandomWeapon().description());
+System.out.println(fac.createRandomWeapon().description());
+System.out.println(fac.createRandomWeapon().description());
+System.out.println(fac.createRandomWeapon().description()); 
+System.out.println(fac.createRandomWeapon().description());
+System.out.println(fac.createRandomWeapon().description());
+System.out.println(fac.createRandomWeapon().description());
+System.out.println(fac.createRandomWeapon().description()); 
+System.out.println(fac.createRandomWeapon().description());
+System.out.println(fac.createRandomWeapon().description());
+System.out.println(fac.createRandomWeapon().description());
+System.out.println(fac.createRandomWeapon().description()); 
 }//end main
 }//end class
