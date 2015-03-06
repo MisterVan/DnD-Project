@@ -8,6 +8,8 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 import Project.Item.Weapon.Weapon;
+import Project.Item.Item;
+import Project.Item.Equipment.EagleGoggles;
 
 public class Barbarian extends Hero
 {
@@ -27,14 +29,17 @@ public class Barbarian extends Hero
       setElementalResistance(elRes);
       Weapon mace = new Weapon("Mace", "bludgeon,slash", 35, 45);
       setPrimaryWpn(mace);
-      Weapon stomp = new Weapon("Stomp", "bludgeon", 20, 25);
-      setSecondaryWpn(stomp);
+      //This makes like no sense with stomp being a 'weapon', and also Weapon does not inherit from Item
+      //and therefore will not work in the inventory ArrayList of type Item. Consider taking this out and
+      //inherently equipping everyone with a dagger to start off with as a secondary?
+      //Weapon stomp = new Weapon("Stomp", "bludgeon", 20, 25);
+      //this.inventory.set(0, stomp);
       
 	}//end method
    
    public Attack specialMove()
    {
-      //Barbarian uses stoneskin for a number of rounds(handled in world class?) and gives a first initial brute strength attack
+      //Barbarian uses stoneskin for a number of rounds(handle status effect) and gives a first initial brute strength attack
       
       Attack rage = new Attack();
       rage.addDamage(new Damage(40, true, "bludgeon"));//randogen later

@@ -3,7 +3,7 @@ package Project.Item.Weapon;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 import java.util.Random;
-//This classis the base weapon. WeaponEffects can wrap it and add effects.
+//This class is the base weapon. WeaponEffects can wrap it and add effects.
 public class Weapon {
 
 protected String damageType;

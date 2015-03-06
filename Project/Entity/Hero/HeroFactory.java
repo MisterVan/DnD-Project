@@ -61,6 +61,7 @@ public class HeroFactory
          System.out.println("1 - yes");
          System.out.println("2 - no");
          sure = kb.nextInt();
+         kb.nextLine();
       }
       System.out.println("Your " + type + " is now named " + ans + ".");
       return ans;

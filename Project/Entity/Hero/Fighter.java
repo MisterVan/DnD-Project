@@ -20,7 +20,7 @@ public class Fighter extends Hero
       setSpeed(50);
       setAccuracy(0.7);
       setDodge(0.4);
-      setDamageReduction(new DamageReduction(18, "acid,fire"));
+      setDamageReduction(new DamageReduction(18, "fire"));
       ElementalResistance elRes = new ElementalResistance();      
       elRes.setCold(0, 0.8);//used to being outside?
       //elRes.setFire(0, 0.0);
@@ -29,8 +29,8 @@ public class Fighter extends Hero
       setElementalResistance(elRes);
       Weapon sword = new Weapon("Sword", "slash,pierce,metalline", 30, 45);
       setPrimaryWpn(sword);
-      Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
-      setSecondaryWpn(dagger);
+      //Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
+      //this.inventory.set(0, dagger);
 	}//end method
    
    public Attack specialMove()
