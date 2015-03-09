@@ -27,7 +27,7 @@ public class Cleric extends Hero
       Weapon fists = new Weapon("Fists", "bludgeon", 25, 32);
       setPrimaryWpn(fists);
       Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
-      setSecondaryWpn(dagger);//Cleric relies on spells
+      this.inventory.add(0, dagger);//Cleric relies on spells
       
 	}//end method
    

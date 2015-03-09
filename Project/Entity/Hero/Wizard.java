@@ -7,6 +7,7 @@ import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
+import Project.Item.Item;
 import Project.Item.Weapon.Weapon;
 
 public class Wizard extends Hero
@@ -27,10 +28,11 @@ public class Wizard extends Hero
       elRes.setAcid(0, 0.9);
       elRes.setElec(0, 0.9);//takes %10 less of all magical damage
       setElementalResistance(elRes);
-      Weapon staff = new Weapon("Elemental Staff", "fire,cold,electric", 30, 45);//how decorate tho
+      Weapon staff = new Weapon("Elemental Staff", "fire,cold,electric", 30, 45);
       setPrimaryWpn(staff);
       Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
-      setSecondaryWpn(dagger);//Wizard relies on spells
+      this.inventory.add(0, dagger); //Wizard relies on spells
+      
 	}//end method
    
    public Attack specialMove()

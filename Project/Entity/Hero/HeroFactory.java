@@ -5,7 +5,8 @@ import java.util.Scanner;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Item.Weapon.Weapon;
-//Regular factory/
+//this is a comment
+//Regular factory
 public class HeroFactory
 {
    public Hero createHero(String type)
@@ -60,6 +61,8 @@ public class HeroFactory
          System.out.println("You want your " + type + " to be named " + ans + "?");
          System.out.println("1 - yes");
          System.out.println("2 - no");
+         sure = kb.nextInt();
+         kb.nextLine();
       }
       System.out.println("Your " + type + " is now named " + ans + ".");
       return ans;

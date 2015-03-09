@@ -1,10 +1,10 @@
-package Project.Entity.Construct;
+package Project.Entity.Monster;
 
 import Project.Entity.Entity;
-import Project.Behavior.Offense.Attack;
-import Project.Behavior.Offense.Damage;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
+import Project.Behavior.Offense.Damage;
+import Project.Behavior.Offense.Attack;
 
 public class ClayGolem extends Construct {
 
