@@ -5,6 +5,7 @@ import java.util.Scanner;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Item.Weapon.Weapon;
+//this is a comment
 //Regular factory
 public class HeroFactory
 {

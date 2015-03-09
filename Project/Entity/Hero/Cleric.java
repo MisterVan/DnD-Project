@@ -26,8 +26,8 @@ public class Cleric extends Hero
       setElementalResistance(elRes);
       Weapon fists = new Weapon("Fists", "bludgeon", 25, 32);
       setPrimaryWpn(fists);
-      //Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
-      //this.inventory.set(0, dagger);//Cleric relies on spells
+      Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
+      this.inventory.add(0, dagger);//Cleric relies on spells
       
 	}//end method
    

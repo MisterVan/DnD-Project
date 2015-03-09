@@ -29,11 +29,10 @@ public class Barbarian extends Hero
       setElementalResistance(elRes);
       Weapon mace = new Weapon("Mace", "bludgeon,slash", 35, 45);
       setPrimaryWpn(mace);
-      //This makes like no sense with stomp being a 'weapon', and also Weapon does not inherit from Item
-      //and therefore will not work in the inventory ArrayList of type Item. Consider taking this out and
+      //This makes like no sense with stomp being a 'weapon'. Consider taking this out and
       //inherently equipping everyone with a dagger to start off with as a secondary?
-      //Weapon stomp = new Weapon("Stomp", "bludgeon", 20, 25);
-      //this.inventory.set(0, stomp);
+      Weapon stomp = new Weapon("Stomp", "bludgeon", 20, 25);
+      this.inventory.add(0, stomp);
       
 	}//end method
    

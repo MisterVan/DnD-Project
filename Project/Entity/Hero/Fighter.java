@@ -29,8 +29,8 @@ public class Fighter extends Hero
       setElementalResistance(elRes);
       Weapon sword = new Weapon("Sword", "slash,pierce,metalline", 30, 45);
       setPrimaryWpn(sword);
-      //Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
-      //this.inventory.set(0, dagger);
+      Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
+      this.inventory.add(0, dagger);
 	}//end method
    
    public Attack specialMove()

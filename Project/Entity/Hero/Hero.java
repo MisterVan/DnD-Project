@@ -13,7 +13,7 @@ public class Hero extends Entity
 {
    private Weapon primaryWpn;
    private String playerName = "Unknown";
-   protected ArrayList<Item> inventory;
+   protected ArrayList<Item> inventory = new ArrayList();
    
    //primary attack
    public Attack primaryAttack()
@@ -86,6 +86,7 @@ public class Hero extends Entity
          this.inventory.add(index, newItem);
       }
    }
+   
    
    //possibly refactor into more methods, or get rid of menu with gui
    //What if they want to drop their primary weapon to pick up a new one, but hold no other weapons to switch to temporarily. Must automatically equip whatever weapon is in inventory (but what if no weapons are held at all?)
