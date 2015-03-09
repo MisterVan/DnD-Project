@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane prefHeight="608.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.World.GameWindowController">
+   <right>
+      <AnchorPane fx:id="infoPane" prefHeight="608.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="butt" layoutX="138.0" layoutY="309.0" mnemonicParsing="false" onAction="#touchButt1" onKeyPressed="#touchButt1" prefWidth="50.0" text="Right" />
+            <Button fx:id="butt1" layoutX="13.0" layoutY="309.0" mnemonicParsing="false" onAction="#touchButt2" onKeyPressed="#touchButt2" prefWidth="50.0" text="Left" />
+            <Button fx:id="butt2" layoutX="76.0" layoutY="253.0" mnemonicParsing="false" onAction="#touchButt3" onKeyPressed="#touchButt3" prefWidth="50.0" text="Up" />
+            <Button fx:id="butt3" layoutX="76.0" layoutY="361.0" mnemonicParsing="false" onAction="#touchButt4" onKeyPressed="#touchButt4" prefWidth="50.0" text="Down" />
+         </children></AnchorPane>
+   </right>
+   <center>
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="608.0" prefWidth="608.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="gameMap">
+               <children>
+                  <Label prefHeight="14.0" prefWidth="139.0" text="This is a VBox" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

@@ -5,6 +5,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 import Project.Behavior.Status.StatusEffect;
+import Project.World.MapResident;
 import java.util.ArrayList;
 
 /*
@@ -13,7 +14,7 @@ As parent class, it implements generic behavior for taking taking damage, having
 */
 
 
-public class Entity {
+public class Entity extends MapResident {
     
     protected String name = "Unknown";
     protected int baseHP;
