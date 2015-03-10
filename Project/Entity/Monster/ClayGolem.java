@@ -70,6 +70,8 @@ for(Damage dmg : atk.getDamage()) {
 	
    }//end for loop
 
+   if(atk.hasStatus())
+      this.giveStatus(atk.deliverStatus()); 
 }//end method
 
 /*

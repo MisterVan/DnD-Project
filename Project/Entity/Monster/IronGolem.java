@@ -66,6 +66,9 @@
             } //end else 
          
          }//end for loop
+         
+      if(atk.hasStatus())
+          this.giveStatus(atk.deliverStatus()); 
       }//end method
    
 	/*
@@ -90,4 +93,4 @@
       return atk;
    }
 	
-   }//end class
+}//end class

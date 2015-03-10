@@ -57,6 +57,9 @@ public void takeDamage(Attack atk)
       System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
    }
   }
+   
+   if(atk.hasStatus())
+      this.giveStatus(atk.deliverStatus());
 }//end method
 
 /*
@@ -129,6 +132,10 @@ public boolean isDead() {
 /*
 STATUS EFFECTS
 */
+
+public ArrayList<StatusEffect> getStatusEffects() {
+	return this.statusEffects;
+}
 public void giveStatus(StatusEffect stat) {
 
    for(StatusEffect e: statusEffects) {

@@ -64,6 +64,9 @@
             } //end else 
          
          }//end for loop
+         
+   if(atk.hasStatus())
+      this.giveStatus(atk.deliverStatus()); 
    }//end method
    
    /*
@@ -87,5 +90,4 @@
       atk.addDamage(new Damage(30, true, "bludgeon"));
       return atk;
    }
-   
-   }//end class
+}//end class
