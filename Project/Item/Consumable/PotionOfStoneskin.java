@@ -6,7 +6,9 @@ import Project.Behavior.Status.Stoneskin;
 
 public class PotionOfStoneskin extends Consumable {
 
-
+public PotionOfStoneskin() {
+   super.name = "Potion of Stoneskin";
+}
 public void pickUp(Entity e) {
    super.wielder = e;
 }

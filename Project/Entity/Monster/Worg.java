@@ -6,7 +6,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
-public class Worg extends Entity
+public class Worg extends Monster
 {
    
    //Create Worg
@@ -23,6 +23,7 @@ public class Worg extends Entity
       elRes.setFire(0, 1.1); //Takes one and one-tenth fire damage due to fur
       
       setElementalResistance(elRes);
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_WORG.png");
 	}//end method
    
    //Perform attack
@@ -33,9 +34,11 @@ public class Worg extends Entity
       return atk;
 	}//end method
    
-   private void tripTarget()
+   @Override
+   public Attack specialMove()
    {
       //Has a random chance of tripping a target during an attack
+      return null;
    }
    
 }//end Worg

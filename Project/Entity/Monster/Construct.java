@@ -3,7 +3,7 @@ package Project.Entity.Monster;
 import Project.Entity.Entity;
 import Project.Behavior.Offense.Damage;
 
-public abstract class Construct extends Entity{
+public abstract class Construct extends Monster{
 
 
 

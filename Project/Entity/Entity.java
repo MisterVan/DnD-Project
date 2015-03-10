@@ -38,21 +38,25 @@ public class Entity extends MapResident {
 
     
 //This object takes damage after applying all relevant resistances, immunities, and damage reduction
-public void takeDamage(Attack atk) {
-int actualDamage = 0;
+public void takeDamage(Attack atk)
+{
+   int actualDamage = 0;
 
-for(Damage dmg : atk.getDamage()) {
-   if(dmg.isPhysical()) {
-    actualDamage = dr.processDamage(dmg);
-    this.hp -= actualDamage;
-    System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage"); //This print is just used for feedback in testing
+   for(Damage dmg : atk.getDamage())
+   {
+      if(dmg.isPhysical())
+      {
+         actualDamage = dr.processDamage(dmg);
+         this.hp -= actualDamage;
+         System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage"); //This print is just used for feedback in testing
+      }
+   else//it's magical
+   { 
+      actualDamage = er.processDamage(dmg);
+      this.hp -= actualDamage;
+      System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
    }
-   else {//it's magical 
-    actualDamage = er.processDamage(dmg);
-    this.hp -= actualDamage;
-    System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
-   }
-   }
+  }
 }//end method
 
 /*

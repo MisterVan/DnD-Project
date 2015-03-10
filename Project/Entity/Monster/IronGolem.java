@@ -27,6 +27,7 @@
          er.setElec(0, 1.0);
       
          this.dr = new DamageReduction(15, "adamantine");
+         //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_IRONGOLEM.png");
       
       }//end constructor
    
@@ -70,5 +71,23 @@
 	/*
 	TO DO: ADD ATTACKS
 	 */
+    
+   @Override
+   public Attack performAttack()
+	{
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(25, true, "slash"));
+      atk.addDamage(new Damage(30, true, "bludgeon"));
+      return atk;
+	}//end method
+   
+   @Override
+   public Attack specialMove()
+   {
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(35, false, "adamantine"));
+      atk.addDamage(new Damage(30, true, "bludgeon"));
+      return atk;
+   }
 	
    }//end class

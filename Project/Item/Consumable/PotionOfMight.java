@@ -6,7 +6,9 @@ import Project.Behavior.Status.Might;
 
 public class PotionOfMight extends Consumable {
 
-
+public PotionOfMight() {
+   super.name = "Potion of Might";
+}
 public void pickUp(Entity e) {
    super.wielder = e;
 }

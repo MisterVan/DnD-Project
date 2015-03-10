@@ -1,1 +1,0 @@
-in wizard class super.sprite = "/Project/..."

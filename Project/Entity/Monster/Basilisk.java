@@ -6,7 +6,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
-public class Basilisk extends Entity
+public class Basilisk extends Monster
 {
    
    //Create Basilisk
@@ -24,9 +24,11 @@ public class Basilisk extends Entity
       elRes.setFire(0, 1.5); //Takes one and a half fire damage
       
       setElementalResistance(elRes);
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_BASILISK.png");
 	}//end method
    
    //Perform attack
+	@Override
 	public Attack performAttack()
 	{
       Attack atk = new Attack();
@@ -36,9 +38,11 @@ public class Basilisk extends Entity
       return atk;
 	}//end method
    
-   private void paralyzeTarget()
+   @Override
+   public Attack specialMove()
    {
       //Has a random chance of catching a player's gaze and paralyzing them each round
+      return null;
    }
    
 }//end Basilisk

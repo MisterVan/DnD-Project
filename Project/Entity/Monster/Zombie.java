@@ -7,7 +7,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
-public class Zombie extends Entity
+public class Zombie extends Monster
 {
    
    //Create Basilisk
@@ -24,9 +24,12 @@ public class Zombie extends Entity
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
+      
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_ZOMBIE.png");
 	}//end method
    
    //Perform attack
+   @Override
 	public Attack performAttack()
 	{
       Attack atk = new Attack();
@@ -34,6 +37,12 @@ public class Zombie extends Entity
       atk.addDamage(new Damage(5, true, "slash"));
       return atk;
 	}//end method
+   
+   @Override
+   public Attack specialMove()
+   {
+      return null;
+   }
    
    //Zombie has no special qualities
    

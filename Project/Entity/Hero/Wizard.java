@@ -32,7 +32,7 @@ public class Wizard extends Hero
       setPrimaryWpn(staff);
       Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
       this.inventory.add(0, dagger); //Wizard relies on spells
-      
+      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_WIZARD.png");
 	}//end method
    
    public Attack specialMove()

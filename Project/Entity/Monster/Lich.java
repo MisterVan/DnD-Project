@@ -11,7 +11,7 @@ import Project.Entity.Monster.Zombie;
 import Project.Entity.Monster.Wraith;
 import Project.Entity.Monster.Skeleton;
 
-public class Lich extends Entity
+public class Lich extends Monster
 {
    
    //Create Lich
@@ -28,6 +28,7 @@ public class Lich extends Entity
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_LICH.png");
 	}//end method
    
    //Perform attack
@@ -42,6 +43,7 @@ public class Lich extends Entity
       return atk;
 	}//end method
    
+   /*
    //Summon Undead allows lich to spawn either a zombie, a wraith, or a skeleton
    private Entity summonUndead()
    {
@@ -67,6 +69,11 @@ public class Lich extends Entity
       
       System.out.println("The Lich has spawned a " + spawn.getName());
       return spawn;
+   }*/
+   @Override
+   public Attack specialMove()
+   {
+      return null;
    }
    
 }//end Lich

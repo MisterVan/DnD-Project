@@ -5,7 +5,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
-public class Gargoyle extends Entity
+public class Gargoyle extends Monster
 {
    //Create Gargoyle
 	public Gargoyle()
@@ -22,6 +22,7 @@ public class Gargoyle extends Entity
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
+     //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_GARGOYLE.png");
 	}//end method
    
    //Perform attack
@@ -34,10 +35,12 @@ public class Gargoyle extends Entity
       return atk;
 	}//end method
    
-   private void statueMove()
+   @Override
+   public Attack specialMove()
    {
       //random boolean deciding whether gargoyle begins in statue state or is already active?
       //if in statue state, waits until player is within (randomly generated) 2-6ft distance before becoming active
+      return null;
    }
    
 }//end Gargoyle

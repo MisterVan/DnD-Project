@@ -5,7 +5,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
-public class Skeleton extends Entity
+public class Skeleton extends Monster
 {
    
    //Create Skeleton
@@ -22,6 +22,7 @@ public class Skeleton extends Entity
       elRes.setCold(0, 0.25); //Takes one-quarter cold damage
       
       setElementalResistance(elRes);
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_SKELETON.png");
 	}//end method
    
    //Perform attack (not wielding a weapon)
@@ -34,11 +35,13 @@ public class Skeleton extends Entity
 	}//end method
    
    //Perform attack (wielding a weapon)
-   private void performWeaponAttack()
+   @Override
+   public Attack specialMove()
    {
       //Skeleton is able to wield a weapon and attack another player. Can pick up a
       //weapon or already be carrying one from time of death. Not sure how to bypass
       //the enemy subclass not being able to hold weapons.
+      return null;
    }
    
 }//end Skeleton

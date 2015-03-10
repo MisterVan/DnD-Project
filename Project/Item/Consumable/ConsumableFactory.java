@@ -10,7 +10,7 @@ public Consumable createRandomConsumable() {
    
    Consumable c;
    
-   int result = rand.nextInt(6);
+   int result = rand.nextInt(7);
    
    switch(result) {
    case 0:
@@ -31,6 +31,8 @@ public Consumable createRandomConsumable() {
    case 5:
       c = new PotionOfStoneskin();
       break;
+   case 6:
+      c = new Antidote();
    default:
       c = new PotionOfLife();
       break;

@@ -25,6 +25,7 @@ public ClayGolem() {
 	er.setElec(30, 1.0);
 	
 	this.dr = new DamageReduction(20, "adamantine,bludgeon");
+   //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_CLAYGOLEM.png");
 
 }//end constructor
 
@@ -36,6 +37,8 @@ if(dmg.getDamageType().contains("acid")) {
 	System.out.println("The acid damage enhances the golem's composition! The Clay Golem recovered " + healthRestored + " hp.");
 }
 }//end method
+
+
 
 public void takeDamage(Attack atk) {
 int actualDamage = 0;
@@ -72,5 +75,23 @@ for(Damage dmg : atk.getDamage()) {
 /*
 TO DO: Attack methods, make sure one attack has chance to give player a curse making them immune to healing.
 */
+
+   @Override
+   public Attack performAttack()
+	{
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(25, true, "slash"));
+      atk.addDamage(new Damage(30, true, "bludgeon"));
+      return atk;
+	}//end method
+   
+   @Override
+   public Attack specialMove()
+   {
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(35, false, "cold"));
+      atk.addDamage(new Damage(30, true, "bludgeon"));
+      return atk;
+   }
 
 }//end class

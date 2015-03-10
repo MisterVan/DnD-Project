@@ -63,29 +63,52 @@ public class Hero extends Entity
       return oldWpn;
    }
    
-   public void pickUp(Item newItem)
+   public void addToInventory (Item newItem)
    {
-      /*
-      if (newItem instanceof Weapon)
+      if(newItem instanceof Weapon)
       {
-         //Menu asking if they want to equip the weapon as primary
-         //If yes, do they want to drop their current weapon or add it to inventory?
-      }
-      */
-   }
-   
-   public void addToInventory (int index, Item newItem)
-   {
-      if (this.inventory.size() >= 2)
-      {
-         System.out.println("Inventory Full: You must drop an item!");
-         dropInventoryItem();
+         int ans = -1;//user choice
+         while((ans < 1) || (ans > 3))
+         {
+            System.out.println("Would you like " + this.playerName + " to equip this weapon?");
+            System.out.println("1 - Yes, equip " + newItem.getName() + ".");
+            System.out.println("2 - No, add " + newItem.getName() + " to inventory.");
+            System.out.println("2 - No, do not pick up " + newItem.getName() + ".");
+            Scanner kb = new Scanner(System.in);
+            ans = kb.nextInt();
+            kb.nextLine();
+            
+            if ((ans != 3) || (ans != 1) || (ans != 2))//not in range
+            {
+               System.out.println("Error: please pick a valid option!");
+            }
+         }
+         if(ans == 1)//call equip method
+         {
+            Weapon newWep = (Weapon) newItem;//This feels wrong, another workaround?
+            equipWeapon(newWep);
+         }
+         else if (ans == 3)//ends method
+         {
+            System.out.println(newItem.getName() + " not picked up.");
+            return;
+         }
+         
       }
       else
-      {
-         this.inventory.add(index, newItem);
+      {  //while statement instead of if? not sure if it will cause an endless loop so leaving it for now
+         if (this.inventory.size() >= 2)//This is option 2 of menu above, and so works for both
+         {
+            System.out.println("Inventory Full: You must drop an item!");
+            dropInventoryItem();
+         }
+         else
+         {
+            newItem.pickUp(this);
+            this.inventory.add(newItem);
+         }
       }
-   }
+   }//end method
    
    
    //possibly refactor into more methods, or get rid of menu with gui
@@ -136,16 +159,17 @@ public class Hero extends Entity
          {
             dropped = this.inventory.get(0);
             this.inventory.remove(dropped);//remove first inventory item
-            return dropped;
+            dropped.drop();
          }
          else if (ans == 2)
          {
             dropped = this.inventory.get(1);
             this.inventory.remove(dropped);//remove second inventory item
+            dropped.drop();
          }
       }
       return dropped;
-   }
+   }//end method
    
    public void setPlayerName(String newName)
    {

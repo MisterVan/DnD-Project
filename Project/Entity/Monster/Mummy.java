@@ -6,7 +6,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
-public class Mummy extends Entity
+public class Mummy extends Monster
 {
    
    //Create Mummy
@@ -23,6 +23,7 @@ public class Mummy extends Entity
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_MUMMY.png");
 	}//end method
    
    //Perform attack
@@ -36,7 +37,8 @@ public class Mummy extends Entity
 	}//end method
    
    //Mummy's curse, makes player immune to all healing effects until cured (via antidote potion/lift curse)
-   private Attack mummysCurse()
+   @Override
+   public Attack specialMove()
    {
       //add boolean 'healable' to heroes class, set to false
       Attack atk = new Attack();

@@ -5,7 +5,9 @@ import Project.Entity.Entity;
 
 public class PotionOfLife extends Consumable {
 
-
+public PotionOfLife() {
+   super.name = "Potion of Life";
+}
 public void pickUp(Entity e) {
    super.wielder = e;
 }

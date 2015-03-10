@@ -7,21 +7,20 @@ import Project.Entity.Entity;
 
 public class Monster extends Entity
 {
-   private Weapon primaryWpn;
-   private Weapon secondaryWpn;
    private String monsterName = "Unknown";
    //private ArrayList<Item> items;
    
    //primary attack
-   public Attack primaryAttack()
+   public Attack performAttack()
    {
-      return primaryWpn.attack();
+      return null;
    }
    
-   //secondary attack
-   public Attack secondaryAttack()
+   //DOES THIS WORK?
+   //specialMove
+   public Attack specialMove()
    {
-      return secondaryWpn.attack();
+      return null;
    }
    
    public void setMonsterName(String newName)
@@ -32,26 +31,6 @@ public class Monster extends Entity
    public String getMonsterName()
    {
       return this.monsterName;
-   }
-   
-   public void setPrimaryWpn(Weapon newWpn)
-   {
-      this.primaryWpn = newWpn;
-   }
-   
-   public Weapon getPrimaryWpn()
-   {
-      return this.primaryWpn;
-   }
-   
-   public void setSecondaryWpn(Weapon newWpn)
-   {
-      this.secondaryWpn = newWpn;
-   }
-   
-   public Weapon getSecondaryWpn()
-   {
-      return this.secondaryWpn;
    }
    
 }//end Hero

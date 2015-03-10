@@ -6,7 +6,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
-public class Vampire extends Entity
+public class Vampire extends Monster
 {
    
    //Create Vampire
@@ -24,6 +24,7 @@ public class Vampire extends Entity
       elRes.setFire(0, 1.5); //Takes one and a half fire damage
       
       setElementalResistance(elRes);
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_VAMPIRE.png");
 	}//end method
    
    //Perform attack
@@ -38,7 +39,8 @@ public class Vampire extends Entity
 	}//end method
    
    //Vampire has chance to 'absorb' health from opponent, dealing damage and healing itself
-   private Attack absorbHealth()
+   @Override
+   public Attack specialMove()
    {
       //absorb health
       Attack atk = new Attack();

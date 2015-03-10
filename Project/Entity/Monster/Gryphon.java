@@ -6,7 +6,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
-public class Gryphon extends Entity
+public class Gryphon extends Monster
 {
    
    //Create Gryphon
@@ -24,6 +24,7 @@ public class Gryphon extends Entity
       elRes.setElec(0, 1.5); //Takes one and a half electric damage
       
       setElementalResistance(elRes);
+      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_GRYPHON.png");
 	}//end method
    
    //Perform attack
@@ -35,9 +36,11 @@ public class Gryphon extends Entity
       return atk;
 	}//end method
    
-   private void hurtSpeed()
+   @Override
+   public Attack specialMove()
    {
       //For every 10 units of slash damage taken, speed is reduced by 0.1
+      return null;
    }
    
 }//end Gryphon

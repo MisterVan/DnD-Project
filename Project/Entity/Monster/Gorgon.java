@@ -6,7 +6,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
-public class Gorgon extends Entity
+public class Gorgon extends Monster
 {
    
    //Create Gorgon
@@ -24,6 +24,7 @@ public class Gorgon extends Entity
       elRes.setFire(0, 1.5); //Takes one and a half fire damage
       
       setElementalResistance(elRes);
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_GORGON.png");
 	}//end method
    
    //Perform attack
@@ -36,9 +37,11 @@ public class Gorgon extends Entity
       return atk;
 	}//end method
    
-   private void paralyzeTarget()
+   @Override
+   public Attack specialMove()
    {
       //Has a random chance of catching a player's gaze and paralyzing them each round
+      return null;
    }
    
 }//end Gorgon

@@ -5,7 +5,9 @@ import Project.Entity.Entity;
 
 public class ElixirOfLife extends Consumable {
 
-
+public ElixirOfLife() {
+   super.name = "Elixir of Life";
+}
 public void pickUp(Entity e) {
    super.wielder = e;
 }
