@@ -125,6 +125,10 @@ public boolean isDead() {
 /*
 STATUS EFFECTS
 */
+
+public ArrayList<StatusEffect> getStatusEffects() {
+	return this.statusEffects;
+}
 public void giveStatus(StatusEffect stat) {
 
    for(StatusEffect e: statusEffects) {

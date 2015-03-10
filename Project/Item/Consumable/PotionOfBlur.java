@@ -6,6 +6,9 @@ import Project.Behavior.Status.Blur;
 
 public class PotionOfBlur extends Consumable {
 
+public PotionOfBlur() {
+   super.name = "Potion of Blur";
+}
 
 public void pickUp(Entity e) {
    super.wielder = e;
