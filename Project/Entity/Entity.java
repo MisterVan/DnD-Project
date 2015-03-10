@@ -53,6 +53,9 @@ for(Damage dmg : atk.getDamage()) {
     System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
    }
    }
+   
+   if(atk.hasStatus())
+      this.giveStatus(atk.deliverStatus()); 
 }//end method
 
 /*

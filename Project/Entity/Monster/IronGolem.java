@@ -65,10 +65,18 @@
             } //end else 
          
          }//end for loop
+         
+      if(atk.hasStatus())
+          this.giveStatus(atk.deliverStatus()); 
       }//end method
    
 	/*
 	TO DO: ADD ATTACKS
 	 */
+public Attack performAttack() {
+   Attack atk = new Attack();
+   
+   return atk;
+}
 	
    }//end class

@@ -67,10 +67,18 @@ for(Damage dmg : atk.getDamage()) {
 	
    }//end for loop
 
+   if(atk.hasStatus())
+      this.giveStatus(atk.deliverStatus()); 
 }//end method
 
 /*
 TO DO: Attack methods, make sure one attack has chance to give player a curse making them immune to healing.
 */
+
+public Attack performAttack() {
+   Attack atk = new Attack();
+   
+   return atk;
+}
 
 }//end class
