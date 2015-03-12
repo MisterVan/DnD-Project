@@ -4,25 +4,33 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public abstract class Tile {
 	
-	private StringProperty image;
-	private BooleanProperty isWalkable;
+	private ImageView image;
+	private boolean isWalkable;
 	private MapResident resident;
 	private StringProperty type;
 	private int xCoord;  //make a location object??
 	private int yCoord;  //make a location object??
+	private ImageView highlight;
 		
 	/*
 	GETS, SETS =======================
 	*/
-	public StringProperty getImage() {
+	public ImageView getHighlight() {
+		
+		return this.highlight;
+	}//getHighlight
+	
+	public ImageView getImage() {
 		
 		return this.image;
 	}//getImage
 	
-	public BooleanProperty getWalkable() {
+	public boolean getWalkable() {
 		
 		return this.isWalkable;
 	}//getWalk
@@ -31,12 +39,7 @@ public abstract class Tile {
 		
 		return this.resident;
 	}//getRes
-	
-	public String getSimpleImage() {
 		
-		return this.image.getValue();
-	}//getSimpleImage
-	
 	public String getSimpleType() {
 		
 		return this.type.getValue();
@@ -64,14 +67,14 @@ public abstract class Tile {
 		return this.yCoord;
 	}//getYCoor
 	
-	public void setImage (String image) {
+	public void setImage (Image image) {
 		
-		this.image = new SimpleStringProperty(image);
+		this.image = new ImageView (image);
 	}//setImage String
 	
 	public void setWalkable (boolean walk) {
 		
-		this.isWalkable = new SimpleBooleanProperty (walk);
+		this.isWalkable = walk;
 	}//setWalkable boolean
 	
 	public void setResident (MapResident res) {
@@ -93,5 +96,10 @@ public abstract class Tile {
 		
 		this.yCoord = y;
 	}//setY int
+
+	public void setHighlight(Image highlight) {
+	
+		this.highlight = new ImageView(highlight);
+	}//setHighlight
 	
 }//class

@@ -13,9 +13,18 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Util {
+import Project.Entity.Entity;
+
+public class MapBuilderUtility {
 	
-	public static Tile [][] buildMap(String in, int size) throws FileNotFoundException {
+	private GameWindowController parent;
+	
+	public MapBuilderUtility (GameWindowController parent) {
+		
+		this.parent = parent;
+	}
+	
+	public Tile [][] buildMap(String in, int size) throws FileNotFoundException {
 		
 		Scanner fin = new Scanner (new File(in));
 		
@@ -27,7 +36,7 @@ public class Util {
 		
 	}//buildMap String	
 
-	private static Tile[][] buildArray(String[][] rawData) {
+	private Tile[][] buildArray(String[][] rawData) {
 		
 		TileFactory tfac = new TileFactory();
 		Tile [][] map = new Tile [rawData.length][];
@@ -38,7 +47,12 @@ public class Util {
 						
 			for (int j=0; j<rawData[i].length; j++) {				
 				
-				map[i][j] = tfac.createTile(i, j, rawData[i][j]);				
+				map[i][j] = tfac.createTile(i, j, rawData[i][j]);	
+				if (map[i][j].getResident() != null) {
+					
+					parent.addCharacter((Entity) map[i][j].getResident());
+					
+				}//if there was a character
 				
 			}//for j
 						
@@ -48,7 +62,7 @@ public class Util {
 		
 	}//buildArray
 
-	private static String[][] readFile(Scanner fin) {
+	private String[][] readFile(Scanner fin) {
 		
 		ArrayList<String> lines = new ArrayList<String>();
 		
