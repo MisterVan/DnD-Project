@@ -24,7 +24,7 @@ public class Vampire extends Monster
       elRes.setFire(0, 1.5); //Takes one and a half fire damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_VAMPIRE.png");
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_VAMPIRE.png");
 	}//end method
    
    //Perform attack
@@ -44,7 +44,7 @@ public class Vampire extends Monster
    {
       //absorb health
       Attack atk = new Attack();
-      atk.addDamage(new Damage(30, false, "health-drain"));
+      atk.addDamage(new Damage(30, false, "untyped"));
       this.setHP(this.getHP()+30);
       return atk;
    }

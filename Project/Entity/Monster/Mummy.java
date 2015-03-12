@@ -1,5 +1,8 @@
 package Project.Entity.Monster;
 
+import java.util.Random;
+import Project.Behavior.Status.Blind;
+import Project.Behavior.Status.Might;
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
@@ -23,7 +26,7 @@ public class Mummy extends Monster
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_MUMMY.png");
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_MUMMY.png");
 	}//end method
    
    //Perform attack
@@ -36,14 +39,26 @@ public class Mummy extends Monster
       return atk;
 	}//end method
    
-   //Mummy's curse, makes player immune to all healing effects until cured (via antidote potion/lift curse)
+   //Mummy's curse, makes player immune to all healing effects briefly?
    @Override
    public Attack specialMove()
    {
-      //add boolean 'healable' to heroes class, set to false
+      Might mumEffect = new Might();
+      mumEffect.applyEffectToTarget(this);
+      
       Attack atk = new Attack();
       atk.addDamage(new Damage(10, false, "mummy's curse"));
-      System.out.println("Player is unable to be healed!");
+      
+      //chance for blind
+      Random rand = new Random(); 
+      int blindChance = rand.nextInt(5);
+      if(blindChance == 3)
+      {
+         Blind blindEffect = new Blind();
+         atk.addStatus(blindEffect);
+      }
+      
+      //System.out.println("Player is unable to be healed!");
       return atk;
    }
    

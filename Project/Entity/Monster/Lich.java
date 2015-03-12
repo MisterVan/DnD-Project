@@ -1,6 +1,8 @@
 package Project.Entity.Monster;
 import java.util.Random;
 
+import Project.Behavior.Status.BurningFlames;
+import Project.Behavior.Status.Blind;
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
@@ -28,7 +30,7 @@ public class Lich extends Monster
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_LICH.png");
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_LICH.png");
 	}//end method
    
    //Perform attack
@@ -39,7 +41,6 @@ public class Lich extends Monster
       atk.addDamage(new Damage(10, false, "cold"));
       atk.addDamage(new Damage(10, false, "fire"));
       atk.addDamage(new Damage(10, false, "acid"));
-      //chance to paralyze within melee distance?
       return atk;
 	}//end method
    
@@ -73,7 +74,24 @@ public class Lich extends Monster
    @Override
    public Attack specialMove()
    {
-      return null;
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(13, false, "electric"));
+      atk.addDamage(new Damage(13, false, "fire"));
+      atk.addDamage(new Damage(13, false, "acid"));
+      
+      Blind blindEffect = new Blind();
+      atk.addStatus(blindEffect);//definitely blind
+      
+      //chance for burning
+      Random rand = new Random(); 
+      int burnChance = rand.nextInt(5);
+      if(burnChance == 3)//small chance for poison
+      {
+         BurningFlames burnEffect = new BurningFlames();
+         atk.addStatus(burnEffect);//definitely blind
+      }
+      
+      return atk;
    }
    
 }//end Lich

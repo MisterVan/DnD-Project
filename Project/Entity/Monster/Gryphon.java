@@ -1,5 +1,6 @@
 package Project.Entity.Monster;
 
+import Project.Behavior.Status.Blur;
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
@@ -24,7 +25,7 @@ public class Gryphon extends Monster
       elRes.setElec(0, 1.5); //Takes one and a half electric damage
       
       setElementalResistance(elRes);
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_GRYPHON.png");
+      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_GRYPHON.png");
 	}//end method
    
    //Perform attack
@@ -39,8 +40,13 @@ public class Gryphon extends Monster
    @Override
    public Attack specialMove()
    {
-      //For every 10 units of slash damage taken, speed is reduced by 0.1
-      return null;
+      //Gryphon uses wings to dodge more quickly for a number of rounds using blur effect
+      Blur flyEffect = new Blur();
+      flyEffect.applyEffectToTarget(this);
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(30, true, "slash")); //mostly claws/bites
+      atk.addDamage(new Damage(20, true, "bludgeon"));
+      return atk;
    }
    
 }//end Gryphon

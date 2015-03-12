@@ -16,7 +16,6 @@ public class Monster extends Entity
       return null;
    }
    
-   //DOES THIS WORK?
    //specialMove
    public Attack specialMove()
    {

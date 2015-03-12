@@ -27,7 +27,7 @@
          er.setElec(0, 1.0);
       
          this.dr = new DamageReduction(15, "adamantine");
-         //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_IRONGOLEM.png");
+         //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_IRONGOLEM.png");
       
       }//end constructor
    

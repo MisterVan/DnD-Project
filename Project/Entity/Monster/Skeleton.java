@@ -1,9 +1,11 @@
 package Project.Entity.Monster;
+
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
+import Project.Item.Weapon.Weapon;
 
 public class Skeleton extends Monster
 {
@@ -22,7 +24,7 @@ public class Skeleton extends Monster
       elRes.setCold(0, 0.25); //Takes one-quarter cold damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_SKELETON.png");
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_SKELETON.png");
 	}//end method
    
    //Perform attack (not wielding a weapon)
@@ -38,10 +40,9 @@ public class Skeleton extends Monster
    @Override
    public Attack specialMove()
    {
-      //Skeleton is able to wield a weapon and attack another player. Can pick up a
-      //weapon or already be carrying one from time of death. Not sure how to bypass
-      //the enemy subclass not being able to hold weapons.
-      return null;
+      //Skeleton is able to wield a weapon and attack another player.
+      Weapon club = new Weapon("Club", "bludgeon", 25, 35);
+      return club.attack();
    }
    
 }//end Skeleton

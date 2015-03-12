@@ -25,7 +25,7 @@ public ClayGolem() {
 	er.setElec(30, 1.0);
 	
 	this.dr = new DamageReduction(20, "adamantine,bludgeon");
-   //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_CLAYGOLEM.png");
+   //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_CLAYGOLEM.png");
 
 }//end constructor
 
