@@ -1,4 +1,6 @@
 package Project.Entity.Monster;
+
+import Project.Behavior.Status.Stoneskin;
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
@@ -22,14 +24,14 @@ public class Gargoyle extends Monster
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
-     //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_GARGOYLE.png");
+     //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_GARGOYLE.png");
 	}//end method
    
    //Perform attack
 	public Attack performAttack()
 	{
       Attack atk = new Attack();
-      atk.addDamage(new Damage(25, true, "slash"));//0.5*power + rand.nextInt(11);
+      atk.addDamage(new Damage(20, true, "slash"));//0.5*power + rand.nextInt(11);
       atk.addDamage(new Damage(20, true, "bludgeon"));
       atk.addDamage(new Damage(7, false, "cold"));
       return atk;
@@ -38,9 +40,15 @@ public class Gargoyle extends Monster
    @Override
    public Attack specialMove()
    {
-      //random boolean deciding whether gargoyle begins in statue state or is already active?
-      //if in statue state, waits until player is within (randomly generated) 2-6ft distance before becoming active
-      return null;
+      //Gargoyle becomes stone and hits harder while also becoming harder to damage
+      Stoneskin gargEffect = new Stoneskin();
+      gargEffect.applyEffectToTarget(this);
+      
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(23, true, "slash"));//0.5*power + rand.nextInt(11);
+      atk.addDamage(new Damage(23, true, "bludgeon"));
+      atk.addDamage(new Damage(10, false, "cold"));
+      return atk;
    }
    
 }//end Gargoyle

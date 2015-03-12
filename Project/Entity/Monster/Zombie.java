@@ -6,6 +6,7 @@ import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
+import Project.Behavior.Status.CorrosiveAcid;
 
 public class Zombie extends Monster
 {
@@ -25,7 +26,7 @@ public class Zombie extends Monster
       
       setElementalResistance(elRes);
       
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_ZOMBIE.png");
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_ZOMBIE.png");
 	}//end method
    
    //Perform attack
@@ -38,10 +39,15 @@ public class Zombie extends Monster
       return atk;
 	}//end method
    
+   //Zombie spits up stomach acid
    @Override
    public Attack specialMove()
    {
-      return null;
+      System.out.println("The Zombie spit up stomach acid!");
+      Attack atk = new Attack();
+      CorrosiveAcid acidEffect = new CorrosiveAcid();
+      atk.addStatus(acidEffect);
+      return atk;
    }
    
    //Zombie has no special qualities

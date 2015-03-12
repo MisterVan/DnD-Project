@@ -5,6 +5,7 @@ import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
+import Project.Behavior.Status.CorrosiveAcid;
 
 public class Worg extends Monster
 {
@@ -23,7 +24,7 @@ public class Worg extends Monster
       elRes.setFire(0, 1.1); //Takes one and one-tenth fire damage due to fur
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_WORG.png");
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_WORG.png");
 	}//end method
    
    //Perform attack
@@ -38,7 +39,12 @@ public class Worg extends Monster
    public Attack specialMove()
    {
       //Has a random chance of tripping a target during an attack
-      return null;
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(40, true, "slash"));
+      atk.addDamage(new Damage(5, false, "acid"));
+      CorrosiveAcid acidEffect = new CorrosiveAcid();
+      atk.addStatus(acidEffect);//definitely poison
+      return atk;
    }
    
 }//end Worg

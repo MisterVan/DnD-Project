@@ -1,6 +1,7 @@
 package Project.Entity.Monster;
 import java.util.Random;
 
+import Project.Behavior.Status.Frostbite;
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
@@ -24,7 +25,7 @@ public class Wraith extends Monster
       elRes.setCold(0, 0.5); //Takes half cold damage
       setElementalResistance(elRes);
       
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_WRAITH.png");
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_WRAITH.png");
 	}//end method
    
    @Override
@@ -41,36 +42,45 @@ public class Wraith extends Monster
    @Override
    public Attack specialMove()
    {
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(35, false, "cold"));
+      atk.addDamage(new Damage(5, false, "wraith"));
+      Frostbite frostEffect = new Frostbite();
+      atk.addStatus(frostEffect);
+      return atk;
+   }
+   
+   @Override
+   public void takeDamage(Attack atk)
+   {
+      int actualDamage = 0;
+      
       Random rand = new Random();
       int chancePhase = rand.nextInt(3); //random 0, 1, 2
       if (chancePhase == 2)
       {
-         this.setDodge(1.0);//phases attack
+         System.out.println("The Wraith phased through the attack!");
+         return;//phases attack
       }
-      else
+   
+      for(Damage dmg : atk.getDamage())
       {
-         this.setDodge(0.4);//return original dodge status
+         if(dmg.isPhysical())
+         {
+            actualDamage = dr.processDamage(dmg);
+            this.hp -= actualDamage;
+            System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage"); //This print is just used for feedback in testing
+         }
+      else//it's magical
+      { 
+         actualDamage = er.processDamage(dmg);
+         this.hp -= actualDamage;
+         System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
       }
+     }
       
-      return null;
-   }
-   /*
-   public void takeDamage(Attack atk) {
-int actualDamage = 0;
-
-for(Damage dmg : atk.getDamage()) {
-   if(dmg.isPhysical()) {
-    actualDamage = dr.processDamage(dmg);
-    this.hp -= actualDamage;
-    System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage"); //This print is just used for feedback in testing
-   }
-   else {//it's magical 
-    actualDamage = er.processDamage(dmg);
-    this.hp -= actualDamage;
-    System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
-   }
-   }
-}//end method
-*/
+      if(atk.hasStatus())
+         this.giveStatus(atk.deliverStatus());
+   }//end method
       
 }//end Wraith

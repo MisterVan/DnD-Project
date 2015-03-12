@@ -1,6 +1,7 @@
 package Project.Entity.Monster;
 import java.util.Random;
 
+import Project.Behavior.Status.Blind;
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
@@ -11,6 +12,7 @@ public class Hydra extends Monster
 {
    Random rand = new Random(); 
    private int numHeads = rand.nextInt(5) + 1; //hydra can start off with 1 to 5 heads
+   private int slashTally = 0;
    
    //Create Hydra
 	public Hydra()
@@ -27,7 +29,7 @@ public class Hydra extends Monster
       //elRes.setElec(0, 1.5); //Takes one and a half electric damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_HYDRA.png");
+      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_HYDRA.png");
 	}//end method
    
    //Perform attack
@@ -35,21 +37,75 @@ public class Hydra extends Monster
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(30, true, "slash")); //mostly slashes/bites
-      atk.addDamage(new Damage(5, false, "acid")); //can spit venom that blinds oponent for one round
       atk.addDamage(new Damage(10, false, "cold"));
+      atk.addDamage(new Damage(5, false, "acid")); //can spit venom that blinds oponent for one round
+      Random rand = new Random(); 
+      int blindChance = rand.nextInt(5);
+      if(blindChance == 3)//small chance for blindness
+      {
+         Blind blindEffect = new Blind();
+         atk.addStatus(blindEffect);
+      }
       return atk;
 	}//end method
    
    @Override
+   public void takeDamage(Attack atk)
+   {
+      int actualDamage = 0;
+   
+      for(Damage dmg : atk.getDamage())
+      {
+         if(dmg.isPhysical())
+         {
+            actualDamage = dr.processDamage(dmg);
+            this.hp -= actualDamage;
+            System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage"); //This print is just used for feedback in testing
+            if(dmg.getDamageType().contains("slash"))//count slash damage
+            {
+               this.slashTally = this.slashTally + actualDamage;
+            }
+         }
+      else//it's magical
+      { 
+         actualDamage = er.processDamage(dmg);
+         this.hp -= actualDamage;
+         System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
+      }
+     }
+      
+      if(atk.hasStatus())
+         this.giveStatus(atk.deliverStatus());
+   }//end method
+      
+   @Override
    public Attack specialMove()
    {
-      //Waits until it takes 20 or more slash damage, indicating a head has been lost.
-      //
-      //numHeads decreases by 1, accuracy decreases by 0.1, hp decreases by 10(?), and all damage reduction is lost.
-      //
-      //After two rounds (or more, extra rounds added for every 30 pts fire damage taken), numHeads is increased by 2,
-      //hp is increased by 20, accuracy increased by 0.2, and damage reduction is regained.
-      return null;
+      //Waits until it takes 30 or more slash damage, indicating a head has been lost.
+      //numheads increases by 1, HP increases by 20 indicating the addition of 'two new heads'
+      //Hydra is momentarily blinded because of this.
+      if(this.slashTally > 30)
+      {
+         this.numHeads++;
+         this.setHP(this.getHP()+20);
+         System.out.println("A head of the hydra has been cut off and replaced with two new ones!");
+      }
+      Blind regrowthEffect = new Blind();
+      regrowthEffect.applyEffectToTarget(this);
+      
+      //also does a weaker attack
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(10, true, "slash")); //slashes/bites
+      atk.addDamage(new Damage(10, false, "cold"));
+      atk.addDamage(new Damage(5, false, "acid")); //can spit venom that blinds oponent for one round
+      Random rand = new Random(); 
+      int blindChance = rand.nextInt(5);
+      if(blindChance == 3)//small chance for blindness
+      {
+         Blind blindEffect = new Blind();
+         atk.addStatus(blindEffect);
+      }
+      return atk;
    }
    
 }//end Hydra

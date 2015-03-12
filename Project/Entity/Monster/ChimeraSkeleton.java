@@ -1,5 +1,6 @@
 package Project.Entity.Monster;
 
+import Project.Behavior.Status.Poison;
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
@@ -23,7 +24,7 @@ public class ChimeraSkeleton extends Monster
       elRes.setFire(0, 1.5); //Takes one and a half fire damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_MONSTER_CHIMERASKELETON.png");
+      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_CHIMERASKELETON.png");
 	}//end method
    
    //Perform attack
@@ -40,9 +41,12 @@ public class ChimeraSkeleton extends Monster
    @Override
    public Attack specialMove()
    {
-      //After at least 50 pts in slash damage have been taken, the tail is considered 'cut off'. boolean for snake gone
-      //Speed is reduced by 10 pts, accuracy is reduced by 0.2.
-      return null;
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(20, false, "acid")); //snake/chance for poison
+      Poison poisonEffect = new Poison();
+      atk.addStatus(poisonEffect);
+      
+      return atk;
    }
    
 }//end ChimeraSkeleton
