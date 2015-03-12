@@ -1,10 +1,12 @@
 package Project.World;
 
+import javafx.scene.image.Image;
+
 public class GrassTile extends Tile {
 
-	public GrassTile (int x, int y) {
+	public GrassTile (Image image, int x, int y) {
 		
-		this.setImage("\\Project\\World\\TEXTURE_GRASS.png"); // will have to change when redesigning directory structure
+		this.setImage(image); // will have to change when redesigning directory structure
 		this.setType("Grass"); //Possibly useless?
 		this.setWalkable(true);
 		this.setResident(null); // rock object? (as mock object) .... other space filler to account for collisions? Could make isWalkable redundant

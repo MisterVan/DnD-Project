@@ -46,8 +46,7 @@ public class Main extends Application {
 		mainPain.setCenter(infoPane);
 		
 		cont = loader.getController();
-		cont.setMainApp(this);
-		
+				
 	}//initRight
 
 	private void initMainStage() throws IOException {

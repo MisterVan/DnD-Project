@@ -2,17 +2,19 @@ package Project.World;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public abstract class MapResident {
 	
-	protected StringProperty sprite;
+	protected ImageView sprite;
 	protected int xCoord;
 	protected int yCoord;
 	
 	/*
 	GETS, SETS =======================
 	*/
-	public StringProperty getSprite() {
+	public ImageView getSprite() {
 		
 		return this.sprite;		
 	}//getSprite
@@ -29,7 +31,7 @@ public abstract class MapResident {
 	
 	public void setSprite (String sprite) {
 		
-		this.sprite = new SimpleStringProperty (sprite);		
+		this.sprite = new ImageView (new Image(sprite));		
 	}//setSprite	
 	
 	public void setXCoord (int coord) {

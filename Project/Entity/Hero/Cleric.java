@@ -28,7 +28,8 @@ public class Cleric extends Hero
       setPrimaryWpn(fists);
       Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
       this.inventory.add(0, dagger);//Cleric relies on spells
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_CLERIC.png");
+      this.setSprite("Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_WIZARD.png");
+      
 	}//end method
    
    public Attack specialMove()
