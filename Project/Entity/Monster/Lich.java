@@ -30,18 +30,18 @@ public class Lich extends Monster
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_LICH.png");
+      //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_LICH.png");
 	}//end method
    
    //Perform attack
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(10, false, "electric"));
       atk.addDamage(new Damage(10, false, "cold"));
       atk.addDamage(new Damage(10, false, "fire"));
       atk.addDamage(new Damage(10, false, "acid"));
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    /*
@@ -72,7 +72,7 @@ public class Lich extends Monster
       return spawn;
    }*/
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       Attack atk = new Attack();
       atk.addDamage(new Damage(13, false, "electric"));
@@ -91,7 +91,7 @@ public class Lich extends Monster
          atk.addStatus(burnEffect);//definitely blind
       }
       
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Lich

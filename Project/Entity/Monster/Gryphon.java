@@ -25,20 +25,20 @@ public class Gryphon extends Monster
       elRes.setElec(0, 1.5); //Takes one and a half electric damage
       
       setElementalResistance(elRes);
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_GRYPHON.png");
+      super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_GRYPHON.png");
 	}//end method
    
    //Perform attack
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(30, true, "slash")); //mostly claws/bites
       atk.addDamage(new Damage(20, true, "bludgeon"));
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       //Gryphon uses wings to dodge more quickly for a number of rounds using blur effect
       Blur flyEffect = new Blur();
@@ -46,7 +46,7 @@ public class Gryphon extends Monster
       Attack atk = new Attack();
       atk.addDamage(new Damage(30, true, "slash")); //mostly claws/bites
       atk.addDamage(new Damage(20, true, "bludgeon"));
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Gryphon

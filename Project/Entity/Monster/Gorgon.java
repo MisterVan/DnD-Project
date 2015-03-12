@@ -26,11 +26,11 @@ public class Gorgon extends Monster
       elRes.setFire(0, 1.5); //Takes one and a half fire damage
       
       setElementalResistance(elRes);
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_GORGON.png");
+      super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_GORGON.png");
 	}//end method
    
    //Perform attack
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(18, true, "slash")); //mostly claws/bites
@@ -45,11 +45,11 @@ public class Gorgon extends Monster
          atk.addStatus(poisonEffect);
       }
       
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       //Has a random chance of catching a player's gaze and paralyzing them each round?
       Poison poisonEffect = new Poison();
@@ -58,7 +58,7 @@ public class Gorgon extends Monster
       atk.addDamage(new Damage(15, true, "bludgeon"));
       atk.addDamage(new Damage(15, false, "acid"));
       atk.addStatus(poisonEffect);//definitely poison
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Gorgon

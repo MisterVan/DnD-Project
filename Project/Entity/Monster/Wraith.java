@@ -25,29 +25,29 @@ public class Wraith extends Monster
       elRes.setCold(0, 0.5); //Takes half cold damage
       setElementalResistance(elRes);
       
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_WRAITH.png");
+      //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_WRAITH.png");
 	}//end method
    
    @Override
-   public Attack performAttack()
+   public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(35, false, "cold"));
       atk.addDamage(new Damage(5, false, "wraith"));//If player's HP reaches 0 under this attack, a new wraith is spawned in their place.
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    //CHECK EACH ROUND
    //Wraith has chance to phase through attack completely, check each time taking damage
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       Attack atk = new Attack();
       atk.addDamage(new Damage(35, false, "cold"));
       atk.addDamage(new Damage(5, false, "wraith"));
       Frostbite frostEffect = new Frostbite();
       atk.addStatus(frostEffect);
-      return atk;
+      target.takeDamage(atk);
    }
    
    @Override

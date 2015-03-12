@@ -24,21 +24,21 @@ public class Gargoyle extends Monster
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
-     //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_GARGOYLE.png");
+     //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_GARGOYLE.png");
 	}//end method
    
    //Perform attack
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(20, true, "slash"));//0.5*power + rand.nextInt(11);
       atk.addDamage(new Damage(20, true, "bludgeon"));
       atk.addDamage(new Damage(7, false, "cold"));
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       //Gargoyle becomes stone and hits harder while also becoming harder to damage
       Stoneskin gargEffect = new Stoneskin();
@@ -48,7 +48,7 @@ public class Gargoyle extends Monster
       atk.addDamage(new Damage(23, true, "slash"));//0.5*power + rand.nextInt(11);
       atk.addDamage(new Damage(23, true, "bludgeon"));
       atk.addDamage(new Damage(10, false, "cold"));
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Gargoyle

@@ -25,7 +25,7 @@
          er.setElec(0, 0.0);
       
          this.dr = new DamageReduction(8, "adamantine");
-         //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_FLESHGOLEM.png");
+         //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_FLESHGOLEM.png");
          
       }//end constructor
 		
@@ -69,25 +69,22 @@
       this.giveStatus(atk.deliverStatus()); 
    }//end method
    
-   /*
-	TO DO: ADD ATTACKS
-	*/
-   
+
    @Override
-   public Attack performAttack()
+   public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(25, true, "slash"));
       atk.addDamage(new Damage(30, true, "bludgeon"));
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       Attack atk = new Attack();
       atk.addDamage(new Damage(35, false, "acid"));
       atk.addDamage(new Damage(30, true, "bludgeon"));
-      return atk;
+      target.takeDamage(atk);
    }
 }//end class

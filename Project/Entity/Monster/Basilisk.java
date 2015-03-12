@@ -26,12 +26,12 @@ public class Basilisk extends Monster
       elRes.setFire(0, 1.5); //Takes one and a half fire damage
       
       setElementalResistance(elRes);
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_BASILISK.png");
+      super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_BASILISK.png");
 	}//end method
    
    //Perform attack
 	@Override
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(15, true, "slash"));
@@ -46,17 +46,17 @@ public class Basilisk extends Monster
          atk.addStatus(poisonEffect);
       }
       
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       Poison poisonEffect = new Poison();
       Attack atk = new Attack();
       atk.addDamage(new Damage(45, false, "acid"));
       atk.addStatus(poisonEffect);//definitely poison
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Basilisk

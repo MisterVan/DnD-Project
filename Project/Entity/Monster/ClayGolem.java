@@ -25,7 +25,7 @@ public ClayGolem() {
 	er.setElec(30, 1.0);
 	
 	this.dr = new DamageReduction(20, "adamantine,bludgeon");
-   //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_CLAYGOLEM.png");
+   //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_CLAYGOLEM.png");
 
 }//end constructor
 
@@ -79,21 +79,21 @@ TO DO: Attack methods, make sure one attack has chance to give player a curse ma
 */
 
    @Override
-   public Attack performAttack()
+   public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(25, true, "slash"));
       atk.addDamage(new Damage(30, true, "bludgeon"));
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       Attack atk = new Attack();
       atk.addDamage(new Damage(35, false, "cold"));
       atk.addDamage(new Damage(30, true, "bludgeon"));
-      return atk;
+      target.takeDamage(atk);
    }
 
 }//end class

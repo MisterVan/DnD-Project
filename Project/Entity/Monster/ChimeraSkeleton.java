@@ -24,29 +24,29 @@ public class ChimeraSkeleton extends Monster
       elRes.setFire(0, 1.5); //Takes one and a half fire damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_CHIMERASKELETON.png");
+      //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_CHIMERASKELETON.png");
 	}//end method
    
    //Perform attack
    @Override
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(20, true, "slash")); //lion uses claws/bite from snake
       atk.addDamage(new Damage(8, false, "fire")); //goat gives magical abilities?
       atk.addDamage(new Damage(8, false, "cold")); //goat gives magical abilities?
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       Attack atk = new Attack();
       atk.addDamage(new Damage(20, false, "acid")); //snake/chance for poison
       Poison poisonEffect = new Poison();
       atk.addStatus(poisonEffect);
       
-      return atk;
+     target.takeDamage(atk);
    }
    
 }//end ChimeraSkeleton

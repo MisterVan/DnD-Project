@@ -27,12 +27,12 @@ public class Chimera extends Monster
       elRes.setElec(0, 2.0); //Takes double electric damage
       
       setElementalResistance(elRes);
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_CHIMERA.png");
+      super.setSprite("\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_CHIMERA.png");
 	}//end method
    
    //Perform attack
    @Override
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(20, true, "slash")); //lion uses claws/bite
@@ -48,11 +48,11 @@ public class Chimera extends Monster
          atk.addStatus(poisonEffect);
       }
       
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       //Snake attack, definite poison and slash/acid damage
       Attack atk = new Attack();
@@ -61,7 +61,7 @@ public class Chimera extends Monster
       Poison poisonEffect = new Poison();
       atk.addStatus(poisonEffect);
       
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Chimera
