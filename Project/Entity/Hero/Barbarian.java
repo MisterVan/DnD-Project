@@ -3,6 +3,7 @@ package Project.Entity.Hero;
 import java.util.Scanner;
 import Project.Entity.Entity;
 
+import Project.Behavior.Status.Stoneskin;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
@@ -38,7 +39,9 @@ public class Barbarian extends Hero
    
    public Attack specialMove()
    {
-      //Barbarian uses stoneskin for a number of rounds(handle status effect) and gives a first initial brute strength attack
+      //Barbarian applies stoneskin to self for 3 rounds and gives a first initial brute strength attack
+      Stoneskin rageEffect = new Stoneskin();
+      rageEffect.applyEffectToTarget(this);
       
       Attack rage = new Attack();
       rage.addDamage(new Damage(40, true, "bludgeon"));//randogen later
