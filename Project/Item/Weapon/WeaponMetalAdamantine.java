@@ -2,7 +2,6 @@ package Project.Item.Weapon;
 
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
-import java.util.Random;
 
 //adds adamantine weapon property to a weapon as an inherent effect
 public class WeaponMetalAdamantine extends WeaponEffect{

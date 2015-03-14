@@ -72,7 +72,7 @@ public class GameWindowController implements Initializable {
 	   	 
 	   	for (int i=0; i<map.length; i++) {
 	       	 
-	   	final	HBox hbox = new HBox();
+	   	HBox hbox = new HBox();
 	       	 
 	       	for (int j=0; j<map[i].length; j++) {
 	       	

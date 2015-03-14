@@ -94,7 +94,6 @@ public Weapon createWeapon(String name, String metal, String prefix, String suff
 public Weapon createRandomWeapon() {
    Random rand = new Random();
    int typeResult, prefixResult, suffixResult, metalResult;
-   String weaponType;
    
    Weapon w = null;
    try{
