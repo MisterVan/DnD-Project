@@ -1,6 +1,6 @@
 package Project.Entity.Hero;
 
-
+import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
@@ -31,15 +31,16 @@ public class Fighter extends Hero
       Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
       this.inventory.add(0, dagger);
       this.specialMoveName = "Touch of Lightning";
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_FIGHTER.png");
+      super.setSprite("Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_FIGHTER.png");
 	}//end method
    
-   public Attack specialMove()
+   @Override
+   public void specialMove(Entity target)
    {
       //Fighter might be able to equip some basic spells? Now electricute for funsies. Can change later.
       Attack atk = new Attack();
       atk.addDamage(new Damage(30, false, "electric"));//randogen later
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Fighter

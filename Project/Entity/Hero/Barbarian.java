@@ -1,5 +1,6 @@
 package Project.Entity.Hero;
 
+import Project.Entity.Entity;
 import Project.Behavior.Status.Stoneskin;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
@@ -30,10 +31,11 @@ public class Barbarian extends Hero
       Weapon stomp = new Weapon("Stomp", "bludgeon", 20, 25);
       this.inventory.add(0, stomp);
       this.specialMoveName = "Battle Rage";
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_BARBARIAN.png");
+      super.setSprite("Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_BARBARIAN.png");
 	}//end method
    
-   public Attack specialMove()
+   @Override
+   public void specialMove(Entity target)
    {
       //Barbarian applies stoneskin to self for 3 rounds and gives a first initial brute strength attack
       Stoneskin rageEffect = new Stoneskin();
@@ -42,7 +44,7 @@ public class Barbarian extends Hero
       Attack rage = new Attack();
       rage.addDamage(new Damage(40, true, "bludgeon"));//randogen later
       rage.addDamage(new Damage(40, true, "slash,pierce"));//randogen later
-      return rage;
+      target.takeDamage(rage);
    }
    
 }//end Barbarian

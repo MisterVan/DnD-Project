@@ -1,6 +1,7 @@
 package Project.Entity.Hero;
 
 import java.util.Scanner;
+import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
@@ -30,9 +31,10 @@ public class Wizard extends Hero
       Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
       this.inventory.add(0, dagger); //Wizard relies on spells
       this.specialMoveName = "Spell";
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_WIZARD.png");
+      super.setSprite("Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_WIZARD.png");
 	}//end method
    
+   @Override
    public void specialMove(Entity target)
    {
       //Wizard able to have more specific/powerful spells? idk

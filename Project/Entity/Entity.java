@@ -17,7 +17,6 @@ As parent class, it implements generic behavior for taking taking damage, having
 public class Entity extends MapResident {
     
     protected String name = "Unknown";
-    protected String specialMoveName = "Unknown";
     protected int baseHP;
     protected int hp;
     protected int power;
@@ -37,6 +36,9 @@ public class Entity extends MapResident {
     //Consumable potion;
     //Weapon firstWeapon;
 
+public void specialMove(Entity target)
+{
+}
     
 //This object takes damage after applying all relevant resistances, immunities, and damage reduction
 public void takeDamage(Attack atk)

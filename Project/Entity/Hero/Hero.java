@@ -11,6 +11,7 @@ public class Hero extends Entity
 {
    private Weapon primaryWpn;
    private String playerName = "Unknown";
+   protected String specialMoveName = "Unknown";
    protected ArrayList<Item> inventory = new ArrayList<Item>();
    
    //primary attack
@@ -24,13 +25,7 @@ public class Hero extends Entity
        target.takeDamage(primaryWpn.attack());
    }
    
-   /* 
-   //secondary attack (Not needed, can choose to carry two or three weapons and switch out primary)
-   public Attack secondaryAttack()
-   {
-      return secondaryWpn.attack();
-   }
-   */
+   
    
    //Returns weapon object to either drop back on map or add to inventory to save for later
    public Weapon equipWeapon(Weapon newWeapon)
@@ -189,17 +184,5 @@ public class Hero extends Entity
    {
       return this.primaryWpn;
    }
-   
-   /*
-   public void setSecondaryWpn(Weapon newWpn)
-   {
-      this.secondaryWpn = newWpn;
-   }
-   
-   public Weapon getSecondaryWpn()
-   {
-      return this.secondaryWpn;
-   }
-   */
    
 }//end Hero

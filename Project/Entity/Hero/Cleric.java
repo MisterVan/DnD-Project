@@ -7,6 +7,7 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 import Project.Item.Weapon.Weapon;
+import Project.Entity.Entity;
 
 public class Cleric extends Hero
 {
@@ -29,10 +30,11 @@ public class Cleric extends Hero
       Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
       this.inventory.add(0, dagger);//Cleric relies on spells
       this.specialMoveName = "Healing Spell";
-      super.setSprite(System.getProperty("\\Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_CLERIC.png"));
+      super.setSprite("Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_CLERIC.png");
 	}//end method
    
-   public Attack specialMove()
+   @Override
+   public void specialMove(Entity target)
    {
       //Cleric uses healing spells, applicable towards teammates and monsters (undead take damage from healing/holy spells)
       Scanner kb = new Scanner(System.in);
@@ -60,7 +62,7 @@ public class Cleric extends Hero
       {
          atk.addDamage(new Damage(25, false, "healing"));//randogen later, make undead class vulnerable to healing damage
       }
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Cleric
