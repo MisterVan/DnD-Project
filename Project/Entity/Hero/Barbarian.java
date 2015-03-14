@@ -34,6 +34,7 @@ public class Barbarian extends Hero
       //inherently equipping everyone with a dagger to start off with as a secondary?
       Weapon stomp = new Weapon("Stomp", "bludgeon", 20, 25);
       this.inventory.add(0, stomp);
+      this.specialMoveName = "Battle Rage";
       super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_BARBARIAN.png");
 	}//end method
    

@@ -16,13 +16,14 @@ public class Hero extends Entity
    protected ArrayList<Item> inventory = new ArrayList();
    
    //primary attack
-   public Attack primaryAttack()
+   public void primaryAttack(Entity target)
    {
       if(primaryWpn == null)
       {
          System.out.println("Error: no weapon equipped!");
       }
-      return primaryWpn.attack();
+       primaryWpn.attack();
+       target.takeDamage(primaryWpn.attack());
    }
    
    /* 
