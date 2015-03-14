@@ -50,6 +50,9 @@ public class MapBuilderUtility {
 				map[i][j] = tfac.createTile(i, j, rawData[i][j]);	
 				if (map[i][j].getResident() != null) {
 					
+					Entity ent = (Entity) map[i][j].getResident();
+					ent.setXCoord(j);
+					ent.setYCoord(i);
 					parent.addCharacter((Entity) map[i][j].getResident());
 					
 				}//if there was a character

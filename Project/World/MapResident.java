@@ -1,7 +1,5 @@
 package Project.World;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 

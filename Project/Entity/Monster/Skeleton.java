@@ -24,25 +24,25 @@ public class Skeleton extends Monster
       elRes.setCold(0, 0.25); //Takes one-quarter cold damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_SKELETON.png");
+      //super.setSprite"Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_SKELETON.png");
 	}//end method
    
    //Perform attack (not wielding a weapon)
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(15, true, "slash"));
       atk.addDamage(new Damage(15, true, "bludgeon"));
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    //Perform attack (wielding a weapon)
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       //Skeleton is able to wield a weapon and attack another player.
       Weapon club = new Weapon("Club", "bludgeon", 25, 35);
-      return club.attack();
+      target.takeDamage(club.attack());
    }
    
 }//end Skeleton

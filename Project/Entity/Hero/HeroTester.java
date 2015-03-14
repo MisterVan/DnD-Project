@@ -1,12 +1,7 @@
 package Project.Entity.Hero;
 
-import Project.Entity.Monster.*;
-import Project.Entity.Hero.*;
 
 
-import Project.Entity.Entity;
-import Project.Behavior.Defense.ElementalResistance;
-import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 

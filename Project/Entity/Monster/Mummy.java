@@ -26,22 +26,22 @@ public class Mummy extends Monster
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_MUMMY.png");
+      //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_MUMMY.png");
 	}//end method
    
    //Perform attack
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(25, true, "bludgeon"));//very strong
       atk.addDamage(new Damage(15, false, "cold"));
       //chance to paralyze with attack
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    //Mummy's curse, makes player immune to all healing effects briefly?
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       Might mumEffect = new Might();
       mumEffect.applyEffectToTarget(this);
@@ -59,7 +59,7 @@ public class Mummy extends Monster
       }
       
       //System.out.println("Player is unable to be healed!");
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Mummy

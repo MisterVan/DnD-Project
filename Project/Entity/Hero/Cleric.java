@@ -29,7 +29,7 @@ public class Cleric extends Hero
       Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
       this.inventory.add(0, dagger);//Cleric relies on spells
       this.specialMoveName = "Healing Spell";
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_CLERIC.png");
+      super.setSprite(System.getProperty("\\Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_CLERIC.png"));
 	}//end method
    
    public Attack specialMove()

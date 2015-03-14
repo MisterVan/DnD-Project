@@ -24,19 +24,19 @@ public class Worg extends Monster
       elRes.setFire(0, 1.1); //Takes one and one-tenth fire damage due to fur
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_WORG.png");
+      //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_WORG.png");
 	}//end method
    
    //Perform attack
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(40, true, "slash")); //only able to claw/bite
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       //Has a random chance of tripping a target during an attack
       Attack atk = new Attack();
@@ -44,7 +44,7 @@ public class Worg extends Monster
       atk.addDamage(new Damage(5, false, "acid"));
       CorrosiveAcid acidEffect = new CorrosiveAcid();
       atk.addStatus(acidEffect);//definitely poison
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Worg

@@ -1,6 +1,5 @@
 package Project.Entity.Hero;
 
-import Project.Entity.Entity;
 
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;

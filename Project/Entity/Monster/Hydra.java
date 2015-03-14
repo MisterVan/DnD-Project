@@ -29,11 +29,11 @@ public class Hydra extends Monster
       //elRes.setElec(0, 1.5); //Takes one and a half electric damage
       
       setElementalResistance(elRes);
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_HYDRA.png");
+      super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_HYDRA.png");
 	}//end method
    
    //Perform attack
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(30, true, "slash")); //mostly slashes/bites
@@ -46,7 +46,7 @@ public class Hydra extends Monster
          Blind blindEffect = new Blind();
          atk.addStatus(blindEffect);
       }
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    @Override
@@ -79,7 +79,7 @@ public class Hydra extends Monster
    }//end method
       
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       //Waits until it takes 30 or more slash damage, indicating a head has been lost.
       //numheads increases by 1, HP increases by 20 indicating the addition of 'two new heads'
@@ -105,7 +105,7 @@ public class Hydra extends Monster
          Blind blindEffect = new Blind();
          atk.addStatus(blindEffect);
       }
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Hydra

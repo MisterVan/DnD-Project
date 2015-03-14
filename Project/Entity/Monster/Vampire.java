@@ -24,29 +24,29 @@ public class Vampire extends Monster
       elRes.setFire(0, 1.5); //Takes one and a half fire damage
       
       setElementalResistance(elRes);
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_VAMPIRE.png");
+      //super.setSprite("\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_VAMPIRE.png");
 	}//end method
    
    //Perform attack
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(15, true, "slash"));//bite
       atk.addDamage(new Damage(15, true, "bludgeon"));//superhuman strength
       atk.addDamage(new Damage(5, false, "acid"));//venom
       this.setHP(this.getHP()+5);//regains a small amount of health each round
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    //Vampire has chance to 'absorb' health from opponent, dealing damage and healing itself
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       //absorb health
       Attack atk = new Attack();
       atk.addDamage(new Damage(30, false, "untyped"));
       this.setHP(this.getHP()+30);
-      return atk;
+      target.takeDamage(atk);
    }
    
 }//end Vampire

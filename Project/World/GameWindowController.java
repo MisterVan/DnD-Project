@@ -24,7 +24,7 @@ public class GameWindowController implements Initializable {
 	
 	private static final int SIZE = 19;				//remove?
 	private static final int SQUARE = 32;
-	private static final String INPUT_FILE_NAME = "Project\\World\\smallMap.csv";
+	private static final String INPUT_FILE_NAME = "Project\\World\\map.csv";
 	private int xCurr;								//remove?
 	private int yCurr;								//remove?
 	
@@ -40,11 +40,12 @@ public class GameWindowController implements Initializable {
 	@FXML private ScrollPane scrollPane;			
 	
 	private GameLogic game; 
-	Entity ent;										//TESTING ONLY	
+	Entity currentPlayer;										//TESTING ONLY?	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		characters = new ArrayList<Entity> ();
-										//TESTING ONLY
+										
 		MapBuilderUtility util = new MapBuilderUtility(this);
 		try {
 			map = util.buildMap(INPUT_FILE_NAME, SIZE);
@@ -52,7 +53,7 @@ public class GameWindowController implements Initializable {
 			e.printStackTrace();
 			System.exit(-1);
 		}
-			
+					
 		realMap = new Pane [map.length][map[0].length];
 		
 		xCurr = yCurr = 0;							//remove?
@@ -62,7 +63,7 @@ public class GameWindowController implements Initializable {
 		game = new GameLogic (this);
 		//game.playGame();
 		
-		ent = (Entity) map[0][0].getResident();
+		currentPlayer = (Entity) map[1][1].getResident();
 		
 	}//initialize
 	
@@ -71,7 +72,7 @@ public class GameWindowController implements Initializable {
 	   	 
 	   	for (int i=0; i<map.length; i++) {
 	       	 
-	   		HBox hbox = new HBox();
+	   	HBox hbox = new HBox();
 	       	 
 	       	for (int j=0; j<map[i].length; j++) {
 	       	
@@ -118,12 +119,20 @@ public class GameWindowController implements Initializable {
 	
 	private void move (Pane t, int xCoord, int yCoord) {
 		
+		//if(canMoveThere) (check for if only one square away)
+		
 		if (map[yCoord][xCoord].getWalkable()) {
 			if (map[yCoord][xCoord].getResident() == null ) {
 				
-				map[yCoord][xCoord].setResident(ent);
-				ImageView temp = map[yCoord][xCoord].getResident().getSprite(); 
-				map[yCoord][xCoord].setResident(null);
+				int oldX = currentPlayer.getXCoord();
+				int oldY = currentPlayer.getYCoord();
+				
+				map[yCoord][xCoord].setResident(currentPlayer);
+				map[oldY][oldX].setResident(null);
+				currentPlayer.setXCoord(xCoord);
+				currentPlayer.setYCoord(yCoord);
+				
+				ImageView temp = map[yCoord][xCoord].getResident().getSprite();				
 				temp.setFitHeight(32);
 				temp.setFitWidth(32);
 				t.getChildren().add(temp);   	    						    							
@@ -161,7 +170,7 @@ public class GameWindowController implements Initializable {
 			//xCurr++;
 			//loadArray(xCurr, yCurr);
 		}//
-			
+						
 	}//touchButt
 	
 	@FXML
@@ -241,7 +250,13 @@ public class GameWindowController implements Initializable {
 	   	gameMap.getChildren().addAll(temp.getChildren()); 
 		
 	}//loadArray
-*/	
+
+*/
+	public void setCurrentPlayer (Entity ent) {
+		
+		this.currentPlayer = ent;
+	}//setCurrentPlayer
+	
 	public void addCharacter(Entity r) {
 		
 		characters.add(r);

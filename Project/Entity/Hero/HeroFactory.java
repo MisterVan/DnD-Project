@@ -2,9 +2,6 @@ package Project.Entity.Hero;
 
 import java.util.Scanner;
 
-import Project.Behavior.Defense.ElementalResistance;
-import Project.Behavior.Defense.DamageReduction;
-import Project.Item.Weapon.Weapon;
 //this is a comment
 //Regular factory
 public class HeroFactory
@@ -37,12 +34,12 @@ public class HeroFactory
       else if (type.equals("Monk"))
       {
          //hero = new Monk();
-         hero.setPlayerName(name);
+         //hero.setPlayerName(name);
       }
       else if (type.equals("Ranger"))
       {
          //hero = new Ranger();
-         hero.setPlayerName(name);
+         //hero.setPlayerName(name);
       }
       return hero;
    }//end createHero

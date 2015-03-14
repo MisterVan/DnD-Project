@@ -26,30 +26,30 @@ public class Zombie extends Monster
       
       setElementalResistance(elRes);
       
-      //super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_ZOMBIE.png");
+      //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_ZOMBIE.png");
 	}//end method
    
    //Perform attack
    @Override
-	public Attack performAttack()
+	public void performAttack(Entity target)
 	{
       Attack atk = new Attack();
       atk.addDamage(new Damage(20, true, "bludgeon"));
       atk.addDamage(new Damage(5, true, "slash"));
-      return atk;
+      target.takeDamage(atk);
 	}//end method
    
    //Zombie spits up stomach acid
    @Override
-   public Attack specialMove()
+   public void specialMove(Entity target)
    {
       System.out.println("The Zombie spit up stomach acid!");
       Attack atk = new Attack();
       CorrosiveAcid acidEffect = new CorrosiveAcid();
       atk.addStatus(acidEffect);
-      return atk;
+      target.takeDamage(atk);
    }
    
-   //Zombie has no special qualities
+   //Zombie has no special qualities, poor zombie ;__;
    
 }//end Zombie
