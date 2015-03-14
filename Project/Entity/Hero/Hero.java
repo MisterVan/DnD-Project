@@ -2,8 +2,6 @@ package Project.Entity.Hero;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-
-import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 import Project.Item.Weapon.Weapon;
 import Project.Item.Item;
@@ -13,7 +11,7 @@ public class Hero extends Entity
 {
    private Weapon primaryWpn;
    private String playerName = "Unknown";
-   protected ArrayList<Item> inventory = new ArrayList();
+   protected ArrayList<Item> inventory = new ArrayList<Item>();
    
    //primary attack
    public Attack primaryAttack()

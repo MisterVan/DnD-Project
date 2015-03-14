@@ -9,9 +9,6 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
-import Project.Entity.Monster.Zombie;
-import Project.Entity.Monster.Wraith;
-import Project.Entity.Monster.Skeleton;
 
 public class Lich extends Monster
 {

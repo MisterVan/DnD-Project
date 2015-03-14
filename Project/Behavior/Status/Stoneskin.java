@@ -1,6 +1,6 @@
 package Project.Behavior.Status;
 import Project.Entity.Entity;
-import Project.Behavior.Defense.DamageReduction;
+//import Project.Behavior.Defense.DamageReduction;
 
 public class Stoneskin implements StatusEffect {
 

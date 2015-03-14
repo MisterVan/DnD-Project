@@ -1,13 +1,10 @@
 package Project.Entity.Hero;
 
 import java.util.Scanner;
-import Project.Entity.Entity;
-
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
-import Project.Item.Item;
 import Project.Item.Weapon.Weapon;
 
 public class Wizard extends Hero
