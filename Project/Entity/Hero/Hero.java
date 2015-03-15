@@ -7,11 +7,10 @@ import Project.Item.Weapon.Weapon;
 import Project.Item.Item;
 import Project.Entity.Entity;
 
-public class Hero extends Entity
+public abstract class Hero extends Entity
 {
-   private Weapon primaryWpn;
+   protected Weapon primaryWpn;
    private String playerName = "Unknown";
-   protected String specialMoveName = "Unknown";
    protected ArrayList<Item> inventory = new ArrayList<Item>();
    
    //primary attack
@@ -21,8 +20,9 @@ public class Hero extends Entity
       {
          System.out.println("Error: no weapon equipped!");
       }
-       primaryWpn.attack();
-       target.takeDamage(primaryWpn.attack());
+      Attack atk = primaryWpn.attack();
+      atk.applyPower(super.power);
+      target.takeDamage(atk);
    }
    
    
@@ -184,5 +184,8 @@ public class Hero extends Entity
    {
       return this.primaryWpn;
    }
+   
+   public abstract String getSpecialName();
+   public abstract String getSpecialDescription();
    
 }//end Hero

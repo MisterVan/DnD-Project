@@ -15,12 +15,12 @@ public class Gorgon extends Monster
 	public Gorgon()
 	{
 		setName("Gorgon");
-      setHP(149);//185 too high?
-		setPower(30);
-      setSpeed(30);
+      setHP(130);//185 too high?
+	  setPower(30);
+      setSpeed(4);
       setAccuracy(0.6);
-      setDodge(0.3);
-      setDamageReduction(new DamageReduction(10, "cold")); //Vulnerable to cold
+      setDodge(0.1);
+      setDamageReduction(new DamageReduction(5, "slash")); //Vulnerable to slash
       ElementalResistance elRes = new ElementalResistance();      
       elRes.setCold(0, 2.0); //Takes double cold damage
       elRes.setFire(0, 1.5); //Takes one and a half fire damage
@@ -32,12 +32,13 @@ public class Gorgon extends Monster
    //Perform attack
 	public void performAttack(Entity target)
 	{
+	if(Math.random() <= this.accuracy)
+	{
+	  Random rand = new Random();
       Attack atk = new Attack();
-      atk.addDamage(new Damage(18, true, "slash")); //mostly claws/bites
-      atk.addDamage(new Damage(13, true, "bludgeon"));
-      atk.addDamage(new Damage(13, false, "acid"));
-      
-      Random rand = new Random(); 
+      atk.addDamage(new Damage(10+rand.nextInt(5), true, "slash")); //mostly claws/bites
+      atk.addDamage(new Damage(10+rand.nextInt(6), false, "acid"));
+      atk.applyPower(this.power);
       int poisChance = rand.nextInt(5);
       if(poisChance == 3)//small chance for poison
       {
@@ -46,19 +47,31 @@ public class Gorgon extends Monster
       }
       
       target.takeDamage(atk);
+	}
+	else
+	{
+		System.out.println("The attack failed!");
+	}
 	}//end method
    
    @Override
    public void specialMove(Entity target)
    {
-      //Has a random chance of catching a player's gaze and paralyzing them each round?
+      if(Math.random() <= this.accuracy-0.2)
+      {
       Poison poisonEffect = new Poison();
       Attack atk = new Attack();
-      atk.addDamage(new Damage(20, true, "slash"));
-      atk.addDamage(new Damage(15, true, "bludgeon"));
-      atk.addDamage(new Damage(15, false, "acid"));
+      Random rand = new Random();
+      atk.addDamage(new Damage(40+rand.nextInt(21), true, "slash"));
+      atk.addDamage(new Damage(15+rand.nextInt(6), false, "acid"));
+      atk.applyPower(this.power/2);
       atk.addStatus(poisonEffect);//definitely poison
       target.takeDamage(atk);
+      }
+      else
+      {
+    	  System.out.println("The attack failed!");
+      }
    }
    
 }//end Gorgon

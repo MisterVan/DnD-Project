@@ -14,7 +14,7 @@ As parent class, it implements generic behavior for taking taking damage, having
 */
 
 
-public class Entity extends MapResident {
+public abstract class Entity extends MapResident {
     
     protected String name = "Unknown";
     protected int baseHP;
@@ -30,21 +30,19 @@ public class Entity extends MapResident {
     
     protected boolean isCritImmune;
     
-    ArrayList<StatusEffect> statusEffects = new ArrayList<StatusEffect>();
-    
-    //Trinket item;
-    //Consumable potion;
-    //Weapon firstWeapon;
+    ArrayList<StatusEffect> statusEffects = new ArrayList<StatusEffect>();    
 
-public void specialMove(Entity target)
-{
-}
+public abstract void specialMove(Entity target);
     
 //This object takes damage after applying all relevant resistances, immunities, and damage reduction
 public void takeDamage(Attack atk)
 {
    int actualDamage = 0;
-
+   if(Math.random() <= this.dodge)
+   {
+	   System.out.println("The " + this.name + " dodged the attack!");
+	   return;
+   }
    for(Damage dmg : atk.getDamage())
    {
       if(dmg.isPhysical())
@@ -176,4 +174,6 @@ for(int i = 0; i < statusEffects.size(); i++) {
 }//end loop
 
 }
+
+
 }//end class
