@@ -10,19 +10,19 @@ import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 
 
-public class Lich extends Monster
+public class Lich extends Undead
 {
    
    //Create Lich
 	public Lich()
 	{
 		setName("Lich");
-      setHP(136);
-		setPower(30);
-      setSpeed(20);
-      setAccuracy(0.7);
-      setDodge(0.3);
-      setDamageReduction(new DamageReduction(20, "bludgeon")); //Vulnerable to bludgeon
+      setHP(180);
+		setPower(45);
+      setSpeed(4);
+      setAccuracy(0.6);
+      setDodge(0.1);
+      setDamageReduction(new DamageReduction(15, "bludgeon")); //Vulnerable to bludgeon
       ElementalResistance elRes = new ElementalResistance();
       elRes.setFire(0, 2.0); //Takes double fire damage
       
@@ -33,12 +33,21 @@ public class Lich extends Monster
    //Perform attack
 	public void performAttack(Entity target)
 	{
+	  Random rand = new Random();
+	  if(Math.random() <= this.accuracy)
+	  {
       Attack atk = new Attack();
-      atk.addDamage(new Damage(10, false, "electric"));
-      atk.addDamage(new Damage(10, false, "cold"));
-      atk.addDamage(new Damage(10, false, "fire"));
-      atk.addDamage(new Damage(10, false, "acid"));
+      atk.addDamage(new Damage(10+rand.nextInt(5), false, "electric"));
+      atk.addDamage(new Damage(10+rand.nextInt(5), false, "cold"));
+      atk.addDamage(new Damage(10+rand.nextInt(5), false, "fire"));
+      atk.addDamage(new Damage(10+rand.nextInt(5), false, "acid"));
+      atk.applyPower(this.power);
       target.takeDamage(atk);
+	  }
+	  else
+	  {
+		  System.out.println("The attack failed!");
+	  }
 	}//end method
    
    /*
@@ -71,24 +80,21 @@ public class Lich extends Monster
    @Override
    public void specialMove(Entity target)
    {
+	  Random rand = new Random();
+	  if(Math.random() <= this.accuracy-0.15)
+	  {
       Attack atk = new Attack();
-      atk.addDamage(new Damage(13, false, "electric"));
-      atk.addDamage(new Damage(13, false, "fire"));
-      atk.addDamage(new Damage(13, false, "acid"));
-      
-      Blind blindEffect = new Blind();
-      atk.addStatus(blindEffect);//definitely blind
-      
-      //chance for burning
-      Random rand = new Random(); 
-      int burnChance = rand.nextInt(5);
-      if(burnChance == 3)//small chance for poison
-      {
-         BurningFlames burnEffect = new BurningFlames();
-         atk.addStatus(burnEffect);//definitely blind
-      }
-      
+      atk.addDamage(new Damage(25+rand.nextInt(15), false, "fire"));
+      atk.applyPower(this.power);    
+
+      BurningFlames burnEffect = new BurningFlames();
+      atk.addStatus(burnEffect);//definitely burn
       target.takeDamage(atk);
+      }
+	  else
+	  {
+		  System.out.println("The attack failed!");
+	  }
    }
    
 }//end Lich
