@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane prefHeight="608.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.World.GameWindowController">
+   <right>
+      <AnchorPane fx:id="infoPane" prefHeight="608.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="playerNameLabel" layoutX="14.0" layoutY="14.0" text="playerName" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0" />
+            <Label fx:id="playerHPLabel" layoutX="14.0" layoutY="42.0" text="hitPoints" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="40.0" />
+            <Label fx:id="playerWeaponLabel" layoutX="14.0" layoutY="57.0" text="Weapon1" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="55.0" />
+            <Label fx:id="playerEquip1Label" layoutX="14.0" layoutY="72.0" text="Equipment1" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="70.0" />
+            <Label fx:id="playerEquip2Label" layoutX="14.0" layoutY="87.0" text="Equipment2" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="85.0" />
+            <Label fx:id="monsterHPLabel" layoutX="13.0" layoutY="580.0" text="hitPoints" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" />
+            <Label fx:id="monsterNameLabel" layoutX="13.0" layoutY="566.0" text="EnemyName" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="14.0" />
+            <TextArea fx:id="messageBox" editable="false" focusTraversable="false" layoutY="127.0" prefHeight="121.0" prefWidth="200.0" scaleShape="false" text="this is a long ass string to see what will happen will it wrap around or just run off into the nether AAHHHHHHh. This will ask the user questions and the radio buttions below will have choices and changing visiblity as necessary" wrapText="true" />
+            <Button fx:id="option1" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#touchButt1" text="Button" AnchorPane.leftAnchor="14.0" />
+            <Button fx:id="option2" layoutX="15.0" layoutY="304.0" mnemonicParsing="false" onAction="#touchButt1" text="Button" AnchorPane.leftAnchor="14.0" />
+            <Button fx:id="option3" layoutX="14.0" layoutY="326.0" mnemonicParsing="false" onAction="#touchButt1" text="Button" AnchorPane.leftAnchor="14.0" />
+            <Button fx:id="option4" layoutX="15.0" layoutY="348.0" mnemonicParsing="false" onAction="#touchButt1" text="Button" AnchorPane.leftAnchor="14.0" />
+            <Button fx:id="option5" layoutX="14.0" layoutY="370.0" mnemonicParsing="false" onAction="#touchButt1" text="Button" AnchorPane.leftAnchor="14.0" />
+            <Label fx:id="playerClass" layoutX="14.0" layoutY="24.0" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="25.0" />
+         </children></AnchorPane>
+   </right>
+   <center>
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="608.0" prefWidth="608.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="gameMap">
+               <children>
+                  <Label prefHeight="14.0" prefWidth="139.0" text="This is a VBox" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

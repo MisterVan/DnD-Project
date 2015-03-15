@@ -60,6 +60,21 @@ public class TileFactory {
 			e = hFac.createHero(type);
 			t.setResident(e); 
 			break;
+		case "fighter":
+			t = new GrassTile (images.get(1), xCoord, yCoord);
+			e = hFac.createHero(type);
+			t.setResident(e);
+			break;
+		case "barbarian":
+			t = new GrassTile (images.get(1), xCoord, yCoord);
+			e = hFac.createHero(type);
+			t.setResident(e);
+			break;
+		case "wizard":
+			t = new GrassTile (images.get(1), xCoord, yCoord);
+			e = hFac.createHero(type);
+			t.setResident(e);
+			break;
 		default: //this should never happen, map wont have invalid options
 			throw new IllegalStateException(); //singleton messagebox object that can have custom message?
 		}//switchType	

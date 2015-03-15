@@ -1,7 +1,5 @@
 package Project.World;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
@@ -16,7 +14,7 @@ public abstract class Tile {
 	private int xCoord;  //make a location object??
 	private int yCoord;  //make a location object??
 	private ImageView highlight;
-		
+				
 	/*
 	GETS, SETS =======================
 	*/

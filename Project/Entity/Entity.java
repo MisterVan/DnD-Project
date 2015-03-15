@@ -16,7 +16,7 @@ As parent class, it implements generic behavior for taking taking damage, having
 
 public class Entity extends MapResident {
     
-    protected String name = "Unknown";
+    //protected String name = "Unknown";
     protected int baseHP;
     protected int hp;
     protected int power;
@@ -65,7 +65,7 @@ public void takeDamage(Attack atk)
 /*
 GETS, SETS =======================
 */
-public void setName(String newName)
+/*public void setName(String newName)
 {
    this.name = newName;
 }
@@ -74,7 +74,7 @@ public String getName()
 {
    return this.name;
 }
-
+*/
 public int getPower() {
    return this.power;
 }

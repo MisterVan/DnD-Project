@@ -41,7 +41,7 @@ public class Main extends Application {
 	private void initDisplay() throws IOException {
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("display.fxml"));
+		loader.setLocation(Main.class.getResource("display2.fxml"));
 		BorderPane infoPane = (BorderPane) loader.load();
 		mainPain.setCenter(infoPane);
 		
@@ -57,8 +57,7 @@ public class Main extends Application {
 		Scene scene = new Scene (mainPain);
 		mainStage.setTitle("Generic Dungeons and Dragons Game by Amber, Evan, and Tim");
 		mainStage.setScene(scene);
-		//mainStage.setResizable(false);
-				
+						
 	}//initMainStage
 
 	public static void main(String[] args) {

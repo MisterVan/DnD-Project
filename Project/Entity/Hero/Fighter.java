@@ -31,7 +31,7 @@ public class Fighter extends Hero
       setPrimaryWpn(sword);
       Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
       this.inventory.add(0, dagger);
-      super.setSprite(System.getProperty("user.dir") + "\\Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_FIGHTER.png");
+      super.setSprite("Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_FIGHTER.png");
 	}//end method
    
    public Attack specialMove()
