@@ -66,7 +66,7 @@ public class ChimeraSkeleton extends Undead
 	 {
 		System.out.println("The attack failed!"); 
 	 }
-	 }
+	 
    }
    
 }//end ChimeraSkeleton

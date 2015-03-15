@@ -19,7 +19,7 @@ public class ProjectTester
 {
    
    public static void main(String[] args) {
-
+/*
       Entity e = new Entity();
       e.setHP(200); //200 hp
       e.setPower(30); //30 power
@@ -100,7 +100,7 @@ public class ProjectTester
       chimera.takeDamage(atk2);
       System.out.println(chimera.getName() + "'s hp is now: " + chimera.getHP());
       
-   
+ */  
    }
    
    

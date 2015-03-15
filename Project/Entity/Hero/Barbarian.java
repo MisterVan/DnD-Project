@@ -28,15 +28,13 @@ public class Barbarian extends Hero
       setElementalResistance(elRes);
       Weapon mace = new Weapon("Mace", "bludgeon", 8, 15);
       setPrimaryWpn(mace);
-<<<<<<< HEAD
       //This makes like no sense with stomp being a 'weapon'. Consider taking this out and
       //inherently equipping everyone with a dagger to start off with as a secondary?
       Weapon stomp = new Weapon("Stomp", "bludgeon", 20, 25);
       this.inventory.add(0, stomp);
-=======
+
       this.inventory.add(0, new Weapon("Axe", "slash", 4, 20));
-      this.specialMoveName = "Barbarian Rage";
->>>>>>> 407b314f7272ac140b255f56c202c12f0a01ac55
+      
       super.setSprite("Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_BARBARIAN.png");
 	}//end method
    

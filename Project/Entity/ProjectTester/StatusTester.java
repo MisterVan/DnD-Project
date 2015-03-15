@@ -8,7 +8,7 @@ import Project.Behavior.Defense.ElementalResistance;
 public class StatusTester {
 
 public static void main(String[] args) throws InterruptedException {
-
+/*
 Entity poisonEntity = new Entity();
 poisonEntity.setName("Poisoned Entity");
 poisonEntity.setHP(500);
@@ -54,7 +54,7 @@ acidEntity.roundOver();
 fireEntity.roundOver();
 Thread.sleep(1000);
 System.out.println("\nRound " + i + " Over\n");
-}
+}*/
 }//end main
 
 }//end class
