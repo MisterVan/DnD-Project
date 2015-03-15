@@ -5,13 +5,13 @@
    import Project.Behavior.Defense.DamageReduction;
    import Project.Behavior.Offense.Damage;
    import Project.Behavior.Offense.Attack;
-	import java.util.Random;
+   import java.util.Random;
 
    public class FleshGolem extends Construct {
    
       public FleshGolem() {
-      
-         this.hp = 1200;
+    	 setName("Flesh Golem"); 
+         this.hp = 400;
          this.power = 90;
          this.speed = 4;
       
@@ -32,16 +32,15 @@
 	public void hitBySpecialElement(Damage dmg) {
          if(dmg.getDamageType().contains("electric")) {
 				int healthRestored = dmg.getDamage()/2;
-				this.hp += healthRestored;
+				this.recoverHP(healthRestored);
             System.out.println("The electricity energizes the golem! The Flesh Golem recovers " + healthRestored + " hp.");
          }//end if
    }//end method
 	
 	public void takeDamage(Attack atk) {
          int actualDamage = 0;
-			Random rand = new Random();
 			
-			if(rand.nextDouble() <= this.dodge) {
+			if(Math.random() <= this.dodge) {
 				System.out.println("The flesh golem avoided the attack!");
 				return;
 			}
@@ -73,18 +72,35 @@
    @Override
    public void performAttack(Entity target)
 	{
+	  if(Math.random() <= this.accuracy)
+	  {
+	  Random rand = new Random(); 
       Attack atk = new Attack();
-      atk.addDamage(new Damage(25, true, "slash"));
-      atk.addDamage(new Damage(30, true, "bludgeon"));
+      atk.addDamage(new Damage(25 + rand.nextInt(10), true, "slash"));
+      atk.addDamage(new Damage(30 + rand.nextInt(20), true, "bludgeon"));
+      atk.applyPower(this.power);
       target.takeDamage(atk);
+	  }
+	  else
+	  {
+		  System.out.println("The attack failed!");
+	  }
 	}//end method
    
    @Override
    public void specialMove(Entity target)
    {
+	  if(Math.random() <= this.accuracy-0.2) 
+	  {
+	  Random rand = new Random(); 
       Attack atk = new Attack();
-      atk.addDamage(new Damage(35, false, "acid"));
-      atk.addDamage(new Damage(30, true, "bludgeon"));
+      atk.addDamage(new Damage(40+rand.nextInt(41), true, "bludgeon"));
+      atk.applyPower(this.power*2);
       target.takeDamage(atk);
+	  }
+	  else
+	  {
+		  System.out.println("The attack failed!");
+	  }
    }
 }//end class

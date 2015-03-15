@@ -6,6 +6,7 @@ import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
+import java.util.Random;
 
 public class Gargoyle extends Monster
 {
@@ -13,12 +14,12 @@ public class Gargoyle extends Monster
 	public Gargoyle()
 	{
 		setName("Gargoyle");
-      setHP(137);
+      setHP(130);
 		setPower(30);
-      setSpeed(50);
+      setSpeed(3);
       setAccuracy(0.6);
-      setDodge(0.3);
-      setDamageReduction(new DamageReduction(10, "nothing")); //Damage reduction unable to be bypassed
+      setDodge(0.1);
+      setDamageReduction(new DamageReduction(10, "-")); //Damage reduction unable to be bypassed
       ElementalResistance elRes = new ElementalResistance();      
       elRes.setCold(0, 0.5); //Takes half cold damage
       elRes.setFire(0, 2.0); //Takes double fire damage
@@ -30,11 +31,19 @@ public class Gargoyle extends Monster
    //Perform attack
 	public void performAttack(Entity target)
 	{
+	if(Math.random() <= this.accuracy)
+	{
+	  Random rand = new Random();
       Attack atk = new Attack();
-      atk.addDamage(new Damage(20, true, "slash"));//0.5*power + rand.nextInt(11);
-      atk.addDamage(new Damage(20, true, "bludgeon"));
-      atk.addDamage(new Damage(7, false, "cold"));
+      atk.addDamage(new Damage(15+rand.nextInt(8), true, "slash"));//0.5*power + rand.nextInt(11);
+      atk.addDamage(new Damage(15+rand.nextInt(8), true, "bludgeon"));
+      atk.applyPower(this.power);
       target.takeDamage(atk);
+	}
+	else
+	{
+		System.out.println("The attack failed!");
+	}
 	}//end method
    
    @Override
@@ -42,13 +51,21 @@ public class Gargoyle extends Monster
    {
       //Gargoyle becomes stone and hits harder while also becoming harder to damage
       Stoneskin gargEffect = new Stoneskin();
-      gargEffect.applyEffectToTarget(this);
+      this.giveStatus(gargEffect);
+      Random rand = new Random();
       
+      if(Math.random() <= this.accuracy-0.1)
+      {
       Attack atk = new Attack();
-      atk.addDamage(new Damage(23, true, "slash"));//0.5*power + rand.nextInt(11);
-      atk.addDamage(new Damage(23, true, "bludgeon"));
-      atk.addDamage(new Damage(10, false, "cold"));
+      atk.addDamage(new Damage(30+rand.nextInt(15), true, "slash"));//0.5*power + rand.nextInt(11);
+      atk.applyPower(this.power);
+      
       target.takeDamage(atk);
+      }
+      else
+      {
+    	  System.out.println("The attack failed!");
+      }
    }
    
 }//end Gargoyle

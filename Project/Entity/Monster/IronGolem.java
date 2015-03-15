@@ -6,15 +6,16 @@
    import Project.Behavior.Defense.DamageReduction;
    import Project.Behavior.Offense.Damage;
    import Project.Behavior.Offense.Attack;
+   import java.util.Random;
 
    public class IronGolem extends Construct {
    
       private boolean isCorroded = false;
    
       public IronGolem() {
-      
-         this.hp = 1000;
-         this.power = 70;
+    	 setName("Iron Golem"); 
+         this.hp = 450;
+         this.power = 35;
          this.speed = 5;
       
          this.dodge = 0.0;
@@ -33,15 +34,21 @@
    
    
       public void hitBySpecialElement(Damage dmg) {
-         if(dmg.getDamageType().contains("electric")) {
-         //TO DO: AFFLICT WITH SLOW EFFECT
-            System.out.println("The electricity magnetizes the golem, slowing it down!");
-         }//end if
+    	  if(dmg.getDamageType().contains("acid") && !this.isCorroded) {
+              this.isCorroded = true;
+              this.dr.setReduction(this.dr.getReduction()/2);
+              System.out.println("The acid damage corrodes the metal, reducing its physical defense!");
+    	  }
       }//end method
    
       public void takeDamage(Attack atk) {
          int actualDamage = 0;
-      
+         if(Math.random() <= this.dodge)
+         {
+        	 System.out.println("The golem dodged the attack!");
+        	 return;
+         }
+         
          for(Damage dmg : atk.getDamage()) {
             if(dmg.isPhysical()) {
                actualDamage = dr.processDamage(dmg);
@@ -53,14 +60,9 @@
                this.hp -= actualDamage;
                System.out.println("This entity took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
             
-               if(dmg.getDamageType().contains("electric")) { //If it's elec, it slows the golem
-                  this.hitBySpecialElement(dmg);
-               }//end if
             
-               if(dmg.getDamageType().contains("acid") && !this.isCorroded) {
-                  this.isCorroded = true;
-                  this.dr.setReduction(this.dr.getReduction()/2);
-                  System.out.println("The acid damage corrodes the metal, reducing its physical defense!");
+               if(dmg.getDamageType().contains("acid")) {
+                 this.hitBySpecialElement(dmg);
                } //end if
             
             } //end else 
@@ -71,26 +73,40 @@
           this.giveStatus(atk.deliverStatus()); 
       }//end method
    
-	/*
-	TO DO: ADD ATTACKS
-	 */
     
    @Override
    public void performAttack(Entity target)
 	{
+	  if(Math.random() <= this.accuracy) 
+	  {
+	  Random rand = new Random(); 
       Attack atk = new Attack();
-      atk.addDamage(new Damage(25, true, "slash"));
-      atk.addDamage(new Damage(30, true, "bludgeon"));
-      target.takeDamage(atk);
+      atk.addDamage(new Damage(25+rand.nextInt(5), true, "bludgeon"));
+      atk.applyPower(this.power);
+      target.takeDamage(atk);      
+	  }
+	  else
+	  {
+		  System.out.println("The attack failed!");
+	  }
 	}//end method
    
    @Override
    public void specialMove(Entity target)
    {
+	  if(Math.random() <= this.accuracy-0.2) 
+	  {
       Attack atk = new Attack();
-      atk.addDamage(new Damage(35, false, "adamantine"));
-      atk.addDamage(new Damage(30, true, "bludgeon"));
+      Random rand = new Random();
+      atk.addDamage(new Damage(70+rand.nextInt(15), false, "bludgeon,adamantine"));
+      atk.applyPower(this.power);
       target.takeDamage(atk);
+	  }
+	  else
+	  {
+		  System.out.println("The attack failed!");
+	  }
+	  
    }
 	
 }//end class
