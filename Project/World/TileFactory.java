@@ -27,7 +27,15 @@ public class TileFactory {
 		images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_ROCK_3.png"));         //4
 		images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_ROCK_4.png"));         //5
 		images.add(new Image ("Project\\Sprites\\Terrain\\path.png"));					//6
-		
+      images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_BOTTOM.png"));//7
+      images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_TOP.png"));//8
+      images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_LEFT.png"));//9
+      images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_RIGHT.png"));//10
+      images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_CORNER_NE.png"));//11
+      images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_CORNER_NW.png"));//12
+      images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_CORNER_SE.png"));//13
+      images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_CORNER_SW.png"));//14
+      
 		highlight = new Image ("Project\\Sprites\\Terrain\\UTILITY_ATTACK_RED.png");
 		
 		hFac = new HeroFactory();
@@ -97,6 +105,38 @@ public class TileFactory {
 			e = mFac.createRandomMonster();
 			t.setResident(e);
 			break;
+         
+      case "gtsb":
+         t = new Tile(images.get(7), xCoord, yCoord, highlight, true);
+         break;
+      
+      case "gtst":
+         t = new Tile(images.get(8), xCoord, yCoord, highlight, true);
+         break;
+         
+      case "gtsl":
+         t = new Tile(images.get(9), xCoord, yCoord, highlight, true);
+         break;
+      
+      case "gtsr":
+         t = new Tile(images.get(10), xCoord, yCoord, highlight, true);
+         break;
+      
+      case "gtscne":
+         t = new Tile(images.get(11), xCoord, yCoord, highlight, true);
+         break;
+      
+      case "gtscnw":
+         t = new Tile(images.get(12), xCoord, yCoord, highlight, true);
+         break;
+      
+      case "gtscse":
+         t = new Tile(images.get(13), xCoord, yCoord, highlight, true);
+         break;
+      
+      case "gtscsw":
+         t = new Tile(images.get(14), xCoord, yCoord, highlight, true);
+         break;
 
 		default:			
 			System.out.println("Ilegal option in map.csv: " + type + ", " + type2); // this will only happen during testing
