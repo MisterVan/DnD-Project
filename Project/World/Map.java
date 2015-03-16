@@ -353,7 +353,10 @@ public class Map {
 		currentPlayer = heros.get(index);
 		if (heroTurn) {
 			Hero temp = (Hero) currentPlayer;
-			parent.setPlayerLabels(temp.getName(), "" + temp.getHP(), temp.getPrimaryWpn().description(),"", "", "");
+			parent.setPlayerLabels(temp.getName(), "" + temp.getHP(), temp.getPrimaryWpn().description(), 
+					temp.getInventory().get(0).name==null?"":temp.getInventory().get(0).name, 
+					temp.getInventory().get(1).name==null?"":temp.getInventory().get(1).name, 
+					temp.getInventory().get(2).name==null?"":temp.getInventory().get(2).name);
 		}//if hero turn
 		else {
 			

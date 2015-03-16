@@ -92,6 +92,10 @@ public abstract class Hero extends Entity
       return this.primaryWpn;
    }
    
+   public ArrayList<Item> getInventory ()  {
+	   return inventory;
+   }
+   
    public abstract String getSpecialName();
    public abstract String getSpecialDescription();
    
