@@ -57,8 +57,10 @@ public class MapBuilderUtility {
 					ent.setYCoord(i);
 					try {
 						parent.addCharacter((Hero) map[i][j].getResident());
+						//System.out.println("adding hero");
 					} catch (Exception e) {
 						parent.addCharacter((Monster) map[i][j].getResident());
+						//System.out.println("adding monster");
 					}//
 					
 				}//if there was a character

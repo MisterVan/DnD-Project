@@ -20,7 +20,9 @@ public class Map {
 	
 	private static final int SQUARE = 32;
 		
-	private ArrayList<Entity> characters;
+	private ArrayList<Hero> heros;
+	private ArrayList<Monster> monsters;
+	boolean heroTurn;
 
 	private Tile [][] map;							
 	private Pane [][] realMap;						
@@ -38,7 +40,8 @@ public class Map {
 	
 		this.gameMap = vbox;
 		this.parent = gwc;
-		this.characters = new ArrayList<Entity> ();
+		this.heros = new ArrayList<Hero> ();
+		this.monsters = new ArrayList<Monster> ();
 		
 		MapBuilderUtility util = new MapBuilderUtility(this);
 		try {
@@ -49,7 +52,8 @@ public class Map {
 			System.exit(-1);
 		}					
 		realMap = new Pane [map.length][map[0].length];
-				
+		heroTurn = true;
+		index = 0;
 		loadFullArray();
 		
 	}//EVC
@@ -97,14 +101,16 @@ public class Map {
 	    							if (clicked instanceof Entity) {
 	    							
 		    							if (clicked.equals(currentPlayer)) {
+		    								removeHighlights(xCoord, yCoord, currentPlayer.getSpeed());
+		    								//playGame();
 		    								moveAlong();
 		    							}//if clicked self (do nothing)
-		    						
+		    							else {
 		    							target = (Entity) clicked;
 		    							target.setXCoord(xCoord);
 		    							target.setYCoord(yCoord);
 		    							doBattle (target);
-		    							
+		    							}
 	    							}//if entity
 		    							    							
 	    							else { 
@@ -152,7 +158,9 @@ public class Map {
 		result += currentPlayer.performAttack(target);
 		result += checkDead();
 		parent.setMessageBoxText(result);
-		moveAlong();
+		target = null;
+		if (heroTurn)
+			moveAlong();
 		
 	}//executeAttack
 	
@@ -161,13 +169,15 @@ public class Map {
 		result += currentPlayer.specialMove(target);
 		result += checkDead();
 		parent.setMessageBoxText(result);
-		moveAlong();	
+		target = null;
+		if (heroTurn)
+			moveAlong();
+			
 		
 	}//executeSpecialMove
 	
 	private String checkDead() {
 		String result = "";
-		//System.out.println(target.getName());
 		if (target.isDead()) {
 			result += target.getName() + " has died!";
 			int x = target.getXCoord();
@@ -177,7 +187,11 @@ public class Map {
 			map[y][x].setResident(null);
 			map[y][x].setWalkable(true);
 			realMap[y][x].setDisable(true);
-			characters.remove(target);			
+			try {
+				monsters.remove(target);
+			} catch (Exception e) {		 
+				heros.remove(target);
+			}
 		}
 		return result;
 	}
@@ -203,6 +217,7 @@ public class Map {
 		}
 		else {
 			moveAlong();
+			//playGame();
 		}
 	
 	}//checkSurroundings
@@ -238,28 +253,6 @@ public class Map {
 
 	}//move Pane, int, int
 	
-	private void getNextCharacter() {
-		index++;
-		if (index >= characters.size()){
-			index = 0;
-			for (Entity e : characters)
-				e.roundOver();
-		}//if at end of list
-		
-		currentPlayer = characters.get(index);
-		if (currentPlayer instanceof Hero) {
-			Hero temp = (Hero) currentPlayer;	
-			parent.setPlayerLabels(temp.getName(), "" + temp.getHP(), temp.getPrimaryWpn().description(),"", "", "");
-		}//if hero  
-		else { // if monster
-			
-			parent.setPlayerLabels("", "", "", "", "", "");
-			parent.setMessageBoxText("The monsters are take their turns....");
-						
-		}//if monster
-
-	}//getNextCharacter
-
 	private void removeHighlights(int x, int y, int max) {
 		
 		int currStep = 0;
@@ -292,8 +285,7 @@ public class Map {
 	public void playGame () {
 		
 		index = -1;
-		getNextCharacter();
-		displayMoveableTiles();
+		moveAlong();
 				
 	}//playGame()
 	
@@ -337,27 +329,53 @@ public class Map {
 		
 	}//recursiveHighligher int, int, int, int	
 	
-	public void addCharacter (Entity ent) {
+	public void addCharacter (Hero ent) {
 		
-		this.characters.add(ent);
-		
+		this.heros.add(ent);		
+	}//
+	
+	public void addCharacter (Monster ent) {
+		this.monsters.add(ent);
 	}//
 		
+	private void getNextCharacter() {
+		index++;
+		if (index >= heros.size()) {
+			index = 0;
+			heroTurn = false;
+		}
+		
+		currentPlayer = heros.get(index);
+		if (heroTurn) {
+			Hero temp = (Hero) currentPlayer;
+			parent.setPlayerLabels(temp.getName(), "" + temp.getHP(), temp.getPrimaryWpn().description(),"", "", "");
+		}//if hero turn
+		else {
+			
+			parent.setPlayerLabels("", "", "", "", "", "");
+			parent.setMessageBoxText("The monsters are taking their turns.... " + heroTurn);
+			for (Monster m : monsters) {
+				currentPlayer = m;
+				doMonsterStuff();
+				
+			}
+			heroTurn = true;
+		}
+		
+	}//getNextCharacter
+	
 	public void moveAlong () {
-		parent.setTargetLabels("", "");
-		getNextCharacter();	
-		System.out.println(currentPlayer.getName());
-		if (currentPlayer instanceof Monster)
-			doMonsterStuff();
-		else
-			displayMoveableTiles();
+		parent.setTargetLabels("", "");		
+		getNextCharacter();
+		displayMoveableTiles();
+		
 		interact = false;
 	}//moveAlong
 
 	private void doMonsterStuff() {
 		
 		monsterTurn();
-		moveAlong();
+		
 	}//doMonsterStuff
 
 	private void monsterTurn() {
@@ -394,22 +412,22 @@ public class Map {
 
 	private boolean monsterCheckSurroundings(int x, int y) {
 		
-		if (map[y+1][x].getResident() != null && map[y+1][x].getResident() instanceof Entity){
+		if (map[y+1][x].getResident() != null && map[y+1][x].getResident() instanceof Hero){
 			move(realMap[y][x], x, y);
 			monsterAttack(map[y+1][x].getResident());
 			return true;
 		}
-		else if (map[y-1][x].getResident() != null && map[y+1][x].getResident() instanceof Entity){
+		else if (map[y-1][x].getResident() != null && map[y+1][x].getResident() instanceof Hero){
 			move(realMap[y][x], x, y);
 			monsterAttack(map[y-1][x].getResident());
 			return true;
 		}
-		else if (map[y][x+1].getResident() != null && map[y+1][x].getResident() instanceof Entity) {
+		else if (map[y][x+1].getResident() != null && map[y+1][x].getResident() instanceof Hero) {
 			move(realMap[y][x], x, y);
 			monsterAttack(map[y][x+1].getResident());
 			return true;
 		}
-		else if (map[y][x-1].getResident() != null && map[y+1][x].getResident() instanceof Entity) {
+		else if (map[y][x-1].getResident() != null && map[y+1][x].getResident() instanceof Hero) {
 			move(realMap[y][x], x, y);
 			monsterAttack(map[y][x-1].getResident());
 			return true;
@@ -428,7 +446,7 @@ public class Map {
 			this.executeAttack();
 		else
 			this.executeSpecialMove();
-		
+				
 	}//
 	
 }//class
