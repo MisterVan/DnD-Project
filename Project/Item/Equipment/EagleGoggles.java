@@ -6,6 +6,7 @@ public class EagleGoggles extends Equipment {
 
 public EagleGoggles() {
    super.name = "Goggles of Eagle's Eye";
+   super.setSprite("Project/Sprites/Item/Equipment/ITEM_EQUIPMENT_EAGLEGOGGLES.png");
 }
 
 public void pickUp(Entity e) {

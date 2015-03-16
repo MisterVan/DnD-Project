@@ -7,6 +7,7 @@ public class RingOfRegeneration extends Equipment {
 
 public RingOfRegeneration() {
    super.name = "Ring of Regeneration";
+   super.setSprite("Project/Sprites/Item/Equipment/ITEM_EQUIPMENT_RINGOFREGENERATION.png");
 }
 public void pickUp(Entity e) {
  super.wielder = e;

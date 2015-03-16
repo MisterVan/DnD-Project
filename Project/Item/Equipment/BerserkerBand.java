@@ -9,6 +9,7 @@ double lostAccuracy;
 
 public BerserkerBand() {
    super.name = "Berserker's Band";
+   super.setSprite("Project/Sprites/Item/Equipment/ITEM_EQUIPMENT_BERSERKERBAND.png");
 }
 
 //When affecting stats, we want to avoid multiplicative affects
