@@ -13,7 +13,7 @@ public WeaponMetalMetalline(Weapon w) {
 @Override
 public Attack attack(){
    Attack atk = w.attack();
-   Damage initialDamage = atk.getDamage().get(1);
+   Damage initialDamage = atk.getDamage().get(0);
    initialDamage.setDamageType(initialDamage.getDamageType() + ",adamantine,silver");
    return atk;
 }
