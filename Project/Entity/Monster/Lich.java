@@ -2,7 +2,6 @@ package Project.Entity.Monster;
 import java.util.Random;
 
 import Project.Behavior.Status.BurningFlames;
-import Project.Behavior.Status.Blind;
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
@@ -42,11 +41,19 @@ public class Lich extends Undead
       atk.addDamage(new Damage(10+rand.nextInt(5), false, "fire"));
       atk.addDamage(new Damage(10+rand.nextInt(5), false, "acid"));
       atk.applyPower(this.power);
+<<<<<<< HEAD
       return target.takeDamage(atk);
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
+=======
+      target.takeDamage(atk);
+	  }
+	  else
+	  {
+		  System.out.println("The attack failed!");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	  }
 	}//end method
    
@@ -89,11 +96,19 @@ public class Lich extends Undead
 
       BurningFlames burnEffect = new BurningFlames();
       atk.addStatus(burnEffect);//definitely burn
+<<<<<<< HEAD
       return target.takeDamage(atk);
       }
 	  else
 	  {
 		  return ("The attack failed!");
+=======
+      target.takeDamage(atk);
+      }
+	  else
+	  {
+		  System.out.println("The attack failed!");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	  }
    }
    

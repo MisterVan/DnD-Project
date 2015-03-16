@@ -26,16 +26,23 @@ public class Fighter extends Hero
       Weapon sword = new Weapon("Longsword", "slash", 8, 15);
       setPrimaryWpn(sword);
 
+<<<<<<< HEAD
       Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
       this.inventory.add(0, dagger);
 
+=======
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
       this.inventory.add(0, new Weapon("Scimitar", "slash", 7, 16));
 
       super.setSprite("Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_FIGHTER.png");
 	}//end method
    
    @Override
+<<<<<<< HEAD
    public String specialMove(Entity target)
+=======
+   public void specialMove(Entity target)
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
    {
 	   Random rand = new Random();
 	   
@@ -44,6 +51,7 @@ public class Fighter extends Hero
       int missingHP = super.baseHP - super.hp;
       atk.addDamage(new Damage(missingHP + rand.nextInt(11), false, "untyped"));
       atk.applyPower(super.power);
+<<<<<<< HEAD
       return target.takeDamage(atk);
    }
    
@@ -54,6 +62,18 @@ public class Fighter extends Hero
    }
    
    @Override
+=======
+      target.takeDamage(atk);
+   }
+   
+   @Override
+   public String getSpecialName()
+   {
+	   return "Special: Persevering Strike";
+   }
+   
+   @Override
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
    public String getSpecialDescription()
    {
 	   return "Unleash a powerful strike that becomes stronger the less health you have.";

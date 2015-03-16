@@ -8,6 +8,7 @@ public class PotionOfStoneskin extends Consumable {
 
 public PotionOfStoneskin() {
    super.name = "Potion of Stoneskin";
+   super.setSprite("Project/Sprites/Item/Potion/ITEM_POTION_POTIONOFSTONESKIN.png");
 }
 public void pickUp(Entity e) {
    super.wielder = e;

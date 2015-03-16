@@ -38,11 +38,19 @@ public class Gargoyle extends Monster
       atk.addDamage(new Damage(15+rand.nextInt(8), true, "slash"));//0.5*power + rand.nextInt(11);
       atk.addDamage(new Damage(15+rand.nextInt(8), true, "bludgeon"));
       atk.applyPower(this.power);
+<<<<<<< HEAD
       return target.takeDamage(atk);
 	}
 	else
 	{
 		return ("The attack failed!");
+=======
+      target.takeDamage(atk);
+	}
+	else
+	{
+		System.out.println("The attack failed!");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	}
 	}//end method
    
@@ -60,11 +68,19 @@ public class Gargoyle extends Monster
       atk.addDamage(new Damage(30+rand.nextInt(15), true, "slash"));//0.5*power + rand.nextInt(11);
       atk.applyPower(this.power);
       
+<<<<<<< HEAD
       return target.takeDamage(atk);
       }
       else
       {
     	  return ("The attack failed!");
+=======
+      target.takeDamage(atk);
+      }
+      else
+      {
+    	  System.out.println("The attack failed!");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
       }
    }
    

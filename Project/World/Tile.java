@@ -1,5 +1,10 @@
 package Project.World;
 
+<<<<<<< HEAD
+=======
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -11,6 +16,7 @@ public class Tile {
 	private int xCoord;  
 	private int yCoord;  
 	private ImageView highlight;
+<<<<<<< HEAD
 	
 	public Tile () { }
 				
@@ -22,6 +28,9 @@ public class Tile {
 		this.isWalkable = walkable;
 	}//EVC
 	
+=======
+				
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	/*
 	GETS, SETS =======================
 	*/

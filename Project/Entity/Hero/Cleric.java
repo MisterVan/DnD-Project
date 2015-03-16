@@ -37,7 +37,11 @@ public class Cleric extends Hero
 	}//end method
    
    @Override
+<<<<<<< HEAD
    public String specialMove(Entity target)
+=======
+   public void specialMove(Entity target)
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
    {
 	  Random rand = new Random();
 	  
@@ -45,7 +49,10 @@ public class Cleric extends Hero
 	  
 	  target.recoverHP(rand.nextInt(100) + 200); //200-299 hp
 	  this.giveStatus(regen);
+<<<<<<< HEAD
 	  return "";
+=======
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
       /*//Cleric uses healing spells, applicable towards teammates and monsters (undead take damage from healing/holy spells)
       Scanner kb = new Scanner(System.in);
       int ans = 0;

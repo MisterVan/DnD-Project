@@ -2,7 +2,10 @@ package Project.World;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Random;
+=======
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
@@ -17,15 +20,26 @@ import Project.Entity.Monster.Monster;
 public class Map {	
 	
 	private static final int SQUARE = 32;
+<<<<<<< HEAD
 		
 	private ArrayList<Entity> characters;
+=======
+	private static final int MOVE_SPEED = 4;
+	
+	private ArrayList<Hero> heros;
+	private ArrayList<Monster> monsters;
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	private Tile [][] map;							
 	private Pane [][] realMap;						
 	private VBox gameMap;
 	
 	private int index;
+<<<<<<< HEAD
 	private Entity currentPlayer;
 	private Entity target;
+=======
+	private Hero currentPlayer;
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	
 	private GameWindowController parent;
 	private boolean interact;
@@ -34,13 +48,23 @@ public class Map {
 	
 		this.gameMap = vbox;
 		this.parent = gwc;
+<<<<<<< HEAD
 		this.characters = new ArrayList<Entity> ();
 				
+=======
+		this.heros = new ArrayList<Hero> ();
+		this.monsters = new ArrayList<Monster> ();
+		
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 		MapBuilderUtility util = new MapBuilderUtility(this);
 		try {
 			this.map = util.buildMap(inputFile);
 		} catch (FileNotFoundException e) {
+<<<<<<< HEAD
 			System.out.println("Couldn't find map file. This should only be an issue during testing");
+=======
+			e.printStackTrace();
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 			System.exit(-1);
 		}
 					
@@ -50,7 +74,11 @@ public class Map {
 		
 	}//EVC
 	
+<<<<<<< HEAD
 	private void loadFullArray() { 
+=======
+	private void loadFullArray() { 					//move to map object?
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 		VBox temp = new VBox();
 	   	 
 	   	for (int i=0; i<map.length; i++) {
@@ -71,19 +99,27 @@ public class Map {
 	            	iv.setFitHeight(SQUARE);
 		       		iv.setFitWidth(SQUARE);
 	            	t.getChildren().add(iv);
+<<<<<<< HEAD
 	            }//if mapResident	            
+=======
+	            }//	            
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	            
 	            t.addEventHandler(MouseEvent.MOUSE_CLICKED, 
 	            		new EventHandler<MouseEvent> () {
 	    					@Override
 	    					public void handle(MouseEvent arg0) {
 	    						
+<<<<<<< HEAD
 	    						parent.setMessageBoxText("");
 	    						
+=======
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	    						int xCoord = Integer.parseInt(t.getId());
 	    						int yCoord = Integer.parseInt(hbox.getId());
 	    						
 	    						if (interact) {
+<<<<<<< HEAD
 	    							
 	    							MapResident clicked = map[yCoord][xCoord].getResident();
 	    							removeHighlights(xCoord, yCoord, 2);
@@ -105,6 +141,13 @@ public class Map {
 	    								
 	    								//call item interaction method
 	    							}//if item	    							
+=======
+	    							//target is passed to battle method in this class
+	    							Hero target = (Hero) map[yCoord][xCoord].getResident();
+	    							parent.setMessageBoxText("You interacted with " + target.getPlayerName() + " the " + target.getName());
+	    							removeHighlights(xCoord, yCoord, 2);
+	    							moveAlong();
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	    							
 	    						}//if interacting rather than moving
 	    						
@@ -115,8 +158,12 @@ public class Map {
 	    						
 	    					}//handle (MouseEvent	    
 	    					
+<<<<<<< HEAD
 	            		});//new EventHandler, t.addEventFilter   
 	            
+=======
+	            		});//new EventHandler, t.addEventFilter            
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	            t.setDisable(true);
 	            hbox.getChildren().add(t);	            
 	       		realMap[i][j] = t;
@@ -131,6 +178,7 @@ public class Map {
 	   	gameMap.getChildren().addAll(temp.getChildren()); 
 	}//loadFullArray
 	
+<<<<<<< HEAD
 
 	private void doBattle(Entity target) {
 		
@@ -196,6 +244,45 @@ public class Map {
 		if (interact) {
 			highlightIndividualTile(x, y);
 			parent.setMessageBoxText("Which would you like to interact with? \n\nClick on yourself to do nothing.");
+=======
+	private void checkSurroundings(int x, int y) {
+		
+		if (map[y+1][x].getResident() != null){
+			ImageView high = map[y+1][x].getHighlight();
+			high.setFitHeight(SQUARE);
+			high.setFitWidth(SQUARE);
+			realMap[y+1][x].getChildren().add(high);
+			realMap[y+1][x].setDisable(false);
+			interact = true;
+		}
+		if (map[y-1][x].getResident() != null){
+			ImageView high = map[y-1][x].getHighlight();
+			high.setFitHeight(SQUARE);
+			high.setFitWidth(SQUARE);
+			realMap[y-1][x].getChildren().add(high);
+			realMap[y-1][x].setDisable(false);
+			interact = true;
+		}
+		if (map[y][x+1].getResident() != null) {
+			ImageView high = map[y][x+1].getHighlight();
+			high.setFitHeight(SQUARE);
+			high.setFitWidth(SQUARE);
+			realMap[y][x+1].getChildren().add(high);
+			realMap[y][x+1].setDisable(false);
+			interact = true;
+		}
+		if (map[y][x-1].getResident() != null) {
+			ImageView high = map[y][x-1].getHighlight();
+			high.setFitHeight(SQUARE);
+			high.setFitWidth(SQUARE);
+			realMap[y][x-1].getChildren().add(high);
+			realMap[y][x-1].setDisable(false);
+			interact = true;
+		}
+		
+		if (interact) {
+			parent.setMessageBoxText("Which would you like to interact with?");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 		}//
 		else {
 			moveAlong();
@@ -203,6 +290,7 @@ public class Map {
 		
 	}//checkSurroundings
 	
+<<<<<<< HEAD
 	private void highlightIndividualTile(int x, int y) {
 		ImageView high = map[y][x].getHighlight();
 		high.setFitHeight(SQUARE);
@@ -230,11 +318,35 @@ public class Map {
 		temp.setFitHeight(32);
 		temp.setFitWidth(32);
 		t.getChildren().add(temp); 		
+=======
+	private void move (Pane t, int xCoord, int yCoord) {
+				
+		if (realMap[yCoord][xCoord].getChildren().contains(map[yCoord][xCoord].getHighlight())) {
+							
+			int oldX = currentPlayer.getXCoord();
+			int oldY = currentPlayer.getYCoord();
+			realMap[oldY][oldX].getChildren().remove(map[oldY][oldX].getResident().getSprite());
+			map[oldY][oldX].setResident(null);
+			map[oldY][oldX].setWalkable(true);			
+			removeHighlights(oldX, oldY, MOVE_SPEED);
+			
+			map[yCoord][xCoord].setResident(currentPlayer);
+			map[yCoord][xCoord].setWalkable(false);
+			currentPlayer.setXCoord(xCoord);
+			currentPlayer.setYCoord(yCoord);
+			ImageView temp = map[yCoord][xCoord].getResident().getSprite();				
+			temp.setFitHeight(32);
+			temp.setFitWidth(32);
+			t.getChildren().add(temp); 
+											
+		}//tileisWalkables
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 		
 	}//move Pane, int, int
 	
 	private void getNextCharacter() {
 		index++;
+<<<<<<< HEAD
 		if (index >= characters.size()){
 			index = 0;
 			for (Entity e : characters)
@@ -252,6 +364,15 @@ public class Map {
 			parent.setMessageBoxText("The monsters are take their turns....");
 						
 		}//if monster
+=======
+		if (index >= heros.size()){
+			index = 0;
+			//run loop for monsters moves, with status effects being applied at the end
+		}//
+		
+		currentPlayer = heros.get(index);
+		parent.setPlayerLabels(currentPlayer.getPlayerName(), currentPlayer.getName(), currentPlayer.getHP(), currentPlayer.getPrimaryWpn().description(),"", "");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 		
 	}//getNextCharacter
 
@@ -304,7 +425,11 @@ public class Map {
 		realMap[y][x].setDisable(false);
 		
 		int currStep = 0;
+<<<<<<< HEAD
 		int max = currentPlayer.getSpeed();
+=======
+		int max = MOVE_SPEED;
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 		
 		recursiveHighlighter(x, y, currStep, max);
 		
@@ -332,6 +457,7 @@ public class Map {
 		
 	}//recursiveHighligher int, int, int, int	
 	
+<<<<<<< HEAD
 	public void addCharacter (Entity ent) {
 		
 		this.characters.add(ent);
@@ -427,5 +553,22 @@ public class Map {
 			this.executeSpecialMove();
 		
 	}//
+=======
+	public void addCharacter (Hero ent) {
+		
+		this.heros.add(ent);
+	}//
+	
+	public void addCharacter (Monster ent) {
+		
+		this.monsters.add(ent);
+	}//
+	
+	public void moveAlong () {
+		getNextCharacter();		
+		displayMoveableTiles();
+		interact = false;
+	}//moveAlong
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	
 }//class

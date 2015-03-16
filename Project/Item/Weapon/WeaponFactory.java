@@ -191,6 +191,7 @@ private Weapon getWeapon(int index) throws IOException, FileNotFoundException{
    splitLine = line.split(" "); 
          
    w = new Weapon(splitLine[0], splitLine[1], Integer.parseInt(splitLine[2]), Integer.parseInt(splitLine[3]));
+   w.setSprite(splitLine[4]);
    fin.close();
    return w;
 }
@@ -209,16 +210,18 @@ private int countLines() throws IOException, FileNotFoundException {
 }
 
 private Weapon parseWeaponFile(String name, Scanner fin) {
-
+	Weapon w;
    while(fin.hasNextLine()){
       String line = fin.nextLine();
       if(line.toLowerCase().contains(name.toLowerCase())) {
          String[] splitLine = line.split(" ");
-         return new Weapon(splitLine[0], splitLine[1], Integer.parseInt(splitLine[2]), Integer.parseInt(splitLine[3]));
+         w = new Weapon(splitLine[0], splitLine[1], Integer.parseInt(splitLine[2]), Integer.parseInt(splitLine[3]));
+         w.setSprite(splitLine[4]);
+         return w;
       }
    }//end loop
    
-   //If we get here, client asked for something we don't have
+   //If we get here, client asked for something we don't have, which shouldn't happen
    return new Weapon("Rusted metal shard", "slash", 1, 1); //Give them something useless by default
 }
 

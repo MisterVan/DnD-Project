@@ -40,11 +40,19 @@ public class Mummy extends Undead
       atk.addDamage(new Damage(15+rand.nextInt(5), false, "cold"));
       //chance to paralyze with attack
       atk.applyPower(this.power);
+<<<<<<< HEAD
       return target.takeDamage(atk);
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
+=======
+      target.takeDamage(atk);
+	  }
+	  else
+	  {
+		  System.out.println("The attack failed!");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	  }
 	}//end method
    
@@ -57,6 +65,7 @@ public class Mummy extends Undead
       Random rand = new Random();
       
       if(Math.random() <= this.accuracy-0.2)
+<<<<<<< HEAD
       {
       
       Attack atk = new Attack();
@@ -70,6 +79,21 @@ public class Mummy extends Undead
       else
       {
     	  return ("The attack failed!");
+=======
+      {
+      
+      Attack atk = new Attack();
+      atk.addDamage(new Damage(10+rand.nextInt(11), false, "untyped"));
+
+      Blind blindEffect = new Blind();
+      atk.addStatus(blindEffect);
+      atk.applyPower(this.power);
+      target.takeDamage(atk);
+      }
+      else
+      {
+    	  System.out.println("The attack failed!");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
       }
    }
    

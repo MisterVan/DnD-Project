@@ -1,20 +1,20 @@
-Axe slash 4 20
-Greataxe slash 10 40
-Longsword slash 8 15
-Greatsword slash 15 30
-Scimitar slash 7 16
-Falchion slash 12 36
-Halberd slash,pierce 12 20
-Dagger pierce 4 10
-Spear pierce 10 15
-Rapier pierce 8 12
-Lance pierce 20 30
-Warpick pierce 5 18
-Morningstar pierce,bludgeon 6 16
-Fist bludgeon 4 8
-Mace bludgeon 8 15
-Quarterstaff bludgeon 12 16
-Hammer bludgeon 6 18
-Warhammer bludgeon 8 45
-Spoon bludgeon 1 2
-Banana bludgeon 1 1
+Axe slash 4 20 Project/Sprites/Item/Weapon/ITEM_WEAPON_AXE.png
+Greataxe slash 10 40 Project/Sprites/Item/Weapon/ITEM_WEAPON_GREATAXE.png
+Longsword slash 8 15 Project/Sprites/Item/Weapon/ITEM_WEAPON_LONGSWORD.png
+Greatsword slash 15 30 Project/Sprites/Item/Weapon/ITEM_WEAPON_GREATSWORD.png
+Scimitar slash 7 16 Project/Sprites/Item/Weapon/ITEM_WEAPON_SCIMITAR.png
+Falchion slash 12 36 Project/Sprites/Item/Weapon/ITEM_WEAPON_FALCHION.png
+Halberd slash,pierce 12 20 Project/Sprites/Item/Weapon/ITEM_WEAPON_HALBERD.png
+Dagger pierce 4 10 Project/Sprites/Item/Weapon/ITEM_WEAPON_DAGGER.png
+Spear pierce 10 15 Project/Sprites/Item/Weapon/ITEM_WEAPON_SPEAR.png
+Rapier pierce 8 12 Project/Sprites/Item/Weapon/ITEM_WEAPON_RAPIER.png
+Lance pierce 20 30 Project/Sprites/Item/Weapon/ITEM_WEAPON_LANCE.png
+Warpick pierce 5 18 Project/Sprites/Item/Weapon/ITEM_WEAPON_WARPICK.png
+Morningstar pierce,bludgeon 6 16 Project/Sprites/Item/Weapon/ITEM_WEAPON_MORNINGSTAR.png
+Fist bludgeon 4 8 Project/Sprites/Item/Weapon/ITEM_WEAPON_FIST.png
+Mace bludgeon 8 15 Project/Sprites/Item/Weapon/ITEM_WEAPON_MACE.png
+Quarterstaff bludgeon 12 16 Project/Sprites/Item/Weapon/ITEM_WEAPON_QUARTERSTAFF.png
+Hammer bludgeon 6 18 Project/Sprites/Item/Weapon/ITEM_WEAPON_HAMMER.png
+Warhammer bludgeon 8 45 Project/Sprites/Item/Weapon/ITEM_WEAPON_WARHAMMER.png
+Spoon bludgeon 1 2 Project/Sprites/Item/Weapon/ITEM_WEAPON_SPOON.png
+Banana bludgeon 1 1 Project/Sprites/Item/Weapon/ITEM_WEAPON_BANANA.png

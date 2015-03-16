@@ -38,11 +38,19 @@ public class Vampire extends Undead
 	      atk.addDamage(new Damage(15+rand.nextInt(10), true, "slash"));//bite
 	      atk.applyPower(this.power);
 	      this.setHP(this.getHP()+5+rand.nextInt(6));//regains a small amount of health each attack
+<<<<<<< HEAD
 	      return target.takeDamage(atk);
 		}//end if
 		else
 		{
 			return ("The attack failed!");
+=======
+	      target.takeDamage(atk);
+		}//end if
+		else
+		{
+			System.out.println("The attack failed!");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 		}
 	}//end method
    
@@ -58,11 +66,19 @@ public class Vampire extends Undead
       atk.addDamage(new Damage(30+rand.nextInt(11), false, "untyped"));
       this.setHP(this.getHP()+30+rand.nextInt(21));
       atk.applyPower(this.power);
+<<<<<<< HEAD
       return  target.takeDamage(atk);
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
+=======
+      target.takeDamage(atk);
+	  }
+	  else
+	  {
+		  System.out.println("The attack failed!");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	  }
    }
    

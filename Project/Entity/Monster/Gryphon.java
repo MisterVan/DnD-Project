@@ -39,11 +39,19 @@ public class Gryphon extends Monster
 	      atk.addDamage(new Damage(20+rand.nextInt(10), true, "slash")); //mostly claws/bites
 	      atk.addDamage(new Damage(5+rand.nextInt(10), true, "bludgeon"));
 	      atk.applyPower(this.power);
+<<<<<<< HEAD
 	      return target.takeDamage(atk);
 		}
 		else
 		{
 			return ("The attack failed!");
+=======
+	      target.takeDamage(atk);
+		}
+		else
+		{
+			System.out.println("The attack failed!");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 		}
 	}//end method
    
@@ -60,11 +68,19 @@ public class Gryphon extends Monster
       atk.addDamage(new Damage(5 + rand.nextInt(5) , true, "slash")); //mostly claws/bites
       atk.addDamage(new Damage(5 + rand.nextInt(5), true, "bludgeon"));
       atk.applyPower(this.power/2); //We want damage to be lowish considering it also buffs
+<<<<<<< HEAD
       return target.takeDamage(atk);
       }
       else
       {
     	  return ("The attack failed!");
+=======
+      target.takeDamage(atk);
+      }
+      else
+      {
+    	  System.out.println("The attack failed!");
+>>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
       }
    }
    
