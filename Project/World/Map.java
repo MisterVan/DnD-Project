@@ -2,8 +2,8 @@ package Project.World;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
 import java.util.Random;
+
 
 
 import javafx.event.EventHandler;
@@ -171,8 +171,7 @@ public class Map {
 		parent.setMessageBoxText(result);
 		target = null;
 		if (heroTurn)
-			moveAlong();
-			
+			moveAlong();			
 		
 	}//executeSpecialMove
 	
@@ -187,11 +186,9 @@ public class Map {
 			map[y][x].setResident(null);
 			map[y][x].setWalkable(true);
 			realMap[y][x].setDisable(true);
-			try {
-				monsters.remove(target);
-			} catch (Exception e) {		 
-				heros.remove(target);
-			}
+			heros.remove(target);
+			monsters.remove(target);	
+						
 		}
 		return result;
 	}
@@ -354,16 +351,30 @@ public class Map {
 			
 			parent.setPlayerLabels("", "", "", "", "", "");
 			parent.setMessageBoxText("The monsters are taking their turns.... " + heroTurn);
+			if (monsters.size() == 0)
+				gameOver ("You win!!!");
 			for (Monster m : monsters) {
 				currentPlayer = m;
 				doMonsterStuff();
 				
 			}
 			heroTurn = true;
+			if (heros.size() == 0)
+				gameOver ("You lose!");
+			currentPlayer = heros.get(index);
+			Hero temp = (Hero) currentPlayer;
+			parent.setPlayerLabels(temp.getName(), "" + temp.getHP(), temp.getPrimaryWpn().description(),"", "", "");
 		}
 		
 	}//getNextCharacter
 	
+	private void gameOver(String string) {
+
+		parent.setMessageBoxText(string);
+		parent.disableScrollpane();
+		
+	}//
+
 	public void moveAlong () {
 		parent.setTargetLabels("", "");		
 		getNextCharacter();

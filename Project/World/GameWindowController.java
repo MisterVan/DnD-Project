@@ -130,5 +130,10 @@ public class GameWindowController implements Initializable {
 		for (Button b : buttons)
 			b.setVisible(false);
 	}//hideButtons
+
+	public void disableScrollpane() {
+		this.scrollPane.setDisable(true);
+		
+	}
 			
 }//class
