@@ -32,6 +32,7 @@
             <Label layoutX="8.0" layoutY="40.0" text="Weapon:" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="40.0" />
             <Label layoutX="8.0" layoutY="55.0" text="Equipment 1:" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="55.0" />
             <Label layoutX="8.0" layoutY="70.0" text="Equipment 2:" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="70.0" />
+            <Label layoutX="8.0" layoutY="70.0" text="Equipment 3:" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="85.0" />
             <Label layoutX="25.0" layoutY="569.0" text="Enemy:" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="8.0" />
             <Label layoutX="8.0" layoutY="584.0" text="Enemy HP:" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="8.0" />
          </children></AnchorPane>

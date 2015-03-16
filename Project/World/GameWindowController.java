@@ -16,7 +16,7 @@ import Project.Entity.Entity;
 
 public class GameWindowController implements Initializable {
 	
-	private static final String INPUT_FILE_NAME = "Project\\World\\map.csv";
+	private static final String INPUT_FILE_NAME = "Project\\World\\map3.csv";
 			
 	@FXML private VBox gameMap;	
 	@FXML private Button option1;						

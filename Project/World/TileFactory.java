@@ -29,7 +29,7 @@ public class TileFactory {
 		images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_ROCK_2.png"));         //3
 		images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_ROCK_3.png"));         //4
 		images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_ROCK_4.png"));         //5
-		images.add(new Image ("Project\\Sprites\\Terrain\\path.png"));					//6
+		images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_PATH.png"));			//6
       images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_BOTTOM.png"));//7
       images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_TOP.png"));//8
       images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_GRASS_TO_SHORE_LEFT.png"));//9
