@@ -2,7 +2,11 @@ package Project.Entity.Hero;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+
 import Project.Behavior.Offense.Attack;
+import Project.Item.Consumable.ElixirOfLife;
+import Project.Item.Consumable.PotionOfBlur;
+import Project.Item.Consumable.PotionOfMight;
 import Project.Item.Weapon.Weapon;
 import Project.Item.Item;
 import Project.Entity.Entity;
@@ -12,6 +16,16 @@ public abstract class Hero extends Entity
    protected Weapon primaryWpn;
    private String playerName = "Unknown";
    protected ArrayList<Item> inventory = new ArrayList<Item>();
+   
+   public Hero () {
+	   Item potion = new ElixirOfLife();
+	   inventory.add(potion);
+	   potion = new PotionOfBlur();
+	   inventory.add(potion);
+	   potion = new PotionOfMight();
+	   inventory.add(potion);
+	   
+   }//hero
    
    //primary attack
    public String performAttack(Entity target)
