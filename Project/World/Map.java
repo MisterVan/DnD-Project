@@ -201,6 +201,9 @@ public class Map {
 			highlightIndividualTile(x, y);
 			parent.setMessageBoxText("Which would you like to interact with? \n\nClick on yourself to do nothing.");
 		}
+		else {
+			moveAlong();
+		}
 	
 	}//checkSurroundings
 	
@@ -414,8 +417,6 @@ public class Map {
 		return false;
 				
 	}//mCheckSurroundings
-	
-	
 
 	private void monsterAttack(MapResident resident) {
 		
