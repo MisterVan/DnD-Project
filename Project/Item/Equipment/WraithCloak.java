@@ -6,6 +6,7 @@ public class WraithCloak extends Equipment {
 
 public WraithCloak() {
    super.name = "Cloak of the Wraith";
+   super.setSprite("Project/Sprites/Item/Equipment/ITEM_EQUIPMENT_WRAITHCLOAK.png");
 }
 
 public void pickUp(Entity e) {

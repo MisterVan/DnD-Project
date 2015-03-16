@@ -16,6 +16,7 @@ import java.util.Scanner;
 import Project.Entity.Entity;
 import Project.Entity.Hero.Hero;
 import Project.Entity.Monster.Monster;
+import Project.Item.Item;
 
 public class MapBuilderUtility {
 	
@@ -52,16 +53,25 @@ public class MapBuilderUtility {
 				map[i][j] = tfac.createTile(i, j, rawData[i][j]);	
 				if (map[i][j].getResident() != null) {
 					
-					Entity ent = (Entity) map[i][j].getResident();
-					ent.setXCoord(j);
-					ent.setYCoord(i);
 					try {
-						parent.addCharacter((Hero) map[i][j].getResident());
-						//System.out.println("adding hero");
-					} catch (Exception e) {
-						parent.addCharacter((Monster) map[i][j].getResident());
-						//System.out.println("adding monster");
+						Entity ent = (Entity) map[i][j].getResident();
+						ent.setXCoord(j);
+						ent.setYCoord(i);
+						try {
+							parent.addCharacter((Hero) map[i][j].getResident());
+							//System.out.println("adding hero");
+						} catch (Exception e) {
+							parent.addCharacter((Monster) map[i][j].getResident());
+							//System.out.println("adding monster");
+						}
 					}//
+					catch (Exception e) {
+						Item itm = (Item) map[i][j].getResident();
+						itm.setXCoord(j);
+						itm.setYCoord(i);
+					}
+					
+					
 					
 				}//if there was a character
 				

@@ -6,6 +6,7 @@ import java.util.Random;
 
 
 
+
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -15,6 +16,7 @@ import javafx.scene.layout.VBox;
 import Project.Entity.Entity;
 import Project.Entity.Hero.Hero;
 import Project.Entity.Monster.Monster;
+import Project.Item.Item;
 
 public class Map {	
 	
@@ -114,8 +116,14 @@ public class Map {
 	    							}//if entity
 		    							    							
 	    							else { 
+	    								Item itm = (Item) clicked;
+	    								Hero temp = (Hero) currentPlayer;
+	    								temp.addToInventory(itm);
+	    								realMap[yCoord][xCoord].getChildren().remove(itm.getSprite());
+	    								map[yCoord][xCoord].setResident(null);
+	    								map[yCoord][xCoord].setWalkable(true);
 	    								
-	    								//call item interaction method
+	    								moveAlong();
 	    							}//if item	    							
 	    							    							
 	    						}//if interacting rather than moving
@@ -370,8 +378,8 @@ public class Map {
 	
 	private void gameOver(String string) {
 
-		parent.setMessageBoxText(string);
-		parent.disableScrollpane();
+		//parent.setMessageBoxText(string);
+		//parent.disableScrollpane();
 		
 	}//
 

@@ -176,7 +176,7 @@ private Weapon getWeapon(int index) throws IOException, FileNotFoundException{
 
    Weapon w = null;
    String splitLine[] = null;
-   FileReader f = new FileReader(System.getProperty("user.dir") + "\\Project\\Item\\Weapon\\weapons.txt"); //UPDATE THIS WHEN DIRECTORY CHANGES
+   FileReader f = new FileReader("Project\\Item\\Weapon\\weapons.txt"); //UPDATE THIS WHEN DIRECTORY CHANGES
    BufferedReader fin = null;
    fin = new BufferedReader(f);
    int counter = 0;

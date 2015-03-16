@@ -11,7 +11,6 @@ Rapier pierce 8 12 Project/Sprites/Item/Weapon/ITEM_WEAPON_RAPIER.png
 Lance pierce 20 30 Project/Sprites/Item/Weapon/ITEM_WEAPON_LANCE.png
 Warpick pierce 5 18 Project/Sprites/Item/Weapon/ITEM_WEAPON_WARPICK.png
 Morningstar pierce,bludgeon 6 16 Project/Sprites/Item/Weapon/ITEM_WEAPON_MORNINGSTAR.png
-Fist bludgeon 4 8 Project/Sprites/Item/Weapon/ITEM_WEAPON_FIST.png
 Mace bludgeon 8 15 Project/Sprites/Item/Weapon/ITEM_WEAPON_MACE.png
 Quarterstaff bludgeon 12 16 Project/Sprites/Item/Weapon/ITEM_WEAPON_QUARTERSTAFF.png
 Hammer bludgeon 6 18 Project/Sprites/Item/Weapon/ITEM_WEAPON_HAMMER.png

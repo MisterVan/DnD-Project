@@ -5,6 +5,8 @@ import java.util.Random;
 
 import Project.Entity.Hero.HeroFactory;
 import Project.Entity.Monster.MonsterFactory;
+import Project.Item.Item;
+import Project.Item.ItemFactory;
 //import Project.World.MapResident;
 import javafx.scene.image.Image;
 
@@ -14,6 +16,7 @@ public class TileFactory {
 	ArrayList<Image> images;
 	HeroFactory hFac;
 	MonsterFactory mFac;
+	ItemFactory iFac;
 	Image highlight;
 	Random rand;
 	
@@ -32,6 +35,8 @@ public class TileFactory {
 		
 		hFac = new HeroFactory();
 		mFac = new MonsterFactory();
+		iFac = new ItemFactory();
+		
 	}//DVC
 	
 	
@@ -97,7 +102,13 @@ public class TileFactory {
 			e = mFac.createRandomMonster();
 			t.setResident(e);
 			break;
-
+			
+		case "i":
+			t = new Tile(images.get(1), xCoord, yCoord, highlight, false);
+			Item item = iFac.createRandomItem();
+			t.setResident(item);
+			break;
+			
 		default:			
 			System.out.println("Ilegal option in map.csv: " + type + ", " + type2); // this will only happen during testing
 			throw new IllegalStateException();

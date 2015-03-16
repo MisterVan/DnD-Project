@@ -9,7 +9,7 @@ public class Antidote extends Consumable {
 
 public Antidote() {
    super.name = "Antidote";
-   super.setSprite("Project/Sprites/Item/Potion/ITEM_POTION_ANTIDOTE.png");
+   super.setSprite("Project\\Sprites\\Item\\Potion\\ITEM_POTION_ANTIDOTE.png");
 }
 
 public void pickUp(Entity e) {
