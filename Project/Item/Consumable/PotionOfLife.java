@@ -7,6 +7,7 @@ public class PotionOfLife extends Consumable {
 
 public PotionOfLife() {
    super.name = "Potion of Life";
+   super.setSprite("Project/Sprites/Item/Potion/ITEM_POTION_HEALING.png");
 }
 public void pickUp(Entity e) {
    super.wielder = e;

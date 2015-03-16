@@ -8,6 +8,7 @@ public class PotionOfBlur extends Consumable {
 
 public PotionOfBlur() {
    super.name = "Potion of Blur";
+   super.setSprite("Project/Sprites/Item/Potion/ITEM_POTION_POTIONOFBLUR.png");
 }
 
 public void pickUp(Entity e) {

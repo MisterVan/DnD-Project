@@ -26,9 +26,6 @@ public class Fighter extends Hero
       Weapon sword = new Weapon("Longsword", "slash", 8, 15);
       setPrimaryWpn(sword);
 
-      Weapon dagger = new Weapon("Dagger", "slash,pierce", 20, 25);
-      this.inventory.add(0, dagger);
-
       this.inventory.add(0, new Weapon("Scimitar", "slash", 7, 16));
 
       super.setSprite("Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_FIGHTER.png");

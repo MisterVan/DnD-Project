@@ -2,7 +2,6 @@ package Project.Entity.Monster;
 import java.util.Random;
 
 import Project.Behavior.Status.BurningFlames;
-import Project.Behavior.Status.Blind;
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
