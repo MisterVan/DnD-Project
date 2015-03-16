@@ -16,10 +16,10 @@ public class Basilisk extends Monster
 	{
 		setName("Basilisk");
       setHP(145);
-		setPower(30);
-      setSpeed(20);
-      setAccuracy(0.7);
-      setDodge(0.4);
+      setPower(30);
+      setSpeed(4);
+      setAccuracy(0.6);
+      setDodge(0.2);
       setDamageReduction(new DamageReduction(10, "cold")); //Vulnerable to cold
       ElementalResistance elRes = new ElementalResistance();  
       elRes.setCold(0, 2.0); //Takes double cold damage    
@@ -31,32 +31,47 @@ public class Basilisk extends Monster
    
    //Perform attack
 	@Override
-	public void performAttack(Entity target)
+	public String performAttack(Entity target)
 	{
-      Attack atk = new Attack();
-      atk.addDamage(new Damage(15, true, "slash"));
-      atk.addDamage(new Damage(5, true, "bludgeon"));
-      atk.addDamage(new Damage(20, false, "acid"));
-      
-      Random rand = new Random(); 
-      int poisChance = rand.nextInt(5);
-      if(poisChance == 3)//small chance for poison
-      {
-         Poison poisonEffect = new Poison();
-         atk.addStatus(poisonEffect);
-      }
-      
-      target.takeDamage(atk);
+		if(Math.random() <= this.accuracy)
+		{
+		  Random rand = new Random();
+	      Attack atk = new Attack();
+	      atk.addDamage(new Damage(10+rand.nextInt(5), true, "slash"));
+	      atk.addDamage(new Damage(3+rand.nextInt(5), true, "bludgeon"));
+	      atk.addDamage(new Damage(15+rand.nextInt(5), false, "acid"));
+	      atk.applyPower(super.power);
+	
+	      int poisChance = rand.nextInt(5);
+	      if(poisChance == 3)//small chance for poison
+	      {
+	         Poison poisonEffect = new Poison();
+	         atk.addStatus(poisonEffect);
+	      }
+	      return target.takeDamage(atk);
+		}//end if
+		else
+		{
+			return ("The attack failed!");
+		}
 	}//end method
    
    @Override
-   public void specialMove(Entity target)
+   public String specialMove(Entity target)
    {
+	  if(Math.random() <= (this.accuracy-0.1))
+	  {
+	   Random rand = new Random();
       Poison poisonEffect = new Poison();
       Attack atk = new Attack();
-      atk.addDamage(new Damage(45, false, "acid"));
+      atk.addDamage(new Damage(45+rand.nextInt(10), false, "acid"));
       atk.addStatus(poisonEffect);//definitely poison
-      target.takeDamage(atk);
+      return target.takeDamage(atk);
+	  }//end if
+	  else
+	  {
+		  return ("The attack failed!");
+	  }
    }
    
 }//end Basilisk

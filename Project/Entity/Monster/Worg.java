@@ -5,7 +5,8 @@ import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
-import Project.Behavior.Status.CorrosiveAcid;
+import Project.Behavior.Status.Poison;
+import java.util.Random;
 
 public class Worg extends Monster
 {
@@ -14,37 +15,51 @@ public class Worg extends Monster
 	public Worg()
 	{
 		setName("Worg");
-      setHP(130);
-		setPower(30);
-      setSpeed(50);
-      setAccuracy(0.8);
-      setDodge(0.5);
-      setDamageReduction(new DamageReduction(10, "fire")); //Vulnerable to fire
+      setHP(90);
+		setPower(20);
+      setSpeed(6);
+      setAccuracy(0.7);
+      setDodge(0.3);
+      setDamageReduction(new DamageReduction(0, "-")); //Vulnerable to fire
       ElementalResistance elRes = new ElementalResistance();      
-      elRes.setFire(0, 1.1); //Takes one and one-tenth fire damage due to fur
+      elRes.setFire(0, 1.2); //Takes one and one-tenth fire damage due to fur
       
       setElementalResistance(elRes);
-      //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_WORG.png");
+      super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_WORG.png");
 	}//end method
    
    //Perform attack
-	public void performAttack(Entity target)
+	public String performAttack(Entity target)
 	{
+	 if(Math.random() <= this.accuracy)	
+	 {
+	  Random rand = new Random();
       Attack atk = new Attack();
-      atk.addDamage(new Damage(40, true, "slash")); //only able to claw/bite
-      target.takeDamage(atk);
+      atk.addDamage(new Damage(10+rand.nextInt(15), true, "slash")); //only able to claw/bite
+      atk.applyPower(this.power);
+      return target.takeDamage(atk);
+	 }
+	 else
+	 {
+		 return ("The attack failed!");
+	 }
 	}//end method
    
    @Override
-   public void specialMove(Entity target)
+   public String specialMove(Entity target)
    {
-      //Has a random chance of tripping a target during an attack
+	  Random rand = new Random();
+	  if(Math.random() <= this.accuracy-0.15)
+	  {
       Attack atk = new Attack();
-      atk.addDamage(new Damage(40, true, "slash"));
-      atk.addDamage(new Damage(5, false, "acid"));
-      CorrosiveAcid acidEffect = new CorrosiveAcid();
-      atk.addStatus(acidEffect);//definitely poison
-      target.takeDamage(atk);
+      atk.addDamage(new Damage(35+rand.nextInt(15), true, "slash"));
+      atk.addStatus(new Poison());//definitely poison
+      atk.applyPower(this.power);
+      return target.takeDamage(atk);
+	  }
+	  else {
+		  return ("The attack failed!");
+	  }
    }
    
 }//end Worg

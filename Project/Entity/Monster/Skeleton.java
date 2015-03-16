@@ -6,43 +6,64 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 import Project.Item.Weapon.Weapon;
+import Project.Item.Weapon.WeaponFactory;
+import java.util.Random;
 
-public class Skeleton extends Monster
+public class Skeleton extends Undead
 {
    
    //Create Skeleton
 	public Skeleton()
 	{
 		setName("Skeleton");
-      setHP(106);
-		setPower(30);
-      setSpeed(25);
+      setHP(105);
+		setPower(25);
+      setSpeed(4);
       setAccuracy(0.7);
-      setDodge(0.4);
-      setDamageReduction(new DamageReduction(10, "bludgeon")); //Vulnerable to bludgeon
+      setDodge(0.2);
+      setDamageReduction(new DamageReduction(5, "bludgeon")); //Vulnerable to bludgeon
       ElementalResistance elRes = new ElementalResistance();  
       elRes.setCold(0, 0.25); //Takes one-quarter cold damage
       
       setElementalResistance(elRes);
-      //super.setSprite"Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_SKELETON.png");
+      super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_SKELETON.png");
 	}//end method
    
    //Perform attack (not wielding a weapon)
-	public void performAttack(Entity target)
+	public String performAttack(Entity target)
 	{
+	  if(Math.random() <= this.accuracy)
+	  {
+	  Random rand = new Random();	
       Attack atk = new Attack();
-      atk.addDamage(new Damage(15, true, "slash"));
-      atk.addDamage(new Damage(15, true, "bludgeon"));
-      target.takeDamage(atk);
+      atk.addDamage(new Damage(5+rand.nextInt(15), true, "slash"));
+      atk.addDamage(new Damage(10+rand.nextInt(10), true, "bludgeon"));
+      atk.applyPower(this.power);
+      return target.takeDamage(atk);
+	  }
+	  else
+	  {
+		  return ("The attack failed!");
+	  }
 	}//end method
    
    //Perform attack (wielding a weapon)
    @Override
-   public void specialMove(Entity target)
+   public String specialMove(Entity target)
    {
-      //Skeleton is able to wield a weapon and attack another player.
-      Weapon club = new Weapon("Club", "bludgeon", 25, 35);
-      target.takeDamage(club.attack());
+	 if(Math.random() <= this.accuracy-0.2)
+	 {
+      WeaponFactory fact = new WeaponFactory();
+      Weapon w = fact.createRandomWeapon();
+      Attack atk = w.attack();
+      atk.applyPower(this.power);
+      return target.takeDamage(atk);
+	 }
+	 else
+	 {
+		 return ("The attack failed!");
+	 }
+	 
    }
    
 }//end Skeleton

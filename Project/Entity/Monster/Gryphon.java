@@ -6,6 +6,7 @@ import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
+import java.util.Random;
 
 public class Gryphon extends Monster
 {
@@ -14,12 +15,12 @@ public class Gryphon extends Monster
 	public Gryphon()
 	{
 		setName("Gryphon");
-      setHP(159);
+      setHP(180);
 		setPower(30);
-      setSpeed(40);
+      setSpeed(6);
       setAccuracy(0.7);
-      setDodge(0.4);
-      setDamageReduction(new DamageReduction(15, "slash")); //Vulnerable to slash
+      setDodge(0.2);
+      setDamageReduction(new DamageReduction(5, "slash,pierce")); //Vulnerable to slash
       ElementalResistance elRes = new ElementalResistance();      
       elRes.setCold(0, 2.0); //Takes double cold damage
       elRes.setElec(0, 1.5); //Takes one and a half electric damage
@@ -29,24 +30,42 @@ public class Gryphon extends Monster
 	}//end method
    
    //Perform attack
-	public void performAttack(Entity target)
+	public String performAttack(Entity target)
 	{
-      Attack atk = new Attack();
-      atk.addDamage(new Damage(30, true, "slash")); //mostly claws/bites
-      atk.addDamage(new Damage(20, true, "bludgeon"));
-      target.takeDamage(atk);
+		if(Math.random() <= this.accuracy)
+		{
+			Random rand = new Random();
+	      Attack atk = new Attack();
+	      atk.addDamage(new Damage(20+rand.nextInt(10), true, "slash")); //mostly claws/bites
+	      atk.addDamage(new Damage(5+rand.nextInt(10), true, "bludgeon"));
+	      atk.applyPower(this.power);
+	      return target.takeDamage(atk);
+		}
+		else
+		{
+			return ("The attack failed!");
+		}
 	}//end method
    
    @Override
-   public void specialMove(Entity target)
+   public String specialMove(Entity target)
    {
       //Gryphon uses wings to dodge more quickly for a number of rounds using blur effect
       Blur flyEffect = new Blur();
-      flyEffect.applyEffectToTarget(this);
+      this.giveStatus(flyEffect);
+      if(Math.random() <= (this.accuracy - 0.2))
+      {
+      Random rand = new Random();
       Attack atk = new Attack();
-      atk.addDamage(new Damage(30, true, "slash")); //mostly claws/bites
-      atk.addDamage(new Damage(20, true, "bludgeon"));
-      target.takeDamage(atk);
+      atk.addDamage(new Damage(5 + rand.nextInt(5) , true, "slash")); //mostly claws/bites
+      atk.addDamage(new Damage(5 + rand.nextInt(5), true, "bludgeon"));
+      atk.applyPower(this.power/2); //We want damage to be lowish considering it also buffs
+      return target.takeDamage(atk);
+      }
+      else
+      {
+    	  return ("The attack failed!");
+      }
    }
    
 }//end Gryphon

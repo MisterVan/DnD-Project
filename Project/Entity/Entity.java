@@ -14,9 +14,9 @@ As parent class, it implements generic behavior for taking taking damage, having
 */
 
 
-public class Entity extends MapResident {
+public abstract class Entity extends MapResident {
     
-    protected String name = "Unknown";
+    //protected String name = "Unknown";
     protected int baseHP;
     protected int hp;
     protected int power;
@@ -30,42 +30,48 @@ public class Entity extends MapResident {
     
     protected boolean isCritImmune;
     
-    ArrayList<StatusEffect> statusEffects = new ArrayList<StatusEffect>();
-    
-    //Trinket item;
-    //Consumable potion;
-    //Weapon firstWeapon;
+    ArrayList<StatusEffect> statusEffects = new ArrayList<StatusEffect>();    
 
+public abstract String specialMove(Entity target);
+public abstract String performAttack(Entity target);
     
 //This object takes damage after applying all relevant resistances, immunities, and damage reduction
-public void takeDamage(Attack atk)
+public String takeDamage(Attack atk)
 {
    int actualDamage = 0;
-
+   if(Math.random() <= this.dodge)
+   {
+	   return "The " + this.name + " dodged the attack!";
+	   
+   }
+   
+   String result = "";
    for(Damage dmg : atk.getDamage())
    {
       if(dmg.isPhysical())
       {
          actualDamage = dr.processDamage(dmg);
          this.hp -= actualDamage;
-         System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage"); //This print is just used for feedback in testing
+         result += this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage\n"; //This print is just used for feedback in testing
       }
    else//it's magical
    { 
       actualDamage = er.processDamage(dmg);
       this.hp -= actualDamage;
-      System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
+      result += this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage\n";
    }
   }
    
    if(atk.hasStatus())
       this.giveStatus(atk.deliverStatus());
+   
+   return result;
 }//end method
 
 /*
 GETS, SETS =======================
 */
-public void setName(String newName)
+/*public void setName(String newName)
 {
    this.name = newName;
 }
@@ -74,7 +80,7 @@ public String getName()
 {
    return this.name;
 }
-
+*/
 public int getPower() {
    return this.power;
 }
@@ -95,7 +101,11 @@ public void setHP(int hp) {
  
 public void setSpeed(int s) {
    this.speed = s;
-}     
+}    
+
+public int getSpeed() {
+	return this.speed;
+}
 
 public void setAccuracy(double a) {
    this.accuracy = a;
@@ -126,6 +136,7 @@ public void setElementalResistance(ElementalResistance er) {
 }
 
 public boolean isDead() {
+	//System.out.println("in isdead");
 	return this.hp <= 0;
 }   
 
@@ -173,4 +184,6 @@ for(int i = 0; i < statusEffects.size(); i++) {
 }//end loop
 
 }
+
+
 }//end class

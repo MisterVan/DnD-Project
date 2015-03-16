@@ -2,36 +2,30 @@ package Project.Entity.Hero;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-
-import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 import Project.Item.Weapon.Weapon;
 import Project.Item.Item;
 import Project.Entity.Entity;
 
-public class Hero extends Entity
+public abstract class Hero extends Entity
 {
-   private Weapon primaryWpn;
+   protected Weapon primaryWpn;
    private String playerName = "Unknown";
-   protected ArrayList<Item> inventory = new ArrayList();
+   protected ArrayList<Item> inventory = new ArrayList<Item>();
    
    //primary attack
-   public Attack primaryAttack()
+   public String performAttack(Entity target)
    {
       if(primaryWpn == null)
       {
          System.out.println("Error: no weapon equipped!");
       }
-      return primaryWpn.attack();
+      Attack atk = primaryWpn.attack();
+      atk.applyPower(super.power);
+      return target.takeDamage(atk);
    }
    
-   /* 
-   //secondary attack (Not needed, can choose to carry two or three weapons and switch out primary)
-   public Attack secondaryAttack()
-   {
-      return secondaryWpn.attack();
-   }
-   */
+   
    
    //Returns weapon object to either drop back on map or add to inventory to save for later
    public Weapon equipWeapon(Weapon newWeapon)
@@ -191,16 +185,7 @@ public class Hero extends Entity
       return this.primaryWpn;
    }
    
-   /*
-   public void setSecondaryWpn(Weapon newWpn)
-   {
-      this.secondaryWpn = newWpn;
-   }
-   
-   public Weapon getSecondaryWpn()
-   {
-      return this.secondaryWpn;
-   }
-   */
+   public abstract String getSpecialName();
+   public abstract String getSpecialDescription();
    
 }//end Hero

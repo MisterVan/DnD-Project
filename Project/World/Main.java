@@ -22,8 +22,7 @@ public class Main extends Application {
 		
 	private Stage mainStage;
 	private BorderPane mainPain;
-	private GameWindowController cont;
-		
+	
 	public Main () { }
 	
 	@Override	
@@ -32,7 +31,7 @@ public class Main extends Application {
 		this.mainStage = primaryStage;
 		
 		initMainStage();
-		initDisplay();
+		//initDisplay();
 		
 		mainStage.show();
 				
@@ -41,24 +40,25 @@ public class Main extends Application {
 	private void initDisplay() throws IOException {
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("display.fxml"));
+		loader.setLocation(Main.class.getResource("display2.fxml"));
 		BorderPane infoPane = (BorderPane) loader.load();
 		mainPain.setCenter(infoPane);
 		
-		cont = loader.getController();
+		
 				
 	}//initRight
 
 	private void initMainStage() throws IOException {
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("rootWindow.fxml"));
+		//loader.setLocation(Main.class.getResource("rootWindow.fxml"));
+		loader.setLocation(Main.class.getResource("display2.fxml"));
 		mainPain = (BorderPane) loader.load();
+		
 		Scene scene = new Scene (mainPain);
 		mainStage.setTitle("Generic Dungeons and Dragons Game by Amber, Evan, and Tim");
 		mainStage.setScene(scene);
-		//mainStage.setResizable(false);
-				
+						
 	}//initMainStage
 
 	public static void main(String[] args) {

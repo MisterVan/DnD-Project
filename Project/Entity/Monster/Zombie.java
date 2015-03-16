@@ -7,47 +7,66 @@ import Project.Behavior.Defense.DamageReduction;
 import Project.Behavior.Offense.Damage;
 import Project.Behavior.Offense.Attack;
 import Project.Behavior.Status.CorrosiveAcid;
+import java.util.Random;
 
-public class Zombie extends Monster
+public class Zombie extends Undead
 {
    
    //Create Basilisk
 	public Zombie()
 	{
 		setName("Zombie");
-      setHP(116);
-		setPower(30);
-      setSpeed(10);
+      setHP(120);
+		setPower(20);
+      setSpeed(3);
       setAccuracy(0.5);
-      setDodge(0.2);
-      setDamageReduction(new DamageReduction(8, "slash")); //Vulnerable to slash
+      setDodge(0.0);
+      setDamageReduction(new DamageReduction(5, "slash")); //Vulnerable to slash
       ElementalResistance elRes = new ElementalResistance();
       elRes.setFire(0, 2.0); //Takes double fire damage
       
       setElementalResistance(elRes);
       
-      //super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_ZOMBIE.png");
+      super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_ZOMBIE.png");
 	}//end method
    
    //Perform attack
    @Override
-	public void performAttack(Entity target)
+	public String performAttack(Entity target)
 	{
-      Attack atk = new Attack();
-      atk.addDamage(new Damage(20, true, "bludgeon"));
-      atk.addDamage(new Damage(5, true, "slash"));
-      target.takeDamage(atk);
+	   if(Math.random() <= this.accuracy)
+	   {
+		  Random rand = new Random(); 
+	      Attack atk = new Attack();
+	      atk.addDamage(new Damage(20+rand.nextInt(6), true, "bludgeon"));
+	      atk.addDamage(new Damage(5+rand.nextInt(6), true, "slash"));
+	      atk.applyPower(this.power);
+	      return target.takeDamage(atk);
+	   }
+	   else
+	   {
+		   return ("The attack failed!");
+	   }
 	}//end method
    
    //Zombie spits up stomach acid
    @Override
-   public void specialMove(Entity target)
+   public String specialMove(Entity target)
    {
-      System.out.println("The Zombie spit up stomach acid!");
+      if(Math.random() <= this.accuracy-0.1)
+      {
+      Random rand = new Random();
       Attack atk = new Attack();
+      atk.addDamage(new Damage(rand.nextInt(10), true, "slash"));
       CorrosiveAcid acidEffect = new CorrosiveAcid();
       atk.addStatus(acidEffect);
-      target.takeDamage(atk);
+      atk.applyPower(this.power);
+      return target.takeDamage(atk);
+      }
+      else
+      {
+    	  return ("The attack failed!");
+      }
    }
    
    //Zombie has no special qualities, poor zombie ;__;

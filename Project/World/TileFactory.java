@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import Project.Entity.Hero.HeroFactory;
+import Project.Entity.Monster.MonsterFactory;
 //import Project.World.MapResident;
 import javafx.scene.image.Image;
 
@@ -12,6 +13,7 @@ public class TileFactory {
 	
 	ArrayList<Image> images;
 	HeroFactory hFac;
+	MonsterFactory mFac;
 	Image highlight;
 	Random rand;
 	
@@ -24,10 +26,12 @@ public class TileFactory {
 		images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_ROCK_2.png"));         //3
 		images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_ROCK_3.png"));         //4
 		images.add(new Image ("Project\\Sprites\\Terrain\\TEXTURE_ROCK_4.png"));         //5
+		images.add(new Image ("Project\\Sprites\\Terrain\\path.png"));					//6
 		
-		highlight = new Image ("Project\\World\\highlight.png");
+		highlight = new Image ("Project\\Sprites\\Terrain\\UTILITY_ATTACK_RED.png");
 		
 		hFac = new HeroFactory();
+		mFac = new MonsterFactory();
 	}//DVC
 	
 	
@@ -41,29 +45,64 @@ public class TileFactory {
 		case "r":			
 			rand = new Random();
 			int rando = rand.nextInt(4);
-			t = new RockTile(images.get(rando+2), xCoord, yCoord);
+			t = new Tile(images.get(rando+2), xCoord, yCoord, highlight, false);
 			break;
+			
 		case "g":
-			t = new GrassTile(images.get(1), xCoord, yCoord);
+			t = new Tile(images.get(1), xCoord, yCoord, highlight, true);
 			break;
-		case "": 
-			t = new GrassTile(images.get(1), xCoord, yCoord);
+			
+		case "":			
+			t = new Tile(images.get(1), xCoord, yCoord, highlight, true);
 			break;
-		case " ":
-			t = new GrassTile(images.get(1), xCoord, yCoord);
+			
+		case " ":			
+			t = new Tile(images.get(1), xCoord, yCoord, highlight, true);
 			break;
-		case "w":
-			t = new WaterTile(images.get(0), xCoord, yCoord);
+			
+		case "w":			
+			t = new Tile(images.get(0), xCoord, yCoord, highlight, false);
 			break;
-		case "cleric": 
-			t = new GrassTile (images.get(1), xCoord, yCoord);
+			
+		case "cleric":			
+			t = new Tile(images.get(1), xCoord, yCoord, highlight, true);
 			e = hFac.createHero(type);
 			t.setResident(e); 
 			break;
-		default: //this should never happen, map wont have invalid options
-			throw new IllegalStateException(); //singleton messagebox object that can have custom message?
-		}//switchType	
-		t.setHighlight(highlight);
+			
+		case "fighter":			
+			t = new Tile(images.get(1), xCoord, yCoord, highlight, true);
+			e = hFac.createHero(type);
+			t.setResident(e);
+			break;
+			
+		case "barbarian":			
+			t = new Tile(images.get(1), xCoord, yCoord, highlight, true);
+			e = hFac.createHero(type);
+			t.setResident(e);
+			break;
+			
+		case "wizard":			
+			t = new Tile(images.get(1), xCoord, yCoord, highlight, true);
+			e = hFac.createHero(type);
+			t.setResident(e);
+			break;
+			
+		case "p":			
+			t = new Tile(images.get(6), xCoord, yCoord, highlight, true);
+			break;
+			
+		case "m":
+			t = new Tile(images.get(1), xCoord, yCoord, highlight, true);
+			e = mFac.createRandomMonster();
+			t.setResident(e);
+			break;
+
+		default:			
+			System.out.println("Ilegal option in map.csv: " + type + ", " + type2); // this will only happen during testing
+			throw new IllegalStateException();
+		}//switchType
+				
 		return t;
 		
 	}// createTile SP, int, int, String

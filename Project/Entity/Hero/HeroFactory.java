@@ -2,9 +2,6 @@ package Project.Entity.Hero;
 
 import java.util.Scanner;
 
-import Project.Behavior.Defense.ElementalResistance;
-import Project.Behavior.Defense.DamageReduction;
-import Project.Item.Weapon.Weapon;
 //this is a comment
 //Regular factory
 public class HeroFactory
@@ -12,37 +9,37 @@ public class HeroFactory
    public Hero createHero(String type)
    {
       Hero hero = null;
-      String name = askName(type);
+      //String name = askName(type);
       
       if(type.equals("Fighter"))
       {
          hero = new Fighter();
-         hero.setPlayerName(name);
+         //hero.setPlayerName(name);
       }
       else if (type.equals("Wizard"))
       {
          hero = new Wizard();
-         hero.setPlayerName(name);
+         //hero.setPlayerName(name);
       }
       else if (type.equals("Barbarian"))
       {
          hero = new Barbarian();
-         hero.setPlayerName(name);
+         //hero.setPlayerName(name);
       }
       else if (type.equals("Cleric"))
       {
          hero = new Cleric();
-         hero.setPlayerName(name);
+         //hero.setPlayerName(name);
       }
       else if (type.equals("Monk"))
       {
          //hero = new Monk();
-         hero.setPlayerName(name);
+         //hero.setPlayerName(name);
       }
       else if (type.equals("Ranger"))
       {
          //hero = new Ranger();
-         hero.setPlayerName(name);
+         //hero.setPlayerName(name);
       }
       return hero;
    }//end createHero

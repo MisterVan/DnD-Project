@@ -2,6 +2,7 @@ package Project.Entity.Monster;
 import java.util.Random;
 
 import Project.Behavior.Status.Blind;
+import Project.Behavior.Status.Regeneration;
 import Project.Entity.Entity;
 import Project.Behavior.Defense.ElementalResistance;
 import Project.Behavior.Defense.DamageReduction;
@@ -18,49 +19,62 @@ public class Hydra extends Monster
 	public Hydra()
 	{
 		setName("Hydra");
-      setHP(130 + (10*numHeads));//ten extra hit points per head with a base hp of 130
+      setHP(200 + (20*numHeads));//ten extra hit points per head with a base hp of 130
 		setPower(30);
-      setSpeed(20);
+      setSpeed(5);
       setAccuracy(0.5 + (0.1 * numHeads));
       setDodge(0.2);
-      setDamageReduction(new DamageReduction(15, "cold")); //Vulnerable to cold
+      setDamageReduction(new DamageReduction(5, "slash")); //Vulnerable to cold
       ElementalResistance elRes = new ElementalResistance();      
       elRes.setCold(0, 2.0); //Takes double cold damage
-      //elRes.setElec(0, 1.5); //Takes one and a half electric damage
+      elRes.setElec(0, 1.5); //Takes one and a half electric damage
       
       setElementalResistance(elRes);
       super.setSprite("Project\\Sprites\\Characters\\Monster\\CHARACTER_MONSTER_HYDRA.png");
 	}//end method
    
    //Perform attack
-	public void performAttack(Entity target)
+	public String performAttack(Entity target)
 	{
-      Attack atk = new Attack();
-      atk.addDamage(new Damage(30, true, "slash")); //mostly slashes/bites
-      atk.addDamage(new Damage(10, false, "cold"));
-      atk.addDamage(new Damage(5, false, "acid")); //can spit venom that blinds oponent for one round
-      Random rand = new Random(); 
-      int blindChance = rand.nextInt(5);
-      if(blindChance == 3)//small chance for blindness
-      {
-         Blind blindEffect = new Blind();
-         atk.addStatus(blindEffect);
-      }
-      target.takeDamage(atk);
+		if(Math.random() <= this.accuracy)
+		{
+		  Random rand = new Random();
+	      Attack atk = new Attack();
+	      atk.addDamage(new Damage(30+rand.nextInt(6), true, "slash")); //mostly slashes/bites
+	      atk.addDamage(new Damage(5+rand.nextInt(6), false, "acid")); //can spit venom that blinds oponent for one round
+
+	      int blindChance = rand.nextInt(5);
+	      if(blindChance == 3)//small chance for blindness
+	      {
+	         Blind blindEffect = new Blind();
+	         atk.addStatus(blindEffect);
+	      }
+	      atk.applyPower(this.power);
+	      return target.takeDamage(atk);
+		}
+		else
+		{
+			return ("The attack failed!");
+		}
 	}//end method
    
    @Override
-   public void takeDamage(Attack atk)
+   public String takeDamage(Attack atk)
    {
       int actualDamage = 0;
-   
+      if(Math.random() <= this.dodge)
+      {
+    	  return ("The Hydra evaded the attack!");
+    	  
+      }
+      String result = "";
       for(Damage dmg : atk.getDamage())
       {
          if(dmg.isPhysical())
          {
             actualDamage = dr.processDamage(dmg);
             this.hp -= actualDamage;
-            System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage"); //This print is just used for feedback in testing
+            result += (this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage"); //This print is just used for feedback in testing
             if(dmg.getDamageType().contains("slash"))//count slash damage
             {
                this.slashTally = this.slashTally + actualDamage;
@@ -70,42 +84,53 @@ public class Hydra extends Monster
       { 
          actualDamage = er.processDamage(dmg);
          this.hp -= actualDamage;
-         System.out.println(this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
+         result += (this.name + " took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
       }
      }
       
       if(atk.hasStatus())
          this.giveStatus(atk.deliverStatus());
+      return result;
    }//end method
       
    @Override
-   public void specialMove(Entity target)
+   public String specialMove(Entity target)
    {
       //Waits until it takes 30 or more slash damage, indicating a head has been lost.
       //numheads increases by 1, HP increases by 20 indicating the addition of 'two new heads'
       //Hydra is momentarily blinded because of this.
+	  Random rand = new Random();
+	  String result = "";
       if(this.slashTally > 30)
       {
-         this.numHeads++;
-         this.setHP(this.getHP()+20);
-         System.out.println("A head of the hydra has been cut off and replaced with two new ones!");
+         this.numHeads+=2;
+         this.recoverHP(40+rand.nextInt(11));
+         result += ("A head of the hydra has been cut off and replaced with two new ones!");
       }
-      Blind regrowthEffect = new Blind();
-      regrowthEffect.applyEffectToTarget(this);
+      Regeneration regrowthEffect = new Regeneration();
+      this.giveStatus(regrowthEffect);
       
       //also does a weaker attack
+      if(Math.random() <= this.accuracy)
+      {
       Attack atk = new Attack();
-      atk.addDamage(new Damage(10, true, "slash")); //slashes/bites
-      atk.addDamage(new Damage(10, false, "cold"));
-      atk.addDamage(new Damage(5, false, "acid")); //can spit venom that blinds oponent for one round
-      Random rand = new Random(); 
+      atk.addDamage(new Damage(10+rand.nextInt(4), true, "slash")); //slashes/bites
+      atk.addDamage(new Damage(10+rand.nextInt(4), false, "acid"));
       int blindChance = rand.nextInt(5);
       if(blindChance == 3)//small chance for blindness
       {
          Blind blindEffect = new Blind();
          atk.addStatus(blindEffect);
       }
+      atk.applyPower(this.power);
       target.takeDamage(atk);
+      }//end if
+      else
+      {
+      return ("The attack failed!");
+      }
+      
+      return result;
    }
    
 }//end Hydra

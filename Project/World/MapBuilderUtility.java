@@ -14,17 +14,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Project.Entity.Entity;
+import Project.Entity.Hero.Hero;
+import Project.Entity.Monster.Monster;
 
 public class MapBuilderUtility {
 	
-	private GameWindowController parent;
+	private Map parent;
 	
-	public MapBuilderUtility (GameWindowController parent) {
+	public MapBuilderUtility (Map parent) {
 		
 		this.parent = parent;
-	}
+	}//EVC
 	
-	public Tile [][] buildMap(String in, int size) throws FileNotFoundException {
+	public Tile [][] buildMap(String in) throws FileNotFoundException {
 		
 		Scanner fin = new Scanner (new File(in));
 		
@@ -53,7 +55,11 @@ public class MapBuilderUtility {
 					Entity ent = (Entity) map[i][j].getResident();
 					ent.setXCoord(j);
 					ent.setYCoord(i);
-					parent.addCharacter((Entity) map[i][j].getResident());
+					try {
+						parent.addCharacter((Hero) map[i][j].getResident());
+					} catch (Exception e) {
+						parent.addCharacter((Monster) map[i][j].getResident());
+					}//
 					
 				}//if there was a character
 				

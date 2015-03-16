@@ -7,7 +7,7 @@ import Project.World.MapResident;
 public abstract class Item extends MapResident {
 
 protected Entity wielder;
-protected String name;
+//protected String name;
 
 public void pickUp(Entity e) {
    this.wielder = e;
@@ -17,8 +17,8 @@ public void drop() {
    this.wielder = null;
 }
 
-public String getName() {
+/*public String getName() {
    return name;
 }
-
+*/
 }
