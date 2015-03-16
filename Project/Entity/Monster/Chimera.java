@@ -52,19 +52,13 @@ public class Chimera extends Monster
          atk.addStatus(poisonEffect);
       }
       
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	  }//end if
 	  else
 	  {
 		  return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	  }//end if
-	  else
-	  {
-		  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	  }
 	}//end method
    
@@ -81,20 +75,13 @@ public class Chimera extends Monster
       atk.applyPower(super.power);
       Poison poisonEffect = new Poison();
       atk.addStatus(poisonEffect);
-      
-<<<<<<< HEAD
+ 
       return target.takeDamage(atk);
 	   }//end if
 	   else
 	   {
 		   return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	   }//end if
-	   else
-	   {
-		   System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	   }
    }
    

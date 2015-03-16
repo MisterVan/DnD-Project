@@ -41,13 +41,9 @@
          int actualDamage = 0;
 			
 			if(Math.random() <= this.dodge) {
-<<<<<<< HEAD
+
 				return "The flesh golem avoided the attack!";
-				
-=======
-				System.out.println("The flesh golem avoided the attack!");
-				return;
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 			}
 		 String result = "";
          for(Damage dmg : atk.getDamage()) {
@@ -85,19 +81,13 @@
       atk.addDamage(new Damage(25 + rand.nextInt(10), true, "slash"));
       atk.addDamage(new Damage(30 + rand.nextInt(20), true, "bludgeon"));
       atk.applyPower(this.power);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	  }
-	  else
-	  {
-		  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	  }
 	}//end method
    
@@ -110,19 +100,13 @@
       Attack atk = new Attack();
       atk.addDamage(new Damage(40+rand.nextInt(41), true, "bludgeon"));
       atk.applyPower(this.power*2);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	  }
-	  else
-	  {
-		  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	  }
    }
 }//end class

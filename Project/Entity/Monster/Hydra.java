@@ -50,19 +50,13 @@ public class Hydra extends Monster
 	         atk.addStatus(blindEffect);
 	      }
 	      atk.applyPower(this.power);
-<<<<<<< HEAD
+
 	      return target.takeDamage(atk);
 		}
 		else
 		{
 			return ("The attack failed!");
-=======
-	      target.takeDamage(atk);
-		}
-		else
-		{
-			System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 		}
 	}//end method
    
@@ -72,16 +66,12 @@ public class Hydra extends Monster
       int actualDamage = 0;
       if(Math.random() <= this.dodge)
       {
-<<<<<<< HEAD
+
     	  return ("The Hydra evaded the attack!");
     	  
       }
       String result = "";
-=======
-    	  System.out.println("The Hydra evaded the attack!");
-    	  return;
-      }
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
       for(Damage dmg : atk.getDamage())
       {
          if(dmg.isPhysical())
@@ -114,19 +104,16 @@ public class Hydra extends Monster
       //numheads increases by 1, HP increases by 20 indicating the addition of 'two new heads'
       //Hydra is momentarily blinded because of this.
 	  Random rand = new Random();
-<<<<<<< HEAD
+
 	  String result = "";
-=======
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
       if(this.slashTally > 30)
       {
          this.numHeads+=2;
          this.recoverHP(40+rand.nextInt(11));
-<<<<<<< HEAD
+
          result += ("A head of the hydra has been cut off and replaced with two new ones!");
-=======
-         System.out.println("A head of the hydra has been cut off and replaced with two new ones!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
       }
       Regeneration regrowthEffect = new Regeneration();
       this.giveStatus(regrowthEffect);
@@ -148,15 +135,12 @@ public class Hydra extends Monster
       }//end if
       else
       {
-<<<<<<< HEAD
+
       return ("The attack failed!");
       }
       
       return result;
-=======
-      System.out.println("The attack failed!");
-      }
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
    }
    
 }//end Hydra

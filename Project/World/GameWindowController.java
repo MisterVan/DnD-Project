@@ -38,22 +38,17 @@ public class GameWindowController implements Initializable {
 	@FXML private Label monsterHPLabel;
 		
 	private Button [] buttons;
-<<<<<<< HEAD
+
 	private Map map;
 	private boolean wizardChoice;
 		
-=======
-
-	private Map map;
-	private GameLogic game; 
 	Entity currentPlayer;										//TESTING ONLY?	
 	
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		this.map = new Map (INPUT_FILE_NAME, gameMap, this);
-<<<<<<< HEAD
+
 		Button [] temp = {option1, option2, option3, option4, option5};
 		buttons = temp;		
 		hideButtons();
@@ -62,21 +57,13 @@ public class GameWindowController implements Initializable {
 						   "Scroll around on the map using the arrow keys.");
 		monsterNameLabel.setText("");
 		monsterHPLabel.setText("");
-=======
-		//this.game = new GameLogic (map);
-		Button [] temp = {option1, option2, option3, option4, option5};
-		buttons = temp;
-		
-		for (Button b : buttons) {
-			b.setVisible(false);
-		}
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 		map.playGame();
 						
 	}//initialize
 
 	@FXML
-<<<<<<< HEAD
+
 	public void touchButton1() {
 		map.executeAttack();
 		hideButtons();								
@@ -143,64 +130,5 @@ public class GameWindowController implements Initializable {
 		for (Button b : buttons)
 			b.setVisible(false);
 	}//hideButtons
-=======
-	public void touchButt1() {
-		
-		for (Button b : buttons) {
-			b.setVisible(false);
-		}
-		messageBox.setText("");
-		map.moveAlong();		
-								
-	}//touchButt
-	
-	@FXML
-	public void touchButt2() {
-		
-		
-		
-	}//touchButt
-	
-	@FXML
-	public void touchButt3() {
-		
-		messageBox.setText("");
-				
-	}//touchButt
-	
-	@FXML
-	public void touchButt4() {
-		
-		messageBox.setText("This is a string");
-		
-	}//touchButt
-	
-	public void setPlayerLabels(String name, String playerClass, int i, String weapon, String equip1, String equip2) {
-		this.playerNameLabel.setText(name);
-		this.playerClass.setText(playerClass);
-		this.playerHPLabel.setText("" + i);
-		this.playerWeaponLabel.setText(weapon);
-		this.playerEquip1Label.setText(equip1);
-		this.playerEquip2Label.setText(equip2);
-		
-	}//setPlayerLabels
-	
-	public void setMessageBoxText (String message) {
-		
-		this.messageBox.setText(message);
-	}//setMessageBoxText String 
-	
-	public void setUpButtons (String textBox, ArrayList<String> args) {
-		
-		this.messageBox.setText(textBox);
-		for (int i=0; i<args.size(); i++) {
 			
-			buttons[i].setVisible(true);
-			buttons[i].setText(args.get(i));
-			
-		}//for s in args
-		
-	}//setUpButtons
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
-		
 }//class

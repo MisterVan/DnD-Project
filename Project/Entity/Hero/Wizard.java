@@ -39,11 +39,9 @@ public class Wizard extends Hero
 	}//end method
    
    @Override
-<<<<<<< HEAD
+
    public String specialMove(Entity target)
-=======
-   public void specialMove(Entity target)
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
    {
       //Wizard able to have more specific/powerful spells? idk
       Scanner kb = new Scanner(System.in);
@@ -73,11 +71,8 @@ public class Wizard extends Hero
          atk.addStatus(new CorrosiveAcid());
       }
       atk.applyPower(super.power);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
-=======
-      target.takeDamage(atk);
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
    }
    
    @Override

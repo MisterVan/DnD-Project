@@ -32,12 +32,8 @@ public abstract class Entity extends MapResident {
     
     ArrayList<StatusEffect> statusEffects = new ArrayList<StatusEffect>();    
 
-<<<<<<< HEAD
 public abstract String specialMove(Entity target);
 public abstract String performAttack(Entity target);
-=======
-public abstract void specialMove(Entity target);
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
     
 //This object takes damage after applying all relevant resistances, immunities, and damage reduction
 public String takeDamage(Attack atk)
@@ -45,17 +41,13 @@ public String takeDamage(Attack atk)
    int actualDamage = 0;
    if(Math.random() <= this.dodge)
    {
-<<<<<<< HEAD
+
 	   return "The " + this.name + " dodged the attack!";
 	   
    }
    
    String result = "";
-=======
-	   System.out.println("The " + this.name + " dodged the attack!");
-	   return;
-   }
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+	
    for(Damage dmg : atk.getDamage())
    {
       if(dmg.isPhysical())

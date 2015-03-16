@@ -45,17 +45,12 @@
          int actualDamage = 0;
          if(Math.random() <= this.dodge)
          {
-<<<<<<< HEAD
+
         	 return("The golem dodged the attack!");
         	 
          }
          String result = "";
-=======
-        	 System.out.println("The golem dodged the attack!");
-        	 return;
-         }
-         
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
          for(Damage dmg : atk.getDamage()) {
             if(dmg.isPhysical()) {
                actualDamage = dr.processDamage(dmg);
@@ -91,19 +86,13 @@
       Attack atk = new Attack();
       atk.addDamage(new Damage(25+rand.nextInt(5), true, "bludgeon"));
       atk.applyPower(this.power);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);      
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
-=======
-      target.takeDamage(atk);      
-	  }
-	  else
-	  {
-		  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	  }
 	}//end method
    
@@ -116,19 +105,13 @@
       Random rand = new Random();
       atk.addDamage(new Damage(70+rand.nextInt(15), false, "bludgeon,adamantine"));
       atk.applyPower(this.power);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	  }
-	  else
-	  {
-		  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	  }
 	  
    }

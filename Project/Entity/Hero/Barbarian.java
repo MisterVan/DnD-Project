@@ -28,25 +28,12 @@ public class Barbarian extends Hero
       setElementalResistance(elRes);
       Weapon mace = new Weapon("Mace", "bludgeon", 8, 15);
       setPrimaryWpn(mace);
-<<<<<<< HEAD
-      //This makes like no sense with stomp being a 'weapon'. Consider taking this out and
-      //inherently equipping everyone with a dagger to start off with as a secondary?
-      Weapon stomp = new Weapon("Stomp", "bludgeon", 20, 25);
-      this.inventory.add(0, stomp);
-=======
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
-
       this.inventory.add(0, new Weapon("Axe", "slash", 4, 20));
-      
       super.setSprite("Project\\Sprites\\Characters\\Hero\\CHARACTER_HERO_BARBARIAN.png");
 	}//end method
    
    @Override
-<<<<<<< HEAD
    public String specialMove(Entity target)
-=======
-   public void specialMove(Entity target)
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
    {
       //Barbarian applies stoneskin to self for 3 rounds and gives a first initial brute strength attack
 	   
@@ -60,11 +47,9 @@ public class Barbarian extends Hero
       Damage dmg = new Damage(lostHealth, false, "untyped"); //Untyped, so that damage reduction can't affect it
       Attack atk = new Attack();
       atk.addDamage(dmg);
-<<<<<<< HEAD
+
       return this.takeDamage(atk);
-=======
-      this.takeDamage(atk);
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
    }
    
    @Override

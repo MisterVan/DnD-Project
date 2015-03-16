@@ -14,11 +14,7 @@ public abstract class Hero extends Entity
    protected ArrayList<Item> inventory = new ArrayList<Item>();
    
    //primary attack
-<<<<<<< HEAD
    public String performAttack(Entity target)
-=======
-   public void primaryAttack(Entity target)
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
    {
       if(primaryWpn == null)
       {
@@ -26,11 +22,8 @@ public abstract class Hero extends Entity
       }
       Attack atk = primaryWpn.attack();
       atk.applyPower(super.power);
-<<<<<<< HEAD
       return target.takeDamage(atk);
-=======
-      target.takeDamage(atk);
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
    }
    
    

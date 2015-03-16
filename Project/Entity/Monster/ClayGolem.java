@@ -42,7 +42,7 @@ if(dmg.getDamageType().contains("acid")) {
 
 
 
-<<<<<<< HEAD
+
 public String takeDamage(Attack atk) {
 	int actualDamage = 0;
 	if(Math.random() <= this.dodge)
@@ -51,24 +51,14 @@ public String takeDamage(Attack atk) {
 		
 	}
 	String result = "";
-=======
-public void takeDamage(Attack atk) {
-	int actualDamage = 0;
-	if(Math.random() <= this.dodge)
-	{
-		System.out.println("The clay golem dodged the attack!");
-		return;	
-	}
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	for(Damage dmg : atk.getDamage()) {
 	   if(dmg.isPhysical()) {
 	    actualDamage = dr.processDamage(dmg);
 	    this.hp -= actualDamage;
-<<<<<<< HEAD
+
 	    result += ("This entity took " + actualDamage + " points of " + dmg.getDamageType() + " damage"); //This print is just used for feedback in testing
-=======
-	    System.out.println("This entity took " + actualDamage + " points of " + dmg.getDamageType() + " damage"); //This print is just used for feedback in testing
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	   }
 	   else {//it's magical 
 		 
@@ -78,21 +68,17 @@ public void takeDamage(Attack atk) {
 		 else { //If its not acid, we take damage
 	    actualDamage = er.processDamage(dmg);
 	    this.hp -= actualDamage;
-<<<<<<< HEAD
+
 	    result += ("This entity took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
-=======
-	    System.out.println("This entity took " + actualDamage + " points of " + dmg.getDamageType() + " damage");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 		 }
 		 
 		 if(dmg.getDamageType().contains("fire") && !this.isBaked) {
 		 	this.isBaked = true;
 			this.dr.setReduction(this.dr.getReduction()*2);
-<<<<<<< HEAD
+
 			result += ("The fire damage baked the clay, increasing its physical defense!");
-=======
-			System.out.println("The fire damage baked the clay, increasing its physical defense!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 		 } //end if
 		 
 	   } //end else 
@@ -100,12 +86,10 @@ public void takeDamage(Attack atk) {
 	   }//end for loop
 	
 	   if(atk.hasStatus())
-<<<<<<< HEAD
+
 	      this.giveStatus(atk.deliverStatus());
 	   return result;
-=======
-	      this.giveStatus(atk.deliverStatus()); 
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 }//end method
 
 
@@ -118,19 +102,13 @@ public void takeDamage(Attack atk) {
 	      Attack atk = new Attack();
 	      atk.addDamage(new Damage(35 + rand.nextInt(20), true, "bludgeon"));
 	      atk.applyPower(this.power);
-<<<<<<< HEAD
+
 	      return target.takeDamage(atk);
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
-=======
-	      target.takeDamage(atk);
-	  }
-	  else
-	  {
-		  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	  }
 	}//end method
    
@@ -143,19 +121,13 @@ public void takeDamage(Attack atk) {
       Attack atk = new Attack();
       atk.addDamage(new Damage(40 + rand.nextInt(25), true, "bludgeon"));
       atk.addDamage(new Damage(20 + rand.nextInt(10), false, "acid"));
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	  }
-	  else
-	  {
-		  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	  }
    }
 

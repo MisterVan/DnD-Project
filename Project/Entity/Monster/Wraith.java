@@ -37,19 +37,13 @@ public class Wraith extends Undead
       Random rand = new Random();
       atk.addDamage(new Damage(25+rand.nextInt(11), false, "cold"));
       atk.addDamage(new Damage(5+rand.nextInt(11), false, "slash"));
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	  }
-	  else
-	  {
-		  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	  }
 	}//end method
    
@@ -67,7 +61,7 @@ public class Wraith extends Undead
       Frostbite frostEffect = new Frostbite();
       atk.addStatus(frostEffect);
       atk.applyPower(this.power);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	  }
 	  else
@@ -75,14 +69,7 @@ public class Wraith extends Undead
 		  return ("The attack failed!");
 	  }
 	  
-=======
-      target.takeDamage(atk);
-	  }
-	  else
-	  {
-		  System.out.println("The attack failed!");
-	  }
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
    }
    
    @Override
@@ -94,13 +81,10 @@ public class Wraith extends Undead
       int chancePhase = rand.nextInt(3); //random 0, 1, 2
       if(Math.random() <= this.dodge)
     		  {
-<<<<<<< HEAD
+
     	  		return ("The wraith dodged the attack!");
     	  		
-=======
-    	  		System.out.println("The wraith dodged the attack!");
-    	  		return;
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
     		  }
       else if (chancePhase == 2)
       {

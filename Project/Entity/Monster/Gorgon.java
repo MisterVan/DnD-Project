@@ -46,19 +46,13 @@ public class Gorgon extends Monster
          atk.addStatus(poisonEffect);
       }
       
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	}
 	else
 	{
 		return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	}
-	else
-	{
-		System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	}
 	}//end method
    
@@ -74,19 +68,13 @@ public class Gorgon extends Monster
       atk.addDamage(new Damage(15+rand.nextInt(6), false, "acid"));
       atk.applyPower(this.power/2);
       atk.addStatus(poisonEffect);//definitely poison
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
       }
       else
       {
     	  return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-      }
-      else
-      {
-    	  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
       }
    }
    

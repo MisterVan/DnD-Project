@@ -41,19 +41,13 @@ public class Zombie extends Undead
 	      atk.addDamage(new Damage(20+rand.nextInt(6), true, "bludgeon"));
 	      atk.addDamage(new Damage(5+rand.nextInt(6), true, "slash"));
 	      atk.applyPower(this.power);
-<<<<<<< HEAD
+
 	      return target.takeDamage(atk);
 	   }
 	   else
 	   {
 		   return ("The attack failed!");
-=======
-	      target.takeDamage(atk);
-	   }
-	   else
-	   {
-		   System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	   }
 	}//end method
    
@@ -69,19 +63,13 @@ public class Zombie extends Undead
       CorrosiveAcid acidEffect = new CorrosiveAcid();
       atk.addStatus(acidEffect);
       atk.applyPower(this.power);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
       }
       else
       {
     	  return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-      }
-      else
-      {
-    	  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
       }
    }
    

@@ -39,19 +39,13 @@ public class Skeleton extends Undead
       atk.addDamage(new Damage(5+rand.nextInt(15), true, "slash"));
       atk.addDamage(new Damage(10+rand.nextInt(10), true, "bludgeon"));
       atk.applyPower(this.power);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	  }
 	  else
 	  {
 		  return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	  }
-	  else
-	  {
-		  System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	  }
 	}//end method
    
@@ -65,19 +59,13 @@ public class Skeleton extends Undead
       Weapon w = fact.createRandomWeapon();
       Attack atk = w.attack();
       atk.applyPower(this.power);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	 }
 	 else
 	 {
 		 return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	 }
-	 else
-	 {
-		 System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	 }
 	 
    }

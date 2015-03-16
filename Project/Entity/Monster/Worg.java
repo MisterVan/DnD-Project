@@ -37,19 +37,13 @@ public class Worg extends Monster
       Attack atk = new Attack();
       atk.addDamage(new Damage(10+rand.nextInt(15), true, "slash")); //only able to claw/bite
       atk.applyPower(this.power);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	 }
 	 else
 	 {
 		 return ("The attack failed!");
-=======
-      target.takeDamage(atk);
-	 }
-	 else
-	 {
-		 System.out.println("The attack failed!");
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	 }
 	}//end method
    
@@ -63,14 +57,12 @@ public class Worg extends Monster
       atk.addDamage(new Damage(35+rand.nextInt(15), true, "slash"));
       atk.addStatus(new Poison());//definitely poison
       atk.applyPower(this.power);
-<<<<<<< HEAD
+
       return target.takeDamage(atk);
 	  }
 	  else {
 		  return ("The attack failed!");
-=======
-      target.takeDamage(atk);
->>>>>>> 1884630f38c34f7dd99fb1c459a2df1092287020
+
 	  }
    }
    
